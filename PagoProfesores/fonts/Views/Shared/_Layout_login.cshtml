@@ -1,0 +1,132 @@
+﻿
+<!DOCTYPE html>
+<html style="" class="js rgba multiplebgs backgroundsize borderradius boxshadow textshadow opacity cssanimations cssgradients csstransitions fontface">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red de Universidades Anáhuac</title>
+    <!--<link rel="stylesheet" href="skins/default/css/style.default.css" type="text/css">
+    <link rel="stylesheet" href="skins/default/css/style.orange.css" type="text/css">
+    -->
+    <link rel="stylesheet" href="~/Content/css/login.css" type="text/css">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="~/Scripts/plugins/jquery/jquery-1.9.1.min.js"></script>
+
+    <!--
+    <script type="text/javascript" src="skins/default/js/jquery-migrate-1.1.1.min.js"></script>
+    <script type="text/javascript" src="skins/default/js/jquery-ui-1.9.2.min.js"></script>
+    <script type="text/javascript" src="skins/default/js/modernizr.min.js"></script>
+    <script type="text/javascript" src="skins/default/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="skins/default/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="skins/default/js/custom.js"></script>
+    -->
+
+    <script type="text/javascript" src="~/Scripts/plugins/login/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/login//supersized.3.2.7.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/login//supersized.shutter.js"></script>
+
+
+    <script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery('#login').submit(function(){
+            var u = jQuery('#username').val();
+            var p = jQuery('#password').val();
+            if(u == '' && p == '') {
+                jQuery('.login-alert').fadeIn();
+                return false;
+            }
+        });
+    });
+    </script>
+
+
+    <script type="text/javascript" charset="utf-8">
+
+
+
+					// full screen slider
+$(document).ready( function(){
+
+    $.supersized({
+
+		// Functionality
+		slide_interval          :   10000,		// Length between transitions
+		transition              :   1, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
+		transition_speed		:	1000,		// Speed of transition
+
+		// Components
+		slide_links				:	'false',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
+		slides 					:  	[			// Slideshow Images
+
+	{image : '/Content/images/login/bg2.jpg', thumb : 'images/gallery/thumb/thumb1.jpg', url : ''},
+	{ image: '/Content/images/login/bg3.jpg', thumb: 'images/gallery/thumb/thumb1.jpg', url: '' },
+	{ image: '/Content/images/login/bg4.jpg', thumb: 'images/gallery/thumb/thumb1.jpg', url: '' },
+	{ image: '/Content/images/login/bg5.jpg', thumb: 'images/gallery/thumb/thumb1.jpg', url: '' },
+	{ image: '/Content/images/login/bg6.jpg', thumb: 'images/gallery/thumb/thumb1.jpg', url: '' },
+	{ image: '/Content/images/login/bg1.jpg', thumb: 'images/gallery/thumb/thumb1.jpg', url: '' },
+
+						]
+	});
+
+});
+    </script>
+
+
+
+
+</head>
+
+<body class="loginpage">
+
+    <div id="wrapper">
+
+        <div id="container">
+
+            <div id="homepage">
+                <div class="loginpanel">
+                    <div class="loginpanelinner">
+
+                        <div style="font-size: 20px;line-height: 1.3em;padding:10px;" id="progressCustomMessage">
+                            Pago a Profesores <br><small><span class="icon-info-sign"></span> Cloud Application Red Anáhuac</small>
+                        </div>
+                        @RenderBody()
+
+                       
+                    </div><!--loginpanelinner-->
+                </div><!--loginpanel-->
+
+
+
+
+
+            </div>
+            <!--end homepage-->
+
+
+        </div><!--end container-->
+
+
+        <div class="logo animate0 bounceIn" style="position: absolute; margin-left: 750px; top: 250px;">
+
+            <img src="~/Content/images/login/logo.png" alt="">
+
+        </div>
+
+
+
+
+        <!--Time Bar-->
+        <div id="progress-back" class="load-item">
+            <div id="progress-bar"></div>
+        </div>
+
+
+    </div><!--end wrapper-->
+
+
+</body>
+
+</html>

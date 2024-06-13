@@ -1,0 +1,182 @@
+﻿
+@{
+    ViewBag.Title = "Start";
+}
+
+<!-- begin row Formulario -->
+<div class="row" id="frm-importar">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Actualización de programación académica</h4>
+            </div>
+
+            <div class="panel-body">
+                <div id="wizard" class="bwizard clearfix">
+                    <ol class="bwizard-steps clearfix" role="tablist">
+                        <li id="tab-bannerPa" role="tab" aria-selected="true" class="active" style="z-index: 3;">
+                            <span class="label badge-inverse">1</span><span class="hidden-phone">
+                                Actualización de la Programación Académica.
+                            </span><span class="hidden-phone"><small>Importar PA (Banner).</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+                        @*<li id="tab-nomina" role="tab" aria-selected="false" style="z-index: 2;">
+                            <span class="label">2</span><span class="hidden-phone">
+                                Nomina.
+                            </span><span class="hidden-phone"><small>Calcular Nomina (PA).</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+                        <li id="tab-edocta" role="tab" aria-selected="false" style="z-index: 1;">
+                            <span class="label">3</span><span class="hidden-phone">
+                                Estado de cuenta.
+                            </span><span class="hidden-phone"><small>Generar estado de cuenta.</small></span><span class="hidden-phone">
+                            </span>
+                        </li>*@
+                    </ol>
+                    <!-- begin wizard step-1 -->
+                    <!-- end wizard step-1 -->
+
+                    <div class="well">
+                        <div class="wizard-step-1 bwizard-activated" id="step1" role="tabpanel" aria-hidden="false">
+                            <div class="panel-body" id="seccion1">
+                                <form action="/" method="POST">
+                                    <fieldset>
+                                        <legend class="pull-left width-full"><h5 id="titulo-legend">Actualización de la programación académica.</h5></legend>
+                                        <div id="paUpdate" class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Ciclo">Año Escolar</label>
+                                                    <select id="Ciclo" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Periodo">Periodo</label>
+                                                    <select id="Periodo" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="PartePeriodo">Parte del periodo</label>
+                                                    <select id="PartePeriodo" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            @*<div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Nivel">Nivel</label>
+                                                    <select id="Nivel" class="form-control"></select>
+                                                </div>
+                                            </div>*@
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="Escuela">Escuela</label>
+                                                    <select id="Escuela" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="TipoPago">Tipos de Pago</label>
+                                                    <select id="TipoPago" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="CampusPA">Campus</label>
+                                                    <select id="CampusPA" class="form-control">@Html.Raw(ViewBag.COMBO_CAMPUSPA)</select>
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" id="TipoDeContrato" value="" />
+                                            <input type="hidden" id="TipoDocente" value="" />
+                                            <input type="hidden" id="ids" name="ids" value="" />
+                                        </div>
+                                        <div class="row right">
+                                            <button type="button" id="formbtnconsultar" class="btn btn-sm btn-primary" onclick="formPage.consultar();">Consultar</button>
+                                            <button type="button" id="formbtnconsuConc" class="btn btn-sm btn-primary" style="display:none;" onclick="formPage.consulConcil();">Consultar conciliados</button>
+                                            @*<button type="button" id="formbtngenerar" class="btn btn-sm btn-primary" onclick="formPage.generar();">Importar</button>
+                                                <button type="button" id="formbtngenerartodo" class="btn btn-sm btn-primary" onclick="formPage.generarTodo();" disabled>Actualizar PA</button>
+                                                <button type="button" id="formbtnnomina" class="btn btn-sm btn-primary" style="display:none;" onclick="formPage.calcularNomina();" disabled>Actualizar nomina</button>
+                                                <button type="button" id="formbtnConsultaNomina" class="btn btn-sm btn-primary" style="display:none;" onclick="formPage.consultarNomina();" disabled>Consulta de nomina</button>
+                                                <button type="button" id="formbtnedocta" class="btn btn-sm btn-primary" style="display:none;" onclick="formPage.generarEdoCta();" disabled>Actualizar Estado de Cuenta</button>
+                                                *@
+                                            </div>
+
+                                            @Html.Raw(ViewBag.BlockingPanel_1)
+
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <!-- BEGIN -->
+                            </div>
+                        </div>
+
+                        <ul class="pager bwizard-buttons">
+                            <li id="btn-ant" class="previous" role="button" aria-disabled="true" style="display:none"><a id="linkant" href="">← Anterior </a></li>
+                            <li id="btn-sgt" class="next" role="button" aria-disabled="false" style="display:none"><a id="linksgt" href="javascript:formPage.BotonSiguienteNomina()">Siguiente →</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+        <!-- end col-12 -->
+    </div>
+    <!-- end row -->
+
+    <!-- begin row Datatable -->
+    <div class="row" id="dataTableActualizar">
+        <!-- begin col-12 -->
+        <div class="col-md-12 ui-sortable">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                        <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                    </div>
+                    <h4 class="panel-title">Conciliación de la PA<span class="loader-min-bar"></span></h4>
+                </div>
+                <div class="panel-body">
+                    <div id="datatable">
+                        @Html.Raw(ViewBag.DataTable)
+                    </div>
+
+                    @Html.Raw(ViewBag.BlockingPanel_2)
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+        <!-- end col-12 -->
+    </div>
+    <!-- end row -->
+
+
+
+
+
+
+
+
+    <!-- #modal-dialog CONFIRM DELETE ESQUEMA -->
+    @*<div class="modal fade" id="modal-delete-esquemas">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Eliminar Esquema</h4>
+                </div>
+                <div class="modal-body">
+                    Se eliminara el Esquema seleccionado, ¿esta seguro de proceder?
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                    <a href="javascript:formPage.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>*@

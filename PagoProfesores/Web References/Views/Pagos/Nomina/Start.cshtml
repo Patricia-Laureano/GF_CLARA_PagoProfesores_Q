@@ -1,0 +1,322 @@
+﻿
+<!-- begin row Consulta de Nomina PA -->
+<div class="row" id="frm-consulta">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Consulta de Pago de la PA</h4>
+            </div>
+
+            <div class="panel-body">
+                <div id="wizard" class="bwizard clearfix">
+                    <ol class="bwizard-steps clearfix" role="tablist">
+                        <li role="tab" aria-selected="false" style="z-index: 4;">
+                            <span class="label badge-inverse">1</span><span class="hidden-phone">
+                                Programación Academica
+                            </span><span class="hidden-phone"><small>Importar PA (Banner).</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+                        <li  id="tab-esquema" role="tab" aria-selected=""  class="active" style="z-index: 3;">
+                            <span class="label">2</span><span class="hidden-phone">
+                                Esquema de Pagos
+                            </span><span class="hidden-phone"><small>Asignar Esquema de Pago (PA).</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+                        <li id="tab-costos" class="" role="tab" aria-selected="false" style="z-index: 2;">
+                            <span class="label">3</span><span class="hidden-phone">
+                                Centro de Costos
+                            </span><span class="hidden-phone"><small>Asignar Centro de Costos (PA).</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+                        <li  id="tab-calculo-nomina" role="tab" aria-selected="false" style="z-index: 1;">
+                            <span class="label">4</span><span class="hidden-phone">
+                                Pago
+                            </span><span class="hidden-phone"><small>Calcular Pago (PA).</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+                    </ol>
+                    <!-- begin wizard step-1 -->
+                    <!-- end wizard step-1 -->
+                    <div class="well">
+                        <div class="wizard-step-1 bwizard-activated" id="step1" role="tabpanel" aria-hidden="false">
+                            <div class="panel-body">
+                                <form action="/" method="POST">
+                                    <fieldset>
+                                        <legend class="pull-left width-full small"><span id="titulo-legend">Utilice este procedimiento para asignar un Esquema de Pago a la programación academica importada. <a href="javascript:void(0)" onclick="ayuda('paesquema.html')">Mas ayuda.</a></span></legend>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Ciclo">Año Escolar</label>
+                                                    <select id="Ciclo" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Periodo">Periodo</label>
+                                                    <select id="Periodo" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="PartePeriodo">Parte del periodo</label>
+                                                    <select id="PartePeriodo" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            @*<div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Nivel">Nivel</label>
+                                                    <select id="Nivel" class="form-control"></select>
+                                                </div>
+                                            </div>*@
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Escuela">Escuela</label>
+                                                    <select id="Escuela" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="TipoPago">Tipos de pago</label>
+                                                    <select id="TipoPago" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="CampusPA">Campus</label>
+                                                    <select id="CampusPA" class="form-control">@Html.Raw(ViewBag.COMBO_CAMPUSPA)</select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row right">
+                                            <button type="button" id="formbtnconsultar" class="btn btn-sm btn-primary" onclick="formPage.Consultar();">Consultar</button>
+                                            <button type="button" id="formbtntabulador" class="btn btn-sm btn-primary" onclick="formPage.ModalCambiarTabulador();">Tabulador</button>
+                                            <button type="button" id="formbtnasignar" class="btn btn-sm btn-primary"  onclick="formPage.ModalAsignarEsquema();">Asignar Esquema</button>
+                                            <button type="button" id="formbtnasignarCentroC" class="btn btn-sm btn-primary" onclick="formPage.ModalAsignarCentroCostos();">Asignar Centro Costos</button>
+                                            <button type="button" id="formbtnGenerarCentroC" class="btn btn-sm btn-primary" onclick="formPage.GenerarCC();">Generar CC en automático</button>
+                                            <button type="button" id="formbtnaCalcularNomina" class="btn btn-sm btn-primary" onclick="formPage.insertaNomina();">Calcular Pago</button>
+                                            <!--<button type="button" id="formbtnaCalcularNomina" class="btn btn-sm btn-primary" onclick="formPage.ModalCalcularNomina();">Calcular Nomina</button>insertaNomina-->
+                                            <button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <!-- BEGIN -->
+                        </div>
+                    </div>
+                    <ul class="pager bwizard-buttons">
+                        <li  id="btn-ant" class="previous" role="button" aria-disabled="true"><a  id="linkant"  href="javascript:formPage.BotonAntPA()">← Anterior</a></li>
+                        <li id="btn-sgt-costos" class="next" role="button" aria-disabled="false" style="display:none"><a id="linksgt" href="javascript:formPage.BotonSgtAsignarCostos()">Siguiente →</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row Datatable -->
+<div class="row" id="frm-listadoNomina">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Listado de Nomina Disponible <span class="loader-min-bar"></span></h4>
+            </div>
+            <div class="panel-body">
+                <div id="datatable">
+                    @Html.Raw(ViewBag.DataTable)
+                </div>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+<!-- #modal-dialog CONFIRM DELETE ESQUEMA -->
+<div class="modal fade" id="modal-delete-esquemas">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Eliminar Esquema</h4>
+            </div>
+            <div class="modal-body">
+                Se eliminara el Esquema seleccionado, ¿esta seguro de proceder?
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- INICIO MODAL ESQUEMA -->
+<div id="myModal" class="modal fade" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+                <h4 class="modal-title">Asignar Esquema de Pago</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="Esquema">Esquema de Pagos</label>
+                                    <select id="Esquema" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="nosemanas">No. Sem</label>
+                                    <input type="text" disabled class="form-control" id="nosemanas">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="nopagos">No. Pagos</label>
+                                    <input type="text" disabled class="form-control" id="nopagos">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="fechai">Fecha Inicio</label>
+                                    <input type="text" disabled class="form-control" id="fechai">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="fechaf">Fecha Fin</label>
+                                    <input type="text" disabled class="form-control" id="fechaf">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row right">
+                                <button type="button" id="formbtngenerar" class="btn btn-sm btn-primary" onclick="formPage.generar();">Asignar seleccionados</button>
+                                <button type="button" id="formbtngenerartodo" class="btn btn-sm btn-primary" onclick="formPage.generarTodo();">Asignar todos</button>
+                                <button type="button" id="formbtnocultar" class="btn btn-sm btn-warning" onclick="formPage.ocultar('genera');">Cancelar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>               
+            </div>
+        </div>
+        <div class="modal-footer">           
+        </div>
+    </div>
+</div>
+<!-- FIN MODAL ESQUEMAS-->
+
+ <!-- INICIO MODAL CENTRO COSTOS-->
+<div id="myModalCentroCostos" class="modal fade" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+                <h4 class="modal-title">Asignar Centro de Costos</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="EscuelaSearch">Escuela</label>
+                                    <select id="EscuelaSearch" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="Programa">Programa</label>
+                                    <select id="Programa" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="centroCostos">Centro de costos</label>
+                                    <select id="centroCostos" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control" id="PAID">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="ccForced">
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row right">
+                                <button type="button" id="formbtnAsignarCostosNo" class="btn btn-sm btn-primary" style="display:none" onclick="formPage.asginaCentrodeCostosNo();">Descartar estos registros y continuar</button>
+                                <button type="button" id="formbtnAsignarCostosSi" class="btn btn-sm btn-primary" style="display:none" onclick="formPage.asginaCentrodeCostosSi();">Está bien, deseo continuar</button>
+                                <button type="button" id="formbtnAsignarCostos" class="btn btn-sm btn-primary" onclick="formPage.asginaCentrodeCostos();">Asignar Costos</button>
+
+                                <!---<button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="">Borrar</button>
+            <button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="">Limpiar</button>-->
+                                <button type="button" id="formbtnCerrarCostos" class="btn btn-sm btn-warning" onclick="formPage.CerrarModalCostos()">Cerrar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+</div>
+<!-- FIN MODAL CENTRO COSTOS -->
+
+ <!-- INICIO MODAL TABULADOR -->
+<div id="myModalTabulador" class="modal fade" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+                <h4 class="modal-title">Cambio de Tabulador</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="Tabulador">Tabulador</label>
+                                    <select id="Tabulador" class="form-control"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row right">
+                                <button type="button" id="formbtngenerarTabulador" class="btn btn-sm btn-primary" onclick="formPage.generarTabuldaor();">Asignar seleccionados</button>
+                                <button type="button" id="formbtngenerartodoTabulador" class="btn btn-sm btn-primary" onclick="formPage.generarTodoTabulador();">Asignar todos</button>
+                                <button type="button" id="formbtnocultarTabulador" class="btn btn-sm btn-warning" onclick="formPage.ocultarTabulador();">Cancelar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+</div>
+<!-- FIN MODAL TABULADOR -->

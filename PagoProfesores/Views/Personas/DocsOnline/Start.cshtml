@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Start";
+}
+<style type="text/css">
+    #myIframe {
+        width: 100%;
+        height: 250vh;
+    }
+</style>
+
+
+<div class="panel panel-inverse">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;">
+                <i class="fa fa-minus"></i>
+            </a>
+        </div>
+        <h4 class="panel-title">Documentos Online</h4>
+    </div>
+    <div class="panel-body" id="seccion1">
+    </div>
+
+    <script>
+        function login() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://proxybpm.anahuac.mx/login?username=jusqueresquer@gmail.com&password=bpm2020BPM$", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 204) { loadIframe(); }
+            };
+            xhr.send();
+        } function loadIframe() {
+            var iframe = document.createElement("iframe");
+            iframe.src = "https://proxybpm.anahuac.mx/";
+            iframe.frameBorder = "0";
+            iframe.style.width = "100%";
+            iframe.style.height = "600px";
+            document.getElementById("seccion1").appendChild(iframe);
+        } login();
+    </script>
+    </div>
+
+

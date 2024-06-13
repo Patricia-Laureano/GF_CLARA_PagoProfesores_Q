@@ -1,0 +1,129 @@
+﻿@{
+	// ________________________________ NOMINA EXCEL ________________________________
+
+	ViewBag.Title = "Start";
+}
+
+<div class="row">
+	<ol class="breadcrumb pull-right">
+		<li><a href="#">Pagos</a></li>
+		<li><a href="/NominaExcel">Importar Nomina (Excel)</a></li>
+	</ol>
+</div>
+
+<!-- begin row -->
+<div class="row">
+	<!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+					<a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+				</div>
+				<h4 class="panel-title">Base para la generación de pagos</h4>
+			</div>
+
+			<div class="panel-body">
+                <div id="wizard" class="bwizard clearfix">
+                    <ol class="bwizard-steps clearfix" role="tablist">
+                        <li id="tab-excel" role="tab" aria-selected="true" class="active" style="z-index: 4;">
+                            <span class="label badge-inverse">1</span><span class="hidden-phone">
+                                Subir archivo excel.
+                            </span><span class="hidden-phone"><small>Importar y auditar datos de nomina.</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+                        <li id="tab-nomina" role="tab" aria-selected="false" style="z-index: 3;">
+                            <span class="label">2</span><span class="hidden-phone">
+                                Pago.
+                            </span><span class="hidden-phone"><small>Generación de la nomina de los datos auditados.</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+                        <li id="tab-estadodecuenta" role="tab" aria-selected="false" style="z-index: 2;">
+                            <span class="label">3</span><span class="hidden-phone">
+                                Estado de cuenta.
+                            </span><span class="hidden-phone"><small>Generación del estado de cuenta.</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="well">
+                    <div class="wizard-step-1 bwizard-activated" id="step1" role="tabpanel" aria-hidden="false">
+                        <div class="panel-body">
+                            <form action="/NominaExcel/SendFile" method="POST" enctype="multipart/form-data">
+                                <fieldset>
+                                    <legend class="pull-left width-full"><h5 id="titulo-legend">Seleccione un archivo de excel para importar los datos.</h5></legend>
+                                    <div class="row">
+                                        <div id="ligaUpload" class="col-md-12">
+                                            <span class="right"> <a href="~/Upload/Nomina/EjemploNomina.xlsx"><i class="fa fa-download"></i>&nbsp;&nbsp;Descargar <strong>ejemplo</strong> de formato Excel</a> </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div id="uploadFile" class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="file">Filename:</label>
+                                                <input type="file" name="file" id="file" class="form-control" onchange="formPage.fileChange()" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group" id="div_progressbar">
+                                                <label>Progreso:&nbsp;</label><label for="file" id="div_percentage_id">0 %</label><br />
+                                                <progress id="progressbar_loading" class="form-control" value="0" max="100" />
+                                            </div>
+                                        </div>
+                                        <img id="img_generando" style="height:30px;" src="/Content/images/load.gif">
+                                    </div>
+                                    <div class="row right">
+                                        <input type="submit" id="formbtnAuditar" class="btn btn-sm btn-primary" onclick="formPage.subirExcel();" value="Auditar">
+                                        <button type="button" id="formbtnGenerar" class="btn btn-sm btn-primary" onclick="formPage.generar();">Generar</button>
+                                        <button type="button" id="formbtnGenerarEdoCta" class="btn btn-sm btn-primary" onclick="formPage.generarEdoCta();">Generar estado de cuenta</button>
+                                        <button type="button" id="formbtnLimpiar" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>
+                                        
+                                    </div>
+                                    @Html.Raw(ViewBag.BlockingPanel_1)
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <ul class="pager bwizard-buttons">
+                    <li id="btn-ant" class="previous" role="button" aria-disabled="true"  style="display:none"><a id="linkant" href="">← Anterior </a></li>
+                    <li id="btn-sgt" class="next"     role="button" aria-disabled="false" style="display:none"><a id="linksgt" href="javascript:formPage.BotonSgtGenerarNomina()">Siguiente →</a></li>
+                </ul>
+            </div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row -->
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12 ui-sortable">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+
+					<a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-primary" href="javascript:;"><i class="fa fa-repeat"></i></a>
+					<a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+				</div>
+				<h4 class="panel-title">Listado de Menus</h4>
+			</div>
+			<div class="panel-body">
+
+				<div id="datatable">
+					@Html.Raw(ViewBag.DataTable)
+				</div>
+
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-12 -->
+</div>
+<!-- end row -->

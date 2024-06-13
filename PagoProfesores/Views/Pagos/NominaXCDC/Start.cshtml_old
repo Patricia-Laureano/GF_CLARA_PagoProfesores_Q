@@ -1,0 +1,142 @@
+﻿<!-- begin row Consulta de Nomina PA -->
+<div class="row" id="frm-consulta">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Nomina</h4>
+            </div>
+
+
+            <div class="panel-body">
+                <div id="wizard" class="bwizard clearfix">
+                    <ol class="bwizard-steps clearfix" role="tablist">
+                        <li id="tab-nominaxcdc" role="tab" aria-selected="false" class="active" style="z-index: 4;">
+                            <span class="label badge-inverse">5</span><span class="hidden-phone">
+                                Nomina
+                            </span><span class="hidden-phone"><small>Consulta Nomina.</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+                        <li id="tab-estadocuenta" role="tab" aria-selected="" class="" style="z-index: 3;">
+                            <span class="label">6</span><span class="hidden-phone">
+                                Generar Estado de Cuenta
+                            </span><span class="hidden-phone"><small>Genera Estado de Cuenta.</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+
+                    </ol>
+                    <!-- begin wizard step-1 -->
+                    <!-- end wizard step-1 -->
+                    <div class="well">
+                        <div class="wizard-step-1 bwizard-activated" id="step1" role="tabpanel" aria-hidden="false">
+
+
+
+                            <div class="panel-body">
+                                <form action="/" method="POST">
+                                        <fieldset>
+                                            <legend class="pull-left width-full small">Utilice este procedimiento para consultar la <b>nomina</b> y generar los pagos en el estado de cuenta del profesor. <a href="javascript:void(0)" onclick="ayuda('nomina.html')">Más ayuda.</a></legend>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="Ciclo">Año Escolar</label>
+                                                        <select id="Ciclo" class="form-control"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="Periodo">Periodo</label>
+                                                        <select id="Periodo" class="form-control"></select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="PartePeriodo">Parte del periodo</label>
+                                                        <select id="PartePeriodo" class="form-control"></select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="Escuela">Escuela</label>
+                                                        <select id="Escuela" class="form-control"></select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-2" style="display:none;">
+                                                    <div class="form-group">
+                                                        <label for="contrato">Contrato</label>
+                                                        <select id="contrato" class="form-control"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="TipoPago">Tipos de pago</label>
+                                                        <select id="TipoPago" class="form-control"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="CampusPA">Campus</label>
+                                                        <select id="CampusPA" class="form-control">@Html.Raw(ViewBag.COMBO_CAMPUSPA)</select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row right">
+                                                <button type="button" id="formbtnconsultar" class="btn btn-sm btn-primary" onclick="formPage.Consultar();">Consultar</button>
+                                                <button type="button" id="formbtngenerarEstadoC" class="btn btn-sm btn-primary" onclick="formPage.generarEdoCta();">Generar Estado de Cuenta</button>
+                                                <button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>
+                                            </div>
+                                        </fieldset>
+                                </form>
+                            </div>
+                          
+                        </div>
+                        <!-- end well -->
+                        </div>
+                        <ul class="pager bwizard-buttons">
+                            <li id="btn-ant" class="previous" role="button" aria-disabled="true"><a id="linkant" href="javascript:formPage.BotonAntNomina()">← Anterior</a></li>
+                            <li id="btn-sgt" class="next" role="button" aria-disabled="false" style="display:"><a id="linksgt" href="javascript:formPage.BotonSgtEstadoCuenta()">Siguiente →</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- end wizard -->
+
+            </div>
+                        <!-- end panel -->
+                    </div>
+                    <!-- end col-12 -->
+                </div>
+                <!-- end row -->
+                <!-- begin row Datatable -->
+                <div class="row" id="frm-listadoNominaXCDC">
+                    <!-- begin col-12 -->
+                    <div class="col-md-12 ui-sortable">
+                        <!-- begin panel -->
+                        <div class="panel panel-inverse">
+                            <div class="panel-heading">
+                                <div class="panel-heading-btn">
+                                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                                </div>
+                                <h4 class="panel-title">Listado de Nomina por Centro de costos <span class="loader-min-bar"></span></h4>
+                            </div>
+                            <div class="panel-body">
+                                <div id="datatable">
+                                    @Html.Raw(ViewBag.DataTable)
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end panel -->
+                    </div>
+                    <!-- end col-12 -->
+                </div>
+                <!-- end row -->

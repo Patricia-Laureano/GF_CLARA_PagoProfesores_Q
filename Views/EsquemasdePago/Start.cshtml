@@ -1,0 +1,288 @@
+﻿
+@{
+    ViewBag.Title = "Start";
+}
+
+<!-- begin row Formulario -->
+<div class="row" id="frm-esquemas">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Detalle Esquema</h4>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#default-tab-1" data-toggle="tab" aria-expanded="true">Esquema de pago</a></li>
+                    <li class=""><a href="#default-tab-2" data-toggle="tab" aria-expanded="false">Calendario de pagos</a></li>                
+                </ul>
+                <form action="/" method="POST">
+                    <fieldset>
+                        <div class="tab-content" id="tabs">
+                            <div class="tab-pane fade active in" id="default-tab-1">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="anios">Año Escolar *</label>
+                                            <select id="anios" class="form-control">
+                                                @Html.Raw(ViewBag.ANIOS)
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <input type="hidden" name="hperiodos" id="hperiodos"/>
+                                            <label for="periodos">Periodo *</label>
+                                            <select id="periodos" name="periodos" class="form-control" >
+                                            </select>
+                                        </div>
+                                    </div>
+                                    @*<div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="niveles">Niveles *</label>
+                                            <select id="niveles" class="form-control" >
+                                                @Html.Raw(ViewBag.NIVELES)
+                                            </select>
+                                        </div>
+                                    </div>*@
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="tipocontrato">Tipo Contrato *</label>
+                                            <select id="tipocontrato" class="form-control" >
+                                                @Html.Raw(ViewBag.TIPO_CONTRATO)
+                                              
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="esquema">Esquema *</label>                                            
+                                            <input type="text" class="form-control" maxlength="10" id="esquema" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="fechai">Fecha Inicio *</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="fechai">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                         </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="fechaf">Fecha Fin *</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="fechaf">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="nosemanas">No. Semanas *</label>
+                                            <input type="text" class="form-control" id="nosemanas">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="nospagos">No. Pagos *</label>
+                                            <input type="text" class="form-control" id="nospagos" style="width: 150px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" style="text-align: left;" >
+                                        <div class="form-group">
+                                            <label for="bloqueop">
+                                                Retención de pagos hasta la entrega del contrato
+                                            </label><br />
+                                            <input type="checkbox" name="bloqueop" id="bloqueop" class="form-control" style="width: 5%;" value="">
+                                        </div>
+                                    </div>
+                                    <!--<div class="col-md-4" style="text-align: ; left: 715px; top: -70px;">
+                                        <div class="form-group">
+                                        <label for="bloqueop">
+                                        Bloquear pagos hasta la entrega del contrato
+                                        </label>
+                                        <input type="checkbox" name="bloqueop" id="bloqueop" class="form-control" style="width: 5%;" value="">
+                                        </div>
+                                        </div>
+                                        -->
+                                    <div class="row right">
+                                        <button type="button" id="formbtnadd" class="btn btn-sm btn-primary" onclick="formPage.add();">Agregar</button>
+                                        <button type="button" id="formbtnsave" class="btn btn-sm btn-primary" disabled onclick="formPage.save();">Guardar</button>
+                                        <button type="button" id="formbtndelete" class="btn btn-sm btn-danger" disabled onclick="formPage.delete(false);">Borrar</button>
+                                        <button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="default-tab-2">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="cpago">Concepto de pago *</label>
+                                            <input type="hidden" class="form-control" id="idesquema" value="">
+                                            <select id="cpago" class="form-control" >
+                                                @Html.Raw(ViewBag.CONCEPTO_PAGO)
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="frecibo">Fecha de recibo*</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="frecibo">
+                                                <span class="input-group-addon" onclick="document.getElementById('frecibo').focus()"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="fpago">Fecha de pago *</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="fpago">
+                                                <span class="input-group-addon" onclick="document.getElementById('fpago').focus()"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 
+                                    <div class="col-md-12">
+										<label>Tipo de retención:</label>
+                                        <div class="form-group">
+											
+										</div>
+                                    </div>
+                                </div>
+                              
+                                <div class="row">
+
+                                    @Html.Raw(ViewBag.TIPO_BLOQUEO)
+                                </div>
+
+                                <div class="row right">
+                                    <button type="button" id="formbtnUpdateEdoCta" class="btn btn-sm btn-primary" onclick="formPage2.updateEdoCta();">Modificar Estados de Cuenta</button>
+                                    <button type="button" id="formbtnadd2" class="btn btn-sm btn-primary" onclick="formPage2.add();">Agregar</button>
+                                    <button type="button" id="formbtnsave2" class="btn btn-sm btn-primary" disabled onclick="formPage2.save();">Guardar</button>
+                                    <button type="button" id="formbtndelete2" class="btn btn-sm btn-danger" disabled onclick="formPage2.delete(false);">Borrar</button>
+                                    <button type="button" id="formbtnclean2" class="btn btn-sm btn-warning" onclick="formPage2.clean();">Limpiar</button>
+                                </div>
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+
+                                <!-- begin row DatatableCalendarioP -->
+                                <div class="row">
+                                    <!-- begin col-12 -->
+                                    <div class="col-md-12 ui-sortable">
+                                        <!-- begin panel -->
+                                        <div class="panel-inverse">
+                                            <div class="panel-heading">
+                                                <div class="panel-heading-btn">
+                                                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                                                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                                                </div>
+                                                <h4 class="panel-title">Listado Calendario de Pagos Disponibles <span class="loader-min-bar"></span></h4>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div id="datatable2">
+                                                    @Html.Raw(ViewBag.DataTableCalendarPago)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end panel -->
+                                    </div>
+                                    <!-- end col-12 -->
+                                </div>
+                                <!-- end row -->
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row Datatable -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Listado de Esquemas Disponibles<span class="loader-min-bar"></span></h4>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="CicloFilter">Año Escolar</label>
+                        <select id="CicloFilter" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="PeriodoFilter">Periodo</label>
+                            <select id="PeriodoFilter" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div id="datatable">
+                    @Html.Raw(ViewBag.DataTable)
+                </div>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- #modal-dialog CONFIRM DELETE ESQUEMA -->
+<div class="modal fade" id="modal-delete-esquemas">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Eliminar Esquema</h4>
+            </div>
+            <div class="modal-body">
+                Se eliminara el Esquema seleccionado, ¿esta seguro de proceder?
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #modal-dialog CONFIRM DELETE Calendario -->
+<div class="modal fade" id="modal-delete-calendario">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Eliminar Calendario de Pago</h4>
+            </div>
+            <div class="modal-body">
+                Se eliminara el Calendario de Pago seleccionado, ¿esta seguro de proceder?
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage2.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>

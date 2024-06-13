@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Start";
+}
+
+<!-- begin row -->
+<div class="row" id="frm-comunicado">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Comunicado a profesores</h4>
+            </div>
+            <div class="panel-body" id="seccion1">
+                <form action="/" method="POST" onload="formPage.clean();">
+                    <fieldset>
+                        <div class="tab-content" id="tabs">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="c_idSiu">Id <span id="c_origenEC"> </span></label>
+                                        <input type="hidden" class="form-control" id="c_idSiuHidden">
+                                        <input type="hidden" class="form-control" id="c_idPersonaHidden">
+                                        <input type="hidden" class="form-control" id="c_idComunicadoHidden">
+                                        <input type="text" class="form-control" id="c_idSiu" maxlength="10">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="c_nombreCompleto">Nombre completo</label>
+                                        <input type="text" class="form-control" id="c_nombreCompleto" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="Ciclo">A&ntilde;o escolar</label>
+                                        <select id="Ciclo" class="form-control"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="Periodo">Periodo</label>
+                                        <select id="Periodo" class="form-control"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="Esquema">Esquema</label>
+                                        <select id="Esquema" class="form-control"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="ConceptoPago">Concepto de pago</label>
+                                        <select id="ConceptoPago" class="form-control"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="FechaPago">Fecha de pago</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="FechaPago" disabled />
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <label for="Mensaje">Mensaje a profesores</label>
+                                        <textarea id="Mensaje" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row right">
+                                <button type="button" id="formbtnadd" class="btn btn-sm btn-primary" onclick="formPage.add();">Agregar</button>
+                                <button type="button" id="formbtnsave" class="btn btn-sm btn-primary" disabled onclick="formPage.save();">Guardar</button>
+                                <button type="button" id="formbtndelete" class="btn btn-sm btn-danger" disabled onclick="formPage.delete(false);">Borrar</button>
+                                <button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+<!-- begin row Datatable -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Listado de comunicados a profesores<span class="loader-min-bar"></span></h4>
+            </div>
+            <div class="panel-body">
+                <fieldset>
+                    <div id="datatable_comunicado">
+                        @Html.Raw(ViewBag.DataTable)
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+<!-- #modal-dialog CONFIRM DELETE COMUNICADO -->
+<div class="modal fade" id="modal-delete-comunicado">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Eliminar comunicado</h4>
+            </div>
+            <div class="modal-body">
+                Se eliminará el Comunicdo seleccionado. ¿Está seguro de proceder?
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>

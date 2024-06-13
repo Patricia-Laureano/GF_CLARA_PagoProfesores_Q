@@ -1,0 +1,198 @@
+﻿@{
+    ViewBag.Title = "Start";
+}
+<!-- begin row Formulario -->
+<div class="row" id="frm-importar">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Propuesta de programación académica</h4>
+            </div>
+            <div class="panel-body">
+                <div id="wizard" class="bwizard clearfix">
+                    <ol class="bwizard-steps clearfix"  role="tablist">
+                        <li role="tab" aria-selected="true" class="active" style="z-index: 4;">
+                            <span class="label badge-inverse">1</span><span class="hidden-phone">
+                                 Programación Académica
+                            </span><span class="hidden-phone"><small>Importar PA (Banner).</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+                        <li role="tab" aria-selected="false" style="z-index: 3;">
+                            <span class="label">2</span><span class="hidden-phone">
+                                 Esquema de Pagos
+                            </span><span class="hidden-phone"><small>Asignar Esquema de Pago (PA).</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+                        <li role="tab" aria-selected="false" style="z-index: 2;">
+                            <span class="label">3</span><span class="hidden-phone">
+                                  Centro de Costos
+                            </span><span class="hidden-phone"><small>Asignar Centro de Costos (PA.)</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+                        <li role="tab" aria-selected="false" style="z-index: 1;">
+                            <span class="label">4</span><span class="hidden-phone">
+                                  Pago
+                            </span>
+                            <span class="hidden-phone"><small>Calcular Pago (PA).</small></span><span class="hidden-phone">
+                            </span>
+                        </li>
+                    </ol>
+                    <!-- begin wizard step-1 -->
+                    <!-- end wizard step-1 -->
+                    <div class="well">
+                        <div class="wizard-step-1 bwizard-activated" id="step1" role="tabpanel" aria-hidden="false">
+                            <div class="panel-body" id="seccion1">
+                                <form action="/" method="POST">
+                                    <fieldset>
+                                        <legend class="pull-left width-full small">Utilice este procedimiento para importar la programación academica de Banner al Sistema. Solo se importarán profesores con tipo de contrato Honorarios y cursos master e independientes. <a href="javascript:void(0)" onclick="ayuda('importpa.html')">Más ayuda.</a> </legend>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Ciclo">Año Escolar</label>
+                                                    <select id="Ciclo" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Periodo">Periodo</label>
+                                                    <select id="Periodo" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="PartePeriodo">Parte del periodo</label>
+                                                    <select id="PartePeriodo" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="Escuela">Escuela</label>
+                                                    <select id="Escuela" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Atributos">Atributos</label>
+                                                    <select id="Atributos" class="form-control">@Html.Raw(ViewBag.COMBO_Atributos)</select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="CampusPA">Campus</label>
+                                                    <select id="CampusPA" class="form-control">@Html.Raw(ViewBag.COMBO_CAMPUSPA)</select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="TabuladorList">Tabulador</label>
+                                                    <select id="TabuladorList" class="form-control">@Html.Raw(ViewBag.TabuladorList)</select>
+                                                    @* <select id="Tabulador" class="form-control">
+                    <option value="LIC" selected>Licenciatura</option>
+                    <option value="POS">Posgrado</option>
+                    <option value="EXT">Extensión</option>
+                </select> *@
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="TipoPago">Tipos de pago</label>
+                                                    <select id="TipoPago" class="form-control"></select>
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" id="TipoDeContrato" value="" />
+                                            <input type="hidden" id="TipoDocente" value="" />
+                                            @*<input type="hidden" id="TipoPago" value="" />*@
+                                            <input type="hidden" id="ids" name="ids" value="" />
+                                        </div>
+                                        <div class="row right">
+                                            <button type="button" id="formbtnconsultar" class="btn btn-sm btn-primary" onclick="formPage.consultar();">Consultar</button>
+                                            <button type="button" id="formbtngenerar" class="btn btn-sm btn-primary" onclick="formPage.generar();">Importar</button>
+                                            <button type="button" id="formbtngenerartodo" class="btn btn-sm btn-primary" onclick="formPage.generarTodo();">Importar todo</button>
+                                        </div>
+                                        @Html.Raw(ViewBag.BlockingPanel_1)
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <!-- BEGIN -->
+                        </div>
+                    </div>
+                    <ul  class="pager bwizard-buttons">
+                        <!--  <li class="previous disabled" role="button" aria-disabled="true"><a href="#">← Anterior</a></li>-->
+                        <li id="btn-sgt" class="next" role="button" aria-disabled="false" style="display:none"><a id="linksgt" href="javascript:formPage.BotonSiguienteEsquema()">Siguiente →</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row Datatable -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Listado de PA Disponible <span class="loader-min-bar"></span></h4>
+            </div>
+            <div class="panel-body">
+                <div id="datatable">
+                    @Html.Raw(ViewBag.DataTable)
+                </div>
+                @Html.Raw(ViewBag.BlockingPanel_2)
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- #modal-dialog CONFIRM DELETE ESQUEMA -->
+<div class="modal fade" id="modal-delete-esquemas">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Eliminar Esquema</h4>
+            </div>
+            <div class="modal-body">
+                Se eliminara el Esquema seleccionado, ¿esta seguro de proceder?
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #modal DETALLES-CONFLICTOS-PA -->
+<div class="modal fade" id="modal-detalles-conflictos" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Conflictos al cargar la información desde BANNER.</h4>
+            </div>
+            <div class="modal-body">
+                <div id="divDetallesConflictos"></div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cerrar</a>
+                <!--<a href="javascript:formPage.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>-->
+            </div>
+        </div>
+    </div>
+</div>

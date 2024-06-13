@@ -1,0 +1,154 @@
+﻿@{
+	// ________________________________ NOMINA EXCEL ________________________________
+
+	ViewBag.Title = "Start";
+}
+
+
+<!-- begin row -->
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12 ui-sortable">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+
+					<a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+					<a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+				</div>
+				<h4 class="panel-title">Importar Esquemas</h4>
+			</div>
+
+			<div class="panel-body">
+
+				<form action="/NominaExcel/SendFile" method="POST" enctype="multipart/form-data">
+					<!--
+		<form action="/" method="POST" onload="formPage.clean();">
+		-->
+					<fieldset>
+						<!--
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="role">Ciclos *</label>
+									<select id="ciclos" class="form-control"></select>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="descripcion">Periodos</label>
+									<select id="periodos" class="form-control"></select>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="descripcion">Niveles</label>
+									<select id="niveles" class="form-control"></select>
+								</div>
+							</div>
+
+						</div>
+								-->
+						<div class="row">
+							<div class="col-md-12">
+								<span class="right"> <a href="~/Upload/Esquemas/EjemploEsquemas.xlsx"><i class="fa fa-download"></i>&nbsp;&nbsp;Descargar <strong>ejemplo</strong> de formato Excel</a> </span>
+
+							</div>
+						</div>
+
+
+                       
+
+
+
+                        <div class="well">
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="file_xlsx">Archivo con extenci&oacute;n <span style="color:darkred;">XLSX</span></label><br />
+                                        <table style="width:100%">
+                                            <tr>
+                                                <td style="width:auto;"> <input id="file_xlsx" type="file" accept=".xlsx" style="width:95pt;" onchange="formPage.fileChange()"> </td>
+                                                <td style="width:100%;"> <input id="file_xlsx_name" class="form-control" readonly> </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>&nbsp;</label>
+                                        <div class="row">
+                                            <button type="button" id="formbtnLimpiar" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>
+                                            <input type="button" id="formbtnAuditar" class="btn btn-sm btn-primary" onclick="formPage.subirExcel();" value="Auditar">
+                                            <button type="button" id="formbtnGenerar" class="btn btn-sm btn-success" onclick="formPage.generar();">Generar</button>
+                                            <img id="img_generando" style="height:30px;" src="/Content/images/load.gif">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="well">
+                            <div class="row">
+
+
+                                <div class="col-md-12">
+                                    <label>Seleccionar Tipo de bloqueo para aplicar:</label>
+
+                                    <div class="form-group">
+                                        @Html.Raw(ViewBag.TIPO_BLOQUEO)
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                            @Html.Raw(ViewBag.BlockingPanel_1)
+</fieldset>
+
+				</form>
+
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row -->
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12 ui-sortable">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+
+					<a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+					<a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+				</div>
+				<h4 class="panel-title">Listado esquemas a subir</h4>
+			</div>
+			<div class="panel-body">
+
+				<div id="datatable">
+					@Html.Raw(ViewBag.DataTable)
+				</div>
+
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-12 -->
+</div>
+<!-- end row -->

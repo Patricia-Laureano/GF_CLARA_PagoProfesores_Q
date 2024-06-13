@@ -1,0 +1,299 @@
+﻿
+<div class="" id="content">
+    <!-- begin breadcrumb -->
+    <!-- end breadcrumb -->
+    <!-- begin page-header -->
+    <!-- end page-header -->
+    <!-- begin row -->
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12 ui-sortable">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a data-click="panel-expand" class="btn btn-xs btn-icon btn-circle btn-default" href="javascript:;"><i class="fa fa-expand"></i></a>
+                        <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                        <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                        <a data-click="panel-remove" class="btn btn-xs btn-icon btn-circle btn-danger" href="javascript:;"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h4 class="panel-title">Ver Información Personal</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="">
+
+
+                        <div id="wizard" style="display:none;">
+                            <div class="jumbotron m-b-0 text-center">
+                                <h1>Su información ha sido cambiada exitosamente!!</h1>
+                                <p>
+                                    <span class="fa-stack fa-2x text-success">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+
+
+
+                        <div id="verFormulario" class="block" style="min-height:300px;">
+
+                            <form class="" action="/" method="POST" id="formulario" name="formulario" data-parsley-validate="true">
+
+
+
+                                <fieldset>
+                                    <legend class="pull-left width-full">Identificación</legend>
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <!-- begin col-4 -->
+                                        <div class="col-md-4">
+                                            <div class="form-group block1">
+                                                <label>Nombre:</label>
+                                                <input type="text" name="nombre" id="nombre" value="@ViewBag.NOMBRE"  disabled placeholder="" class="form-control" data-parsley-group="wizard-step-1" required />
+                                            </div>
+                                        </div>
+                                        <!-- end col-4 -->
+                                        <!-- begin col-4 -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Apellido Paterno</label>
+                                                <input type="text" name="apaterno" id="apaterno"  value="@ViewBag.APATERNO"  disabled placeholder="" class="form-control" data-parsley-group="wizard-step-1" required />
+                                            </div>
+                                        </div>
+                                        <!-- end col-4 -->
+                                        <!-- begin col-4 -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Apellido Materno</label>
+                                                <input type="text" name="amaterno" id="amaterno" value="@ViewBag.AMATERNO" disabled placeholder="" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <!-- end col-4 -->
+                                    </div>
+                                    <!-- end row -->
+
+
+                                <div class="row">
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Edad</label>
+                                                <input type="text" name="edad" id="edad"  value="@ViewBag.EDAD" disabled placeholder="" class="form-control" data-parsley-group="wizard-step-1" />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>RFC</label>
+                                                <input type="text" name="rfc" id="rfc" value="@ViewBag.RFC" disabled placeholder="" class="form-control" data-parsley-group="wizard-step-1" />
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </fieldset>
+                               
+                                <fieldset>
+                                    <legend class="pull-left width-full">Telefonos</legend>
+                                  
+                                    <div class="row">
+                                                                             <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Casa</label>
+                                                <input type="text" name="telefonocasa" id="telefonocasa" value="@ViewBag.TEL_CASA" disabled placeholder="" class="form-control" data-parsley-group="wizard-step-2" data-parsley-type-message="Solo numeros." data-error-message="Telefono es requerido." data-parsley-pattern="^\d{3} \d{2} \d{8}$" required />
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Oficina</label>
+                                                <input type="text" name="telefonooficina" id="telefonooficina" value="@ViewBag.TEL_TRABAJO" disabled placeholder="" class="form-control" data-parsley-group="wizard-step-2" data-parsley-type="number" required />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Movil</label>
+                                                <input type="text" name="telefonomovil" id="telefonomovil" value="@ViewBag.TEL_MOVIL"  disabled placeholder="" class="form-control" data-parsley-group="wizard-step-2" data-parsley-type="number" required />
+                                            </div>
+                                        </div>
+
+                                       
+                                    </div>
+                                   <!--
+
+                                    <legend class="pull-left width-full">Correos</legend>
+                                   
+                                    <div class="row">
+                                     
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Personal</label>
+                                                <input type="text" name="correopersonal" id="correopersonal" placeholder="example@email.com" class="form-control" data-parsley-group="wizard-step-2" data-parsley-type="email" required />
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Trabajo</label>
+                                                <input type="text" name="correotrabajo" id="correotrabajo" placeholder="example@email.com" class="form-control" data-parsley-group="wizard-step-2" data-parsley-type="email" required />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Otro</label>
+                                                <input type="text" name="correootro" id="correootro" placeholder="" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                      
+                                    </div>
+                                  
+
+                                    <legend class="pull-left width-full">Redes Sociales</legend>
+                                   
+                                    <div class="row">
+                                      
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Facebook</label>
+                                                <input type="text" name="facebook" id="facebook" placeholder="" class="form-control" />
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Twitter</label>
+                                                <input type="text" name="twitter" id="twitter" placeholder="" class="form-control" />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Otro</label>
+                                                <input type="text" name="otrared" id="otrared" placeholder="" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                 
+                                    </div>
+                                   
+
+                                </fieldset>-->
+
+
+                                <fieldset>
+                                    <legend class="pull-left width-full">Dirección</legend>
+                                                                    <div class="row">
+                                                                              <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Codigo Postal:</label>
+                                                <input type="text" name="cp" id="cp" value="@ViewBag.CP" disabled placeholder="" class="form-control" data-parsley-group="wizard-step-3" required />
+                                            </div>
+                                        </div>
+                                      
+                                      <!--  <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>&nbsp;</label><br>
+                                                <button class="btn btn-success" type="button" id="btnbuscardireccion"><i class="fa fa-search"></i> Buscar</button>
+                                                <div style="float:left; padding-right:15px;" id="preloader"></div>
+                                            </div>
+                                        </div>-->
+
+                                    
+                                    </div>
+                                 
+                                    <div class="row">
+                                    
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Pais:</label>
+                                                <input type="text" name="pais" id="pais" value="@ViewBag.PAIS" disabled placeholder="" class="form-control" data-parsley-group="wizard-step-3" required />
+                                            </div>
+                                        </div>
+                                     
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Estado:</label>
+                                                <input type="text" name="estado" id="estado"  value="@ViewBag.ESTADO" disabled placeholder="" class="form-control" data-parsley-group="wizard-step-3" required />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Municipio o Delegación:</label>
+                                                <input type="text" name="delmun" id="delmun" value="@ViewBag.MUNDEL" disabled placeholder="" class="form-control" data-parsley-group="wizard-step-3" required />
+                                            </div>
+                                        </div>
+
+                                       
+                                    </div>
+                                  
+                                    <div class="row">
+                                     
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Colonia:</label>                                                
+                                                <input type="text" name="colonia" id="colonia" value="@ViewBag.COLONIA" disabled placeholder="" class="form-control" data-parsley-group="wizard-step-3" required />
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Calle:</label>
+                                                <input type="text" name="calle" id="calle" value="@ViewBag.CALLE" disabled placeholder="" class="form-control" data-parsley-group="wizard-step-3" required />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Num.</label>
+                                                <input type="text" name="numero" id="numero" value="@ViewBag.NUM" disabled placeholder="" data-parsley-type="number" class="form-control" data-parsley-group="wizard-step-3" required />
+                                            </div>
+                                        </div>
+
+                                       
+                                    </div>
+                                 
+
+                                </fieldset>
+
+
+                              
+                             <!--
+
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"></label>
+                                    <a class="btn btn-sm btn-default" href="javascript:window.history.back();">Cancelar</a>
+                                    <button id="guardar" class="btn btn-sm btn-primary" type="submit" onclick="Editar();return false;">Guardar</button>
+
+
+                                </div>
+                            </form></br></br>-->
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>

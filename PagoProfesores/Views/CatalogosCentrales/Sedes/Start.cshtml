@@ -1,0 +1,210 @@
+﻿@{
+    ViewBag.Title = "Start";
+}
+<!-- begin row Formulario -->
+<div class="row" id="frm-sedes">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Detalle Sede</h4>
+            </div>
+            <div class="panel-body">
+                <form action="/" method="POST">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label for="Cve_Sede">Sede *</label>
+                                    <input type="text" class="form-control" id="Cve_Sede" maxlength="5">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Sede">Nombre de la sede *</label>
+                                    <input type="text" class="form-control" id="Sede" maxlength="250">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Campus_Inb">Campus INB *</label>
+                                    <select id="Campus_Inb" class="form-control">
+                                        @Html.Raw(ViewBag.ComboCA)
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="TipoContrato_Inb">Tipo contrato INB *</label>
+                                    <select id="TipoContrato_Inb" class="form-control">
+                                        @Html.Raw(ViewBag.ComboTC)
+                                    </select>
+                                </div>
+                            </div>
+                            @*<div class="col-md-3">
+                <div class="form-group">
+                    <label for="Cve_Sociedads">Sociedad *</label>
+                    <select id="Cve_Sociedad" class="form-control">
+                        @Html.Raw(ViewBag.ComboSO)
+                    </select>
+                </div>
+            </div>*@
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="Cve_Sociedads">Sociedad *</label>
+                                    @*<select id="Cve_Sociedad" class="form-control">*@
+                                    <div id="divSociedades"></div>
+                                    @*</select>*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="direccion_cpl">C.P.</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="Direccion_CP" maxlength="6">
+                                        <span class="input-group-addon" style="padding:0px !important;"><a class="btn-search2" href="javascript:void(0)" onclick="onkeyup_cp(event,true);"><i class="fa fa-search"></i></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="Direccion_Paisl">País</label>
+                                    <select class="form-control" id="Direccion_Pais">
+                                        @Html.Raw(ViewBag.ComboPAI)
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="Direccion_Estados">Estado</label>
+                                    <select class="form-control" id="Direccion_Estado" onchange="formPage.buscarMunicipio('#')"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Direccion_Ciudadl">Ciudad</label>
+                                    <select class="form-control" id="Direccion_Ciudad" onclick="formPage.buscarColonia('#')"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Direccion_Entidadl">Entidad / Delegación</label>
+                                    <select class="form-control" id="Direccion_Entidad" onchange="formPage.buscarCiudad('#')"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Direccion_Colonial">Colonia</label>
+                                    <select class="form-control" id="Direccion_Colonia" onclick="formPage.cambiarCP('#')"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Direccion_Calles">Calle</label>
+                                    <input type="text" class="form-control" id="Direccion_Calle" maxlength="150">
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label for="Direccion_Numeros">Número</label>
+                                    <input type="text" class="form-control" id="Direccion_Numero" maxlength="15">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="Nombre_Responsables">Nombre del responsable</label>
+                                    <input type="text" class="form-control" id="Nombre_Responsable" maxlength="250">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="Correo_Responsables">Correo electrónico</label>
+                                    <input type="text" class="form-control" id="Correo_Responsable" maxlength="250">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="Telefono_Responsables">Teléfono</label>
+                                    <input type="text" class="form-control" id="Telefono_Responsable" maxlength="250">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="divSociedadesMostrar">Sociedad a mostrar en el panel de docente</label>
+                                    @*<select id="Sociedad_mostrar" class="form-control">
+                        @Html.Raw(ViewBag.SociedadMostrar)
+                    </select>*@
+                                    <div id="divSociedadesMostrar"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row right">
+                            <button type="button" id="formbtnadd" class="btn btn-sm btn-primary" onclick="formPage.add();">Agregar</button>
+                            <button type="button" id="formbtnsave" class="btn btn-sm btn-primary" disabled onclick="formPage.save();">Guardar</button>
+                            <button type="button" id="formbtndelete" class="btn btn-sm btn-danger" disabled onclick="formPage.delete(false);">Borrar</button>
+                            <button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row Datatable -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Listado de Sedes</h4>
+            </div>
+            <div class="panel-body">
+                <div id="datatable">
+                    @Html.Raw(ViewBag.DataTable)
+                </div>
+
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- #modal-dialog CONFIRM DELETE -->
+<div class="modal fade" id="modal-delete-sede">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Eliminar Sede</h4>
+            </div>
+            <div class="modal-body">
+                Se eliminara la Sede seleccionada, ¿esta seguro de proceder?
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>

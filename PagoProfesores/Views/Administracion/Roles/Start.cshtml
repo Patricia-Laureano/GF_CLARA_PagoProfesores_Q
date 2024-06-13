@@ -1,0 +1,107 @@
+﻿
+@{
+	ViewBag.Title = "Start";
+}
+<div class="row" id="frm-roles">
+	<ol class="breadcrumb pull-right">
+		<li><a href="#">Administración</a></li>
+		<li><a href="/Roles">Roles y Permisos</a></li>
+
+	</ol>
+</div>
+
+
+
+<!-- begin row -->
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12 ui-sortable">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+
+					<a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+					<a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+				</div>
+				<h4 class="panel-title">Agregar Rol de Sistema</h4>
+			</div>
+
+			<div class="panel-body">
+
+
+
+				<form action="/" method="POST">
+					<fieldset>
+
+						<div class="row">
+
+							<!-- <div class="">
+								 <div class="form-group">
+									 <label for="role">&nbsp;&nbsp; &nbsp;Clave </label> &nbsp; &nbsp;
+									<input type="text" class="form-control" style="width: 120px; position:relative;left:13px;"  id="clave">
+								 </div>
+							 </div>-->
+
+
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="role">Rol *</label>
+									<input type="text" class="form-control" id="role">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="descripcion">Descripción *</label>
+									<input type="text" class="form-control" id="descripcion">
+								</div>
+							</div>
+						</div>
+
+						<div class="row right">
+							<button type="button" id="formbtnadd" class="btn btn-sm btn-primary" onclick="formPage.add();">Agregar</button>
+							<button type="button" id="formbtnsave" class="btn btn-sm btn-primary" disabled onclick="formPage.save();">Guardar</button>
+							<button type="button" id="formbtndelete" class="btn btn-sm btn-danger" disabled onclick="formPage.delete();">Borrar</button>
+							<button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>
+						</div>
+					</fieldset>
+				</form>
+
+
+
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row -->
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12 ui-sortable">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+
+					<a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+					<a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+				</div>
+				<h4 class="panel-title">Listado de Roles Disponibles</h4>
+			</div>
+			<div class="panel-body">
+
+				<div id="datatable">
+					@Html.Raw(ViewBag.DataTable)
+				</div>
+
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-12 -->
+</div>
+<!-- end row -->

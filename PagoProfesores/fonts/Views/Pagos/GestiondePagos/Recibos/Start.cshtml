@@ -1,0 +1,198 @@
+﻿
+@{
+    ViewBag.Title = "Start";
+}
+
+<!-- begin row Formulario -->
+<div class="row" id="frm-importar">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+                </div>
+                <h4 class="panel-title">Gestión de Pagos</h4>
+            </div>
+
+            <div class="panel-body">
+
+                <ul class="nav nav-tabs">
+                    <li class=""><a href="/GestiondePagos" aria-expanded="true">Pagos</a></li>
+                    <li class=""><a href="/Timbrado" aria-expanded="false">Timbrado</a></li>
+                    <li class="active"><a href="/Recibos" aria-expanded="false">Dispersión</a></li>
+                  <!--   <li class=""><a href="/Dispersion" aria-expanded="false">Dispersión</a></li> -->
+                    <li class=""><a href="/Deposito" aria-expanded="false">Deposito</a></li>
+                    <li class=""><a href="/RegistrosPagos" aria-expanded="false">Registros</a></li>
+                </ul>
+
+
+
+                <div class="tab-content" id="tabs">
+                    <div class="tab-pane fade active in" id="default-tab-1">
+
+                        <form action="/" method="POST">
+                            <fieldset>
+
+
+                                <div class="row">
+                                    <legend></legend>
+
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="fechai">Fecha de Pago Inicio *</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="fechai">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="fechaf">Fecha de Pago Fin *</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="fechaf">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="banco">Generar Dispersión *</label>
+                                            <select id="banco" class="form-control">
+                                                <option value="014">SANTANDER</option>
+                                                <option value="044">SCOTIABANK INVERLAT</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                  
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="tipodispersion">Tipo de Dispersión *</label>
+                                            <select id="tipodispersion" class="form-control">
+                                                @Html.Raw(ViewBag.TIPODISPERSION)
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for=""></label>
+                                           
+                                        </div>
+                                    </div>                                 
+
+
+
+
+                                    <!--
+
+                                    <div class="col-md-3"  style="left:890px ; top:-57px" >
+                                        <div class="form-group">
+                                           
+                                            <img id="u17517_img" class="img" src="/Content/images/img_xml.png" tabindex="0">
+                                        </div>
+                                    </div>
+
+                                   <div class="col-md-3" style="left:670px; top:-57px">
+                                        <div class="form-group">
+                                            <label for=""></label>
+                                            <img id="u17519_img" class="img" src="/Content/images/img_pdf.png" tabindex="0">
+                                        </div>
+                                    </div>   -->             
+
+
+
+                                </div>
+                                <br />
+
+
+                                <div class="row right">
+                                    <button type="button" id="formbtndispersion" class="btn btn-sm btn-primary" onclick="formPage.ExportExcelDispersion();">Dispersión</button>
+                                    <button type="button" id="formbtnborarfechas" class="btn btn-sm btn-primary" onclick="formPage.BorrarD();">Borrar Fechas</button>
+                                    <button type="button" id="formbtnconsultarpdf" class="btn btn-sm btn-primary" onclick="formPage.ConsultarPDF();">Auditar PDF</button>
+
+                                    <button type="button" id="formbtnconsultar" class="btn btn-sm btn-primary" onclick="formPage.Concultar();">Consultar</button>
+                                    <button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>
+
+
+                                </div>
+
+
+
+
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row Datatable -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+                </div>
+                <h4 class="panel-title">Listado de Pagos Disponible<span class="loader-min-bar"></span></h4>
+            </div>
+            <div class="panel-body">
+
+                <div id="datatable">
+                    @Html.Raw(ViewBag.DataTable)
+                </div>
+
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- #modal-dialog  -->
+<div class="modal fade" id="modal-delete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Eliminar Esquema</h4>
+            </div>
+            <div class="modal-body">
+                Se eliminara el Esquema seleccionado, ¿esta seguro de proceder?
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

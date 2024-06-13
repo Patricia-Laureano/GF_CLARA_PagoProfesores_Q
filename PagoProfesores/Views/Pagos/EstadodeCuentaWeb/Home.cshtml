@@ -1,0 +1,200 @@
+﻿@{
+    // ________________________________ ESTADO DE CUENTA WEB ________________________________
+    Layout = "~/Views/Shared/_Layout_login_profesor.cshtml";
+    ViewBag.Title = "Start";
+}
+
+<!-- begin #sidebar MENU -->
+<div id="sidebar" class="sidebar">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%">
+        <ul class="nav">
+            <li class="nav-profile">
+                <div class="info">
+                    Pago Profesores
+                    <small>@Html.Raw(ViewBag.Profesor)</small>
+                </div>
+            </li>
+        </ul>
+
+        <!-- begin sidebar nav -->
+        <ul class="nav">
+            <li class="active"><a href="/EstadodeCuentaWeb/Home"><i class="fa fa-bank"></i><span>Estado de Cuenta</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/Perfil"><i class="fa fa-user"></i><span>Mi Perfil</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/PagosPendientes"><i class="fa fa-usd"></i><span>Pagos Pendientes</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/PagosDepositados"><i class="fa fa-money"></i><span>Pagos Depositados</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/Contratos"><i class="fa fa-file-text"></i><span>Contratos</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/ConstanciasRetencion"><i class="fa fa-file-text-o"></i><span>Constancias de Retención</span></a></li>
+            @*<li><a href="javascript:DocsOnline();"><i class="fa fa-book"></i><span>Docs Online</span></a></li>*@
+            <li><a href="/EstadodeCuentaWeb/Tutoriales"><i class="fa fa-play-circle"></i><span>Tutoriales</span></a></li>
+            <li><a href="~/Login/Close"><i class="fa fa-sign-out"></i><span>Salir</span></a></li>
+            <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+        </ul>
+        <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+<!-- begin #content -->
+<div id="content" class="content">
+    <!-- begin page-header -->
+    <h1 class="page-header">Estado de Cuenta </h1>
+    <!-- end page-header -->
+    <!-- begin row -->
+    <div class="row">
+        <!-- begin col-3 -->
+        <div class="col-md-8 col-sm-6">
+            <div class="widget widget-stats bg-white">
+                <div style="color:#808080">
+                    <p><b>@Html.Raw(ViewBag.Profesor)</b><input id="nombreProfesor" type="hidden" value="@Html.Raw(ViewBag.Profesor)" /></p>
+                    <p><b>IDSIU: @Html.Raw(ViewBag.IDSIU) </b><input id="idsiu" type="hidden" value="@Html.Raw(ViewBag.IDSIU)" /></p>
+                    <p><b>RFC:</b> @Html.Raw(ViewBag.RFC)</p>
+                    <p><span id="Banco">@Html.Raw(ViewBag.Banco)</span> &nbsp;&nbsp; <span style="position:absolute; top:90px; left:500px;">Verificar Cuenta de Depósito&nbsp;<input id="cuenta" type="hidden" value="@Html.Raw(ViewBag.Banco)" /><span id="scheck">@Html.Raw(ViewBag.casilla_valida)</span> </span></p>
+                    <p><b>CUENTA:</b><span id="NoCuenta">@Html.Raw(ViewBag.NoCuenta)</span>&nbsp;&nbsp;&nbsp;&nbsp;<b>CUENTA CLABE:</b><span id="CuentaClabe">@Html.Raw(ViewBag.CuentaClabe)</span> &nbsp;<span style="position:absolute; top:125px; left:580px;"><span id="sbotonval">@Html.Raw(ViewBag.boton_validacuenta)</span></span></p>
+                    <input id="correoO365" type="hidden" value="@Html.Raw(ViewBag.CorreoO365)" />
+                    <input id="sedesAll" type="hidden" value="@Html.Raw(ViewBag.SedesAll)" />
+                </div>
+                <div class="stats-link">
+                    <a href="/EstadodeCuentaWeb/Perfil">Ver Detalle <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- end col-3 -->
+        <!-- begin col-4 -->
+        @*<div class="col-md-4  col-sm-6">
+                <div class="panel panel-inverse">
+                    <div class="panel-heading" style="background:#CD5B00 !important;">
+                        <h4 class="panel-title"><i class="fa fa-list-ol"></i> Pendientes Bloqueos</h4>
+                    </div>
+                    <div class="panel-body p-0">
+                        <ul class="todolist" id="Bloqueos">
+                            @Html.Raw(ViewBag.Bloqueos)
+                        </ul>
+                    </div>
+                </div>
+            </div>*@
+        <!-- end col-4 -->
+        <!-- begin col-3 -->
+        <div class="col-md-4">
+            <div class="panel-heading" style="background:#CD5B00 !important; color:#fff;">
+                <h4 class="panel-title"><i class="fa fa-telegram"></i>Comunicados</h4>
+            </div>
+            <div class="panel-body height-170" style="background:#fff !important; color:#000;" data-scrollbar="true">
+                @Html.Raw(ViewBag.Comunicados)
+                @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eros libero, maximus non egestas sed, vulputate sed ipsum. Fusce vitae pellentesque odio, et egestas risus. Aliquam pellentesque sem condimentum, mattis magna vitae, maximus lorem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum vel condimentum velit. Curabitur congue neque sit amet mattis dignissim. Quisque mollis sapien ut nulla vehicula, id auctor erat tincidunt. Pellentesque bibendum pharetra molestie. Proin velit lorem, aliquam vitae ultrices id, ornare sit amet felis. Aliquam ultricies a lacus sed tincidunt. Suspendisse in odio erat.</p>
+                    <hr />
+                    <p>Praesent orci massa, ultrices vitae consectetur non, semper ut turpis. Aenean dapibus dapibus ante eu vulputate. Curabitur posuere dui ac metus tristique egestas. Praesent a vulputate sem. Praesent non aliquam ipsum. Duis lacinia a orci sit amet sagittis. Aenean pulvinar mauris sapien, in mattis nisl interdum vel. Sed nec placerat ex. Ut aliquam nisi vitae felis vehicula malesuada. Morbi gravida elit tellus, vel gravida neque tempor ac. Suspendisse a efficitur velit. Praesent at volutpat lectus. Aliquam nec risus convallis, dapibus nulla eu, egestas est. Suspendisse a metus luctus risus lacinia elementum a eu purus.</p>*@
+                <br />
+            </div>
+            @*<div class="panel-body p-0">
+                    <ul class="todolist" id="Bloqueos">
+                        @Html.Raw(ViewBag.Bloqueos)
+                    </ul>
+                </div>*@
+        </div>
+        <!-- end col-3 -->
+
+    </div>
+    <!-- end row -->
+    <!-- begin row -->
+    <div class="row">
+        <!-- begin col-8 -->
+        <div class="col-md-8">
+            <ul class="nav dash nav-tabs nav-tabs-inverse nav-justified nav-justified-mobile" style="padding-top:0 !important; background:none !important;" data-sortable-id="index-2">
+                <li class="active"><a href="#latest-post" data-toggle="tab"><i class="fa fa-usd"></i> <span class="hidden-xs">Pagos Pendientes</span></a></li>
+                <li class=""><a href="#purchase" data-toggle="tab"><i class="fa fa-money"></i> <span class="hidden-xs">Pagos Depositados</span></a></li>
+                <li class=""><a href="#email" data-toggle="tab"><i class="fa fa-file-text"></i> <span class="hidden-xs">Contratos</span></a></li>
+            </ul>
+            <div class="tab-content" data-sortable-id="index-3">
+                <div class="tab-pane fade active in" id="latest-post">
+                    <div class="height-sm" data-scrollbar="true">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="color:#000;">Campus</th>
+                                    <th style="color:#000;">Periodo</th>
+                                    <th style="color:#000;">Concepto de Pago</th>
+                                    <th style="color:#000;">Fecha límite para recibo de pago</th>
+                                    <th style="color:#000;">Fecha de Pago</th>
+                                    <th style="color:#000;">Pago</th>
+                                    <th></th>
+                                    <th style="color:#000;">Ver Desglose</th>
+                                </tr>
+                            </thead>
+                            <tbody id="PagosPendientes">
+                                @Html.Raw(ViewBag.PagosPendientes)
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="purchase">
+                    <div class="height-sm" data-scrollbar="true">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="color:#000;">Campus</th>
+                                    <th style="color:#000;">Periodo</th>
+                                    <th style="color:#000;">Concepto de Pago</th>
+                                    <th style="color:#000;">Fecha</th>
+                                    <th style="color:#000;">Depositado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="PagosDepositados">
+                                @Html.Raw(ViewBag.PagosDepositados)
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="email">
+                    <div class="height-sm" data-scrollbar="true">
+                        <ul class="media-list media-list-with-divider" id="Contratos">
+                            @Html.Raw(ViewBag.Contratos)
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-inverse" data-sortable-id="index-5" style="display:none;">
+                <div class="panel-heading">
+                    <h4 class="panel-title"></h4>
+                </div>
+                <div class="panel-body"></div>
+            </div>
+        </div>
+        <!-- end col-8 -->
+        <!-- begin col-3 -->
+        <div class="col-md-4">
+            <div class="widget widget-stats bg-red">
+                <div class="stats-icon"><i class="fa fa-clock-o"></i></div>
+                <div class="stats-info">
+                    <h4>
+                        PAGOS POR DEPOSITAR
+                        <span class="badge badge-primary" id="PagosxDepositar">
+                            @Html.Raw(ViewBag.PagosxDepositar)
+                        </span>
+                    </h4>
+                </div>
+                @*<div class="stats-link">
+                        <a href="javascript:;">Ver Detalle <i class="fa fa-arrow-circle-o-right"></i></a>
+                    </div>*@
+            </div>
+        </div>
+        <!-- end col-3 -->
+        <!-- begin col-4 -->
+        <div class="col-md-4">
+            <div class="panel panel-inverse">
+                <div class="panel-heading" style="background:#CD5B00 !important;">
+                    <h4 class="panel-title"><i class="fa fa-list-ol"></i> Pendientes Bloqueos</h4>
+                </div>
+                <div class="panel-body p-0">
+                    <ul class="todolist" id="Bloqueos">
+                        @Html.Raw(ViewBag.Bloqueos)
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end col-4 -->
+    </div>
+    <!-- end row -->
+</div>
+

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Start";
+}
+<style type="text/css">
+    #myIframe {
+        width: 100%;
+        height: 250vh;
+    }
+</style>
+<div class="panel panel-inverse">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;">
+                <i class="fa fa-minus"></i>
+            </a>
+        </div>
+        <h4 class="panel-title">Documentos Online</h4>
+    </div>
+    <div class="panel-body" id="seccion1">
+    </div>
+    @*<iframe id="myIframe" frameborder="0"
+            src="https://dev.bpm.anahuac.mx/apps/login/administrativo?redirectUrl=https://pagoprofesores-test.redanahuac.mx/DocsOnline"></iframe>*@
+   
+<iframe id="myIframe" frameborder="0"
+        src="https://dev.bpm.anahuac.mx/portal/resource/app/login/administrativo/content/"></iframe>
+    
+</div>
+
+

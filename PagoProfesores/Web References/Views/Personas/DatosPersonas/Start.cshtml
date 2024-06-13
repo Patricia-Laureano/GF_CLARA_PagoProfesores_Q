@@ -1,0 +1,683 @@
+﻿@{
+    ViewBag.Title = "Start";
+}
+
+<div class="row" id="frm-datospersonas">
+	<ol class="breadcrumb pull-right">
+		<li><a href="#">Personas</a></li>
+		<li><a href="#">Detalle Persona</a></li>
+	</ol>
+</div>
+<!-- begin row -->
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12 ui-sortable">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+				</div>
+				<h4 class="panel-title">Detalle Persona</h4>
+			</div>
+			<div class="panel-body">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#default-tab-1" data-toggle="tab" aria-expanded="true">Personales</a></li>
+					<li class=""><a href="#default-tab-2" data-toggle="tab" aria-expanded="false">Dirección</a></li>
+					<li class=""><a href="#default-tab-3" data-toggle="tab" aria-expanded="false">Datos Fiscales</a></li>
+					<li class=""><a href="#default-tab-4" data-toggle="tab" aria-expanded="false">Razón Social</a></li>
+					<li class=""><a href="#default-tab-5" data-toggle="tab" aria-expanded="false">Contrato</a></li>
+					<li class=""><a href="#default-tab-6" data-toggle="tab" aria-expanded="false">Pensiones</a></li>
+				</ul>
+				<form action="/" method="POST">
+					<fieldset>
+						<div class="tab-content" id="tabs">
+							<!-- TAB PERSONALES -->
+							<div class="tab-pane fade active in" id="default-tab-1">
+								<div class="row">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="id_persona">ORIGEN*</label>
+
+											<select id="origen" class="form-control" disabled>
+												<option value="E" selected>EXTERNO</option>
+												<option value="B">BANNER</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="idsiu">ID *</label>
+											<input type="text" class="form-control" id="idsiu" value="" maxlength="10">
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="profesor">No. Profesor </label>
+											<input type="text" class="form-control" id="profesor" maxlength="15">
+										</div>
+									</div>
+									<div class="col-md-3">
+										<!--<div class="form-group">
+											<label for="noi">No. NOI </label>
+											<input type="text" class="form-control" id="noi" maxlength="15">
+										</div>-->
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label for="nombres">Nombre(s) *</label>
+											<input type="text" class="form-control" id="nombres" maxlength="50">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label for="apellidos">Apellido(s) *</label>
+											<input type="text" class="form-control" id="apellidos" maxlength="50">
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="sexo">Sexo *</label>
+											<select id="sexo" class="form-control">
+                                                <option value=""></option>
+												<option value="M">Masculino</option>
+												<option value="F">Femenino</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="fechanacimiento">Fecha Nacimiento</label>
+											<div class="input-group">
+												<input type="text" class="form-control" id="fechanacimiento" maxlength="10">
+												<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="nacionalidad">Nacionalidad</label>
+											<select id="nacionalidad" class="form-control">
+												@Html.Raw(ViewBag.ComboNAC)
+											</select>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="telefono">Teléfono</label>
+											<input type="text" class="form-control" id="telefono" maxlength="250">
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="correo">Correo</label>
+											<input type="text" class="form-control" id="correo" maxlength="250">
+										</div>
+									</div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="correo365">Correo O365</label>
+                                            <input type="text" class="form-control" id="correo365" maxlength="250">
+                                        </div>
+                                    </div><span></span>
+
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="cve_tipodepago">Tipo de pago *</label>
+											<select id="cve_tipodepago" class="form-control">
+												@Html.Raw(ViewBag.ComboTPA)
+											</select>
+										</div>
+									</div>
+
+                                    <div class="col-md-2">
+
+                                        <div class="form-group">
+                                            <label for="PersActivo">Activo</label><br />
+                                            <input id="PersActivo" name="PersActivo" type="checkbox" />
+                                        </div>
+
+                                    </div>
+
+
+
+								</div>
+							</div>
+							<!-- FIN TAB PERSONALES -->
+
+							<!-- TAB DIRECCION -->
+							<div class="tab-pane fade" id="default-tab-2">
+								<div class="row">
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="direccion_cp">C.P.</label>
+
+											<div class="input-group">
+												<input type="text" class="form-control" id="direccion_cp" maxlength="6">
+												<span class="input-group-addon" style="padding:0px !important;"><a class="btn-search2" href="javascript:void(0)" onclick="formPage.onkeyup_cp();"><i class="fa fa-search"></i></a></span>
+											</div>
+
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="direccion_pais">País</label>
+											<select id="direccion_pais" class="form-control">
+												@Html.Raw(ViewBag.ComboPAI)
+											</select>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="direccion_estado">Estado</label>
+											<select id="direccion_estado" class="form-control">
+												@Html.Raw(ViewBag.ComboEST)
+											</select>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="direccion_ciudad">Ciudad</label>
+											<select id="direccion_ciudad" class="form-control">
+												@Html.Raw(ViewBag.ComboCIU)
+											</select>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="direccion_entidad">Entidad / Delegación</label>
+											<select id="direccion_entidad" class="form-control">
+												@Html.Raw(ViewBag.ComboENT)
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="direccion_colonia">Colonia</label>
+											<select id="direccion_colonia" class="form-control">
+												@Html.Raw(ViewBag.ComboCOL)
+											</select>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label for="direccion_calle">Calle</label>
+											<input type="text" class="form-control" id="direccion_calle" maxlength="50">
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="direccion_numero">Número</label>
+											<input type="text" class="form-control" id="direccion_numero" maxlength="15">
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<!-- FIN TAB DIRECCION -->
+
+							<!-- TAB DATOS FISCALES -->
+							<div class="tab-pane fade" id="default-tab-3">
+								<div class="row">
+									<div class="col-md-5">
+										<label>Facturar con:</label>
+										<div class="form-group">
+
+											<label class="radio-inline">
+												<input type="radio" name="rrazon" onclick="CambiarTipoPago();"   value="F" checked="">
+												Datos Fiscales
+											</label>
+											<label class="radio-inline">
+												<input type="radio" name="rrazon"  onclick="CambiarTipoPago();"  value="S">
+												Razón Social
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="rfc">RFC</label>
+											<input type="text" class="form-control" style="text-transform:uppercase;" id="rfc" oninput="validarInputRFC(this)" maxlength="14">
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="curp">CURP</label>
+											<input type="text" class="form-control" id="curp" maxlength="20">
+										</div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label for="cve_banco">Banco</label>
+											<select id="cve_banco" class="form-control">
+												@Html.Raw(ViewBag.ComboBAN)
+											</select>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label for="cuentaclabe">Cuenta CLABE</label>
+											<input type="text" class="form-control" id="cuentaclabe" maxlength="18">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label for="nocuenta">No. de Cuenta</label>
+											<input type="text" class="form-control" id="nocuenta" maxlength="18">
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Permitir subir recibos electrónicos al portal.</label>
+											<input type="checkbox" name="recibos" id="recibos" value="1" />
+
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<!-- FIN TAB DATOS FISCALES -->
+
+							<!-- TAB RAZON SOCIAL -->
+							<div class="tab-pane fade" id="default-tab-4">
+								<div class="row">
+
+									<div class="col-md-4">
+										<div class="form-group">
+											<label for="razonsocial">Raz&oacute;n Social</label>
+											<input type="text" class="form-control" id="razonsocial" maxlength="50">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label for="rz_rfc">RFC</label>
+											<input type="text" class="form-control" style="text-transform:uppercase;" oninput="validarInputRFCRZ(this)" id="rz_rfc" maxlength="13">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label for="rz_curp">CURP</label>
+											<input type="text" class="form-control" id="rz_curp" maxlength="18">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									
+									<legend>Dirección</legend>
+									
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="direccion_cp">C.P.</label>
+
+											<div class="input-group">
+												<input type="text" class="form-control" id="rz_direccion_cp" maxlength="6">
+												<span class="input-group-addon" style="padding:0px !important;"><a class="btn-search2" href="javascript:void(0)" onclick="formPage.onkeyup_cp2();"><i class="fa fa-search"></i></a></span>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="rz_direccion_pais">País</label>
+											<select id="rz_direccion_pais" class="form-control">
+												@Html.Raw(ViewBag.ComboRZPAI)
+											</select>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="rz_direccion_estado">Estado</label>
+											<select id="rz_direccion_estado" class="form-control">
+												@Html.Raw(ViewBag.ComboRZEST)
+											</select>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="rz_direccion_ciudad">Ciudad</label>
+											<select id="rz_direccion_ciudad" class="form-control">
+												@Html.Raw(ViewBag.ComboRZCIU)
+											</select>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="rz_direccion_entidad">Entidad / Delegación</label>
+											<select id="rz_direccion_entidad" class="form-control">
+												@Html.Raw(ViewBag.ComboRZENT)
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label for="rz_direccion_colonia">Colonia</label>
+											<select id="rz_direccion_colonia" class="form-control">
+												@Html.Raw(ViewBag.ComboRZCOL)
+											</select>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label for="rz_direccion_calle">Calle</label>
+											<input type="text" class="form-control" id="rz_direccion_calle" maxlength="50">
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="rz_direccion_numero">Número</label>
+											<input type="text" class="form-control" id="rz_direccion_numero" maxlength="15">
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<!-- FIN TAB RAZON SOCIAL -->
+
+							<!-- TAB CONTRATO -->
+							<div class="tab-pane fade" id="default-tab-5">
+								<div class="row">
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="TituloProfesional">T&iacute;tulo profesional</label>
+											<input id="TituloProfesional" type="text" class="form-control" maxlength="50">
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="Profesion">Profesi&oacute;n</label>
+											<input id="Profesion" type="text" class="form-control" maxlength="50">
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="CedulaProfesional">No. c&eacute;dula</label>
+											<input id="CedulaProfesional" type="text" class="form-control" maxlength="20">
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="FechaCedula">Fecha de c&eacute;dula</label>
+											<div class="input-group">
+												<input id="FechaCedula" type="text" class="form-control" maxlength="10">
+												<span class="input-group-addon" onclick="document.getElementById('FechaCedula').focus()"><i class="fa fa-calendar"></i></span>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="SeguroSocial">No. Seguro</label>
+											<input id="SeguroSocial" type="text" class="form-control" maxlength="11">
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- FIN TAB CONTRATO -->
+
+							<!-- TAB PENSIONES -->
+							<div class="tab-pane fade" id="default-tab-6">
+								
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label for="TipoPension">Tipo pensión</label>
+											<select id="TipoPension" class="form-control">
+												<option value="" selected> </option>                                               
+												<option value="A">Antes de impuestos</option>
+												<option value="D">Despu&eacute;s de impuestos</option>
+                                                <option value="M">Monto Fijo</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<!-- BENEFICIARIOS -->
+								<div class="row" id="beneficiarios">
+									<legend>Beneficiarios</legend>
+
+								
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="Cuenta">CUENTA</label>
+                                            <input id="Cuenta" type="text" class="form-control" >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="Clabe">CLABE</label>
+                                            <input id="Clabe" type="text" class="form-control">
+                                        </div>
+                                    </div>
+
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="PensionadoNombre">NOMBRE</label>
+											<input id="PensionadoNombre" type="text" class="form-control" >
+										</div>
+									</div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="PensionadoApellidoP">APELL. PATERNO</label>
+                                            <input id="PensionadoApellidoP" type="text" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="PensionadoApellidoM">APELL. MATERNO</label>
+                                            <input id="PensionadoApellidoM" type="text" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="Banco">BANCO</label>                                         
+                                            <select id="Banco" class="form-control">
+                                                @Html.Raw(ViewBag.ComboBANCO)
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-2" id="dMontoFijo">
+                                        <div class="form-group">
+                                            <label for="MontoFijo">MONTO FIJO</label>
+                                            <input id="MontoFijo" type="text" class="form-control" maxlength="">
+                                        </div>
+                                    </div>                                
+
+
+									<div class="col-md-1"  id="dPensionadoPorcentaje">
+										<div class="form-group">
+											<label for="PensionadoPorcentaje">%</label>
+											<input id="PensionadoPorcentaje" type="text" class="form-control" maxlength="5">
+										</div>
+									</div>   
+                                    
+
+                                    <div class="col-md-2" >
+                                        <div class="form-group">
+                                            <label for="TipodePago">
+                                               TIPO DE PAGO
+                                            </label><br><br>
+                                            <input type="radio"  id=""  name="TipoPago" checked value="T">Trasferencia
+                                            <input type="radio" id="" name="TipoPago" value="C">Cheque
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-3" style="left:0px ;">
+                                        <div class="form-group">
+                                            <label for="Comentarios">COMENTARIOS</label>
+                                            <textarea id="Comentarios" class="form-control"></textarea>
+                                        </div>
+                                    </div>                           
+                                    
+                                    <div class="col-md-2">
+
+                                        <div class="form-group">
+                                            <label for="PensionadoActivo">Activo</label><br />
+                                            <input id="PensionadoActivo" name="PensionadoActivo" type="checkbox" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <br /><br />
+                                        <div class="form-group">
+                                            <button type="button" id="formbtnadd2" class="btn btn-sm btn-primary" onclick="formPagePensionados.add();">Agregar Beneficiario</button>
+                                            <button type="button" id="formbtnsave2" class="btn btn-sm btn-primary" disabled onclick="formPagePensionados.save();">Guardar Beneficiario</button>
+                                            <button type="button" id="formbtndelete2" class="btn btn-sm btn-danger" disabled onclick="formPagePensionados.delete(false);">Eliminar Beneficiario</button>
+                                            
+                                        </div>
+
+                                    </div>
+								
+
+
+                                    
+
+
+
+
+
+
+
+                                 
+
+
+									<div class="col-md-12">
+										<!--
+										<div class="form-control">
+											<div id="datatablePensionados">TABLE</div>
+										</div>
+										-->
+
+										<div class="panel-body">
+
+											<div id="datatablePensionados">TABLE</div>
+
+										</div>
+
+									</div>
+								</div>
+
+
+                               
+
+
+								<!-- FIN BENEFICIARIOS -->
+							</div>
+							<!-- FIN TAB PENSIONES -->
+
+							<div class="row right">
+								<button type="button" id="formbtnadd" class="btn btn-sm btn-primary" onclick="formPage.add();">Agregar</button>
+								<button type="button" id="formbtnsave" class="btn btn-sm btn-primary" disabled onclick="formPage.save();">Guardar</button>
+								<button type="button" id="formbtndelete" class="btn btn-sm btn-danger" disabled onclick="formPage.delete();">Borrar</button>
+								<button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row -->
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12 ui-sortable">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+					<a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+				</div>
+				<h4 class="panel-title">Listado de Personas <span class="loader-min-bar"></span></h4>
+			</div>
+			<div class="panel-body" >
+				<div id="datatable" >
+					@Html.Raw(ViewBag.DataTable)
+				</div>
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- #modal-dialog CONFIRM DELETE -->
+<div class="modal fade" id="modal-delete-datospersonas">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Eliminar Persona</h4>
+			</div>
+			<div class="modal-body">
+				Se eliminara la Persona seleccionada, ¿esta seguro de proceder?
+			</div>
+			<div class="modal-footer">
+				<a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+				<a href="javascript:formPage.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modal-delete-pensionado">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Eliminar Beneficiario</h4>
+			</div>
+			<div class="modal-body">
+				Se eliminara el beneficiario seleccionado, ¿esta seguro de proceder?
+			</div>
+			<div class="modal-footer">
+				<a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+				<a href="javascript:formPagePensionados.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="modal-alert">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Atenci&oacute;n</h4>
+			</div>
+			<div class="modal-body">
+				La suma de los porcentajes debe ser menor a 100%.
+			</div>
+			<div class="modal-footer">
+				<a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cerrar</a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Main = ViewBag.Main;
+    ViewBag.MainUser = ViewBag.MainUser;
+
+}
+<style>
+    /*
+    .ui-dialog { z-index: 1000 !important ;}
+
+     .RGraph_tooltip {
+         z-index: 99999 !important;
+         background-color: white !important;
+
+     }
+     */
+</style>
+
+<!-- begin page-header -->
+<h1 class="page-header">Dashboard</h1>
+<!-- end page-header -->
+<!-- begin row -->
+<div class="row">
+    <!-- begin col-8 -->
+    <div class="col-md-8" style="width :50%;">
+        <div class="panel panel-inverse" data-sortable-id="index-1">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a href="javascript:;"
+                       class="btn btn-xs btn-icon btn-circle btn-default"
+                       data-click="panel-expand"><i class="fa fa-expand"></i></a> <div id="recarga_am"
+                                                                                       class="btn btn-xs btn-icon btn-circle btn-success"
+                                                                                       data-click="panel-reload"><i class="fa fa-repeat"></i></div> <a href="javascript:;"
+                                                                                                                                                       class="btn btn-xs btn-icon btn-circle btn-warning"
+                                                                                                                                                       data-click="panel-collapse"><i class="fa fa-minus"></i></a> <a href="javascript:;"
+                                                                                                                                                                                                                      class="btn btn-xs btn-icon btn-circle btn-danger"
+                                                                                                                                                                                                                      data-click="panel-remove"><i class="fa fa-times"></i></a>
+                </div>
+                <h4 class="panel-title">Asimilados Montos</h4>
+            </div>
+            <div class="panel-body" style="overflow:scroll;">
+                <!-- CONTENIDO-->
+                <canvas id="cvs_am" width="600" height="250">[No canvas support]</canvas><br /> 
+                <!-- <iframe style="border:0 none;" border="0" src="/dashboard_am_chartjs.html" width="700" height="270"></iframe>  -->
+                
+
+
+
+            </div>
+        </div>
+
+
+        <div class="panel panel-inverse" data-sortable-id="index-6">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a href="javascript:;"
+                       class="btn btn-xs btn-icon btn-circle btn-default"
+                       data-click="panel-expand"><i class="fa fa-expand"></i></a> <div id="recarga_hm"
+                                                                                       class="btn btn-xs btn-icon btn-circle btn-success"
+                                                                                       data-click="panel-reload"><i class="fa fa-repeat"></i></div> <a href="javascript:;"
+                                                                                                                                                       class="btn btn-xs btn-icon btn-circle btn-warning"
+                                                                                                                                                       data-click="panel-collapse"><i class="fa fa-minus"></i></a> <a href="javascript:;"
+                                                                                                                                                                                                                      class="btn btn-xs btn-icon btn-circle btn-danger"
+                                                                                                                                                                                                                      data-click="panel-remove"><i class="fa fa-times"></i></a>
+                </div>
+                <h4 class="panel-title">Honorarios Montos</h4>
+            </div>
+            <div class="panel-body p-t-0" style="overflow:scroll;" width="700">
+
+                <!--#CONTENIDO#-->
+                <canvas id="cvs_hm" width="600" height="250">[No canvas support]</canvas><br /> 
+               <!-- <iframe style="border:0 none;" border="0" src="/dashboard_hm_chartjs.html" width="700" height="270"></iframe> -->
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+    <!-- end col-8 -->
+    <!-- begin col-4 -->
+    <div class="col-md-4" style="width :50%;">
+
+        <div class="panel panel-inverse" data-sortable-id="index-2">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a href="javascript:;"
+                       class="btn btn-xs btn-icon btn-circle btn-default"
+                       data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                    <div id="recarga_ad"
+                         class="btn btn-xs btn-icon btn-circle btn-success"
+                         data-click="panel-reload"><i class="fa fa-repeat"></i></div>
+                    <a href="javascript:;"
+                       class="btn btn-xs btn-icon btn-circle btn-warning"
+                       data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                    <a href="javascript:;"
+                       class="btn btn-xs btn-icon btn-circle btn-danger"
+                       data-click="panel-remove"><i class="fa fa-times"></i></a>
+                </div>
+                <h4 class="panel-title">Asimilados Docentes</h4>
+            </div>
+            <div class="panel-body" style="overflow:scroll;">
+                <!-- CONTENIDO -->
+                 <canvas id="cvs_ad" width="600" height="250">[No canvas support]</canvas><br /> 
+                <!-- <iframe style="border:0 none;" border="0" src="/dashboard_ad_chartjs.html" width="700" height="270"></iframe> -->
+            </div>
+        </div>
+
+
+
+        <div class="panel panel-inverse" data-sortable-id="index-9">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a href="javascript:;"
+                       class="btn btn-xs btn-icon btn-circle btn-default"
+                       data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                    <div id="recarga_hd"
+                         class="btn btn-xs btn-icon btn-circle btn-success"
+                         data-click="panel-reload"><i class="fa fa-repeat"></i></div>
+                    <a href="javascript:;"
+                       class="btn btn-xs btn-icon btn-circle btn-warning"
+                       data-click="panel-collapse"><i class="fa fa-minus"></i></a> <a href="javascript:;"
+                                                                                      class="btn btn-xs btn-icon btn-circle btn-danger"
+                                                                                      data-click="panel-remove"><i class="fa fa-times"></i></a>
+                </div>
+                <h4 class="panel-title">Honorarios Docentes</h4>
+            </div>
+            <div class="panel-body p-0" style="overflow:scroll;">
+                <!--CONTENIDO-->
+                <canvas id="cvs_hd" width="600" height="250">[No canvas support]</canvas><br />
+                <!-- <iframe style="border:0 none;" border="0" src="/dashboard_hd_chartjs.html" width="700" height="270"></iframe>  -->
+            </div>
+        </div>
+
+
+    </div>
+    <!-- end col-4 -->
+</div>
+<!-- end row -->

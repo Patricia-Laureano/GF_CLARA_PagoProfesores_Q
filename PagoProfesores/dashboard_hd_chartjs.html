@@ -1,0 +1,208 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    window.onload = function ()
+    {
+    
+    function getDatosDHBarrasTotal(anio, sede, mes) {
+
+
+    var data2 = [];
+    var arr=0;
+  
+    
+    $.ajax({
+        type: "GET",
+        async: false,
+        timeout: 50000,     
+        url: "/Dashboard/GraficaDHBarrasTotal/",
+	//url: "http://lab.anahuac.mx/~vdelacruz/ajax2.php",
+        data: "anio=" + anio + "&sede=" + sede + "&mes=" + mes,
+        success: function (data) {
+
+            data2=data;
+            
+            arr = JSON.parse(data);
+
+        }
+        ,
+        error: function (msg) {  alert("Error:" + JSON.stringify(msg, null, 2)); }
+    });
+return arr;
+    };
+
+   function getDatosDHBarrasPagPend(anio, sede, mes) {
+
+
+    var data2 = [];
+    var arr=0;
+  
+    
+    $.ajax({
+        type: "GET",
+        async: false,
+        timeout: 50000,     
+        //url: "https://40.84.224.118/Dashboard/GraficaDHBarrasTotal/",
+	//url: "http://lab.anahuac.mx/~vdelacruz/ajax2.php",
+	 url: "/Dashboard/GraficaDHBarrasPagPend/",
+        data: "anio=" + anio + "&sede=" + sede + "&mes=" + mes,
+        success: function (data) {
+
+            data2=data;
+            
+            arr = JSON.parse(data);
+
+        }
+        ,
+        error: function (msg) {  alert("Error:" + JSON.stringify(msg, null, 2)); }
+    });
+return arr;
+    };
+
+function getDatosDHBarrasDepo(anio, sede, mes) {
+
+
+    var data2 = [];
+    var arr=0;
+  
+    
+    $.ajax({
+        type: "GET",
+        async: false,
+        timeout: 50000,     
+        //url: "https://40.84.224.118/Dashboard/GraficaDHBarrasTotal/",
+	url: "/Dashboard/GraficaDHBarrasDeposito/",
+        data: "anio=" + anio + "&sede=" + sede + "&mes=" + mes,
+        success: function (data) {
+
+            data2=data;
+            
+            arr = JSON.parse(data);
+
+        }
+        ,
+        error: function (msg) {  alert("Error:" + JSON.stringify(msg, null, 2)); }
+    });
+return arr;
+    };
+
+
+   function getDatosDHBarrasRecibos(anio, sede, mes) {
+
+
+    var data2 = [];
+    var arr=0;
+  
+    
+    $.ajax({
+        type: "GET",
+        async: false,
+        timeout: 50000,     
+        //url: "https://40.84.224.118/Dashboard/GraficaDHBarrasTotal/",
+	  url: "/Dashboard/GraficaDHBarrasRecibos/",
+        data: "anio=" + anio + "&sede=" + sede + "&mes=" + mes,
+        success: function (data) {
+
+            data2=data;
+            
+            arr = JSON.parse(data);
+
+        }
+        ,
+        error: function (msg) {  alert("Error:" + JSON.stringify(msg, null, 2)); }
+    });
+return arr;
+    };
+     var sede = parent.document.getElementById("Sedes").value;
+       var currentTime = new Date();
+      var year = currentTime.getFullYear();
+      
+       var ctx = document.getElementById("cvs").getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+    datasets: [{
+      label: 'Total',
+      //data: [getDatosDHBarrasTotal(year, sede, 1),
+      //data: getDatosDHBarrasTotal(year, sede, 1),
+      data: [getDatosDHBarrasTotal(year, sede, 1),
+	     getDatosDHBarrasTotal(year, sede, 2),
+             getDatosDHBarrasTotal(year, sede, 3),
+             getDatosDHBarrasTotal(year, sede, 4),
+             getDatosDHBarrasTotal(year, sede, 5),
+             getDatosDHBarrasTotal(year, sede, 6),
+             getDatosDHBarrasTotal(year, sede, 7),
+             getDatosDHBarrasTotal(year, sede, 8),
+             getDatosDHBarrasTotal(year, sede, 9),
+             getDatosDHBarrasTotal(year, sede, 10),
+             getDatosDHBarrasTotal(year, sede, 11),
+             getDatosDHBarrasTotal(year, sede, 12)],
+      backgroundColor: "#5B9BD5"
+    }, {
+      label: 'Recibos/Disper',
+       data: [getDatosDHBarrasRecibos(year, sede, 1),
+	     getDatosDHBarrasRecibos(year, sede, 2),
+             getDatosDHBarrasRecibos(year, sede, 3),
+             getDatosDHBarrasRecibos(year, sede, 4),
+             getDatosDHBarrasRecibos(year, sede, 5),
+             getDatosDHBarrasRecibos(year, sede, 6),
+             getDatosDHBarrasRecibos(year, sede, 7),
+             getDatosDHBarrasRecibos(year, sede, 8),
+             getDatosDHBarrasRecibos(year, sede, 9),
+             getDatosDHBarrasRecibos(year, sede, 10),
+             getDatosDHBarrasRecibos(year, sede, 11),
+             getDatosDHBarrasRecibos(year, sede, 12)],
+      backgroundColor: "#ED7D31"
+    }
+    , {
+      label: 'Deposito',
+       data: [getDatosDHBarrasDepo(year, sede, 1),
+	     getDatosDHBarrasDepo(year, sede, 2),
+             getDatosDHBarrasDepo(year, sede, 3),
+             getDatosDHBarrasDepo(year, sede, 4),
+             getDatosDHBarrasDepo(year, sede, 5),
+             getDatosDHBarrasDepo(year, sede, 6),
+             getDatosDHBarrasDepo(year, sede, 7),
+             getDatosDHBarrasDepo(year, sede, 8),
+             getDatosDHBarrasDepo(year, sede, 9),
+             getDatosDHBarrasDepo(year, sede, 10),
+             getDatosDHBarrasDepo(year, sede, 11),
+             getDatosDHBarrasDepo(year, sede, 12)],
+      backgroundColor: "#A5A5A5"
+    }
+    , {
+      label: 'Pagos Pendientes',
+      data: [getDatosDHBarrasPagPend(year, sede, 1),
+	     getDatosDHBarrasPagPend(year, sede, 2),
+             getDatosDHBarrasPagPend(year, sede, 3),
+             getDatosDHBarrasPagPend(year, sede, 4),
+             getDatosDHBarrasPagPend(year, sede, 5),
+             getDatosDHBarrasPagPend(year, sede, 6),
+             getDatosDHBarrasPagPend(year, sede, 7),
+             getDatosDHBarrasPagPend(year, sede, 8),
+             getDatosDHBarrasPagPend(year, sede, 9),
+             getDatosDHBarrasPagPend(year, sede, 10),
+             getDatosDHBarrasPagPend(year, sede, 11),
+             getDatosDHBarrasPagPend(year, sede, 12)],
+      backgroundColor: "#FFC000"
+    }
+    
+    ]
+  }
+});
+      
+    };
+</script>
+</head>
+<body>
+<div style="text-align:center; font-weight: bold; font-size: 14pt; width: 600px">
+  <br />
+    <canvas id="cvs" width="600" height="250">[No canvas support]</canvas><br />
+    
+</div>
+
+</body>
+</html>

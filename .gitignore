@@ -1,0 +1,15 @@
+ConnectDB/bin
+ConnectDB/obj
+ConnectUrlToken/bin
+ConnectUrlToken/obj
+Factory/bin
+Factory/obj
+PagoProfesores/bin/*
+!PagoProfesores/bin/App_global.asax.dll
+!PagoProfesores/bin/App_global.asax.compiled
+PagoProfesores/obj
+Security/bin
+Security/obj
+Session/bin
+Session/obj
+.vs

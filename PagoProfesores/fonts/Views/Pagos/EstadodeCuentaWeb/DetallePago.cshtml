@@ -1,0 +1,223 @@
+﻿@{
+    // ________________________________ ESTADO DE CUENTA WEB ________________________________
+    Layout = "~/Views/Shared/_Layout_login_profesor.cshtml";
+    ViewBag.Title = "Start";
+}
+
+<!-- begin #sidebar MENU -->
+<div id="sidebar" class="sidebar">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%">
+
+        <ul class="nav">
+            <li class="nav-profile">
+
+                <div class="info">
+                    Pago Profesores
+                    <small>@Html.Raw(ViewBag.Profesor)</small>
+                </div>
+            </li>
+        </ul>
+
+        <!-- begin sidebar nav -->
+
+        <ul class="nav">
+            <li><a href="/EstadodeCuentaWeb/Home"><i class="fa fa-bank"></i><span>Estado de Cuenta</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/Perfil"><i class="fa fa-user"></i><span>Mi Perfil</span></a></li>
+            <li class="active"><a href="/EstadodeCuentaWeb/PagosPendientes"><i class="fa fa-usd"></i><span>Pagos Pendientes</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/PagosDepositados"><i class="fa fa-money"></i><span>Pagos Depositados</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/Contratos"><i class="fa fa-file-text"></i><span>Contratos</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/ConstanciasRetencion"><i class="fa fa-file-text-o"></i><span>Constancias de Retención</span></a></li>
+            <li><a href="~/Login/Close"><i class="fa fa-sign-out"></i><span>Salir</span></a></li>
+            <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+        </ul>
+
+
+        <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+<!-- begin #content -->
+<div id="content" class="content">
+
+    <!-- begin invoice -->
+    <div class="invoice">
+        <div class="invoice-company">
+            <span class="pull-right hidden-print">
+                <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-default m-b-10"><i class="fa fa-print m-r-5"></i> Imprimir</a>
+            </span>
+            @Html.Raw(ViewBag.ESTADO)
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-invoice">
+                <thead>
+                    <tr>
+                        <th style="color:#000">UNI</th>
+                        <th style="color:#000">PERIODO</th>
+                        <th style="color:#000">CONCEPTO</th>
+                        <th style="color:#000">MONTO</th>
+                        <th style="color:#000">IVA</th>
+                        <th style="color:#000">IVA RET</th>
+                        <th style="color:#000">ISR RET</th>
+                        <th style="color:#000">PAGO</th>
+                        <th style="color:#000">FECHA PAGO</th>
+                    </tr>
+                </thead>
+                <tbody id="estadodeCuenta">
+
+                    @Html.Raw(ViewBag.ESTADODECUENTA)
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="invoice-content">
+            <div class="table-responsive">
+                @Html.Raw(ViewBag.BLOQUEOS)
+            </div>
+        </div>
+
+        <div class="invoice-content">
+            <div class="table-responsive">
+
+                @Html.Raw(ViewBag.PENSIONES)
+            </div>
+        </div>
+
+        <h4>Datos Facturación</h4>
+        <div class="invoice-header">
+            <div class="invoice-from">
+
+                <address class="m-t-5 m-b-5">
+                    <strong>Datos Personales</strong><br />
+                    @Html.Raw(ViewBag.Profesor)<br />
+                    IDSIU: @Html.Raw(ViewBag.IDSIU)<br />
+                    Nacionalidad:<br />
+                    Telefono:<br />
+                    Correo:
+                </address>
+            </div>
+            <div class="invoice-to">
+
+                <address class="m-t-5 m-b-5">
+                    <strong>Dirección</strong><br />
+                    @Html.Raw(ViewBag.Direccion)<br />
+                </address>
+            </div>
+
+            <div class="invoice-to">
+
+                <address class="m-t-5 m-b-5">
+                    <strong>Datos Fiscales</strong><br />
+                    No. Cuenta: @Html.Raw(ViewBag.NoCuenta)<br />
+                    Cuenta Interbancaria: <br />
+                    Banco: @Html.Raw(ViewBag.Banco)<br />
+                    RFC: @Html.Raw(ViewBag.RFC)
+                </address>
+            </div>
+
+            <div class="invoice-date">
+
+                <div class="date m-t-5">Datos Fiscales Sede</div>
+                <div class="invoice-detail">
+                    @Html.Raw(ViewBag.Fis_Sede)<br />
+                    @Html.Raw(ViewBag.Fis_RecibiDe) <br />
+                    @Html.Raw(ViewBag.Fis_RFC)<br />
+                    @Html.Raw(ViewBag.Fis_Domicilio)<br />
+                    @Html.Raw(ViewBag.Fis_Concepto)<br />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="invoice-note">
+            * Si sus datos son incorrectos por favor reportarlo via sana.<br />
+
+        </div>
+        <div class="invoice-footer text-muted">
+            <p class="text-center m-b-5">
+                Red de Universidades Anáhuac
+            </p>
+            <p class="text-center">
+                <span class="m-r-10"><i class="fa fa-globe"></i> redanahuac.mx</span>
+                <span class="m-r-10"><i class="fa fa-phone"></i> T:016-18192302</span>
+                <span class="m-r-10"><i class="fa fa-envelope"></i> sana@anahuac.mx</span>
+            </p>
+        </div>
+    </div>
+            <!-- end invoice -->
+        </div>
+
+        <!-- #modal-dialog CONFIRMAR SOLICITUD -->
+        <div class="modal fade" id="modal-solicitar">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Pago</h4>
+                    </div>
+                    <div class="modal-body">
+                        Confirme que desea solicitar un pago.
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                        <a href="javascript:formPage_EstadoCuenta.solicitar(true);" class="btn btn-sm btn-danger">Solicitar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #modal-dialog SELECT XML-PDF -->
+        <div class="modal fade" id="modal-xml">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width:500px;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Recepción factura electronica</h4>
+                    </div>
+                    <div class="modal-body" style="overflow-y: auto;" >
+
+                        <div class="row"  style="position:relative; top:0px; left:155px;" >
+
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label for="file_xml">Archivo con extención .XML</label>
+                                    <div class="input-group">
+                                        <input type="file" id="file_xml" class="form-control" accept=".xml" style="width:150px;">
+                                        <span class="input-group-addon" style="background-color:white;" id="file_xml_name"></span>
+                                    </div>
+                                    <span id="file_xml_msg" style="color:#888;">Adjunte su archivo XML <i class="fa fa-file-code-o" style="color:darkgreen"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="position:relative; top:0px; left:155px;" >
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label for="file_pdf">Nombre del archivo .PDF</label>
+                                    <div class="input-group">
+                                        <input type="file" id="file_pdf" class="form-control" accept=".pdf" style="width:150px;">
+                                        <span class="input-group-addon" style="background-color:white;" id="file_pdf_name"></span>
+                                    </div>
+                                    <span id="file_pdf_msg" style="color:#888;">Adjunte su archivo PDF <i class="fa fa-file-pdf-o" style="color:red"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="xml_result">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:formPage_EstadoCuenta.subirXML(true);" class="btn btn-sm btn-primary">Subir archivos</a>
+                        <!--
+                        <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                            -->
+                    </div>
+                </div>
+            </div>
+        </div>

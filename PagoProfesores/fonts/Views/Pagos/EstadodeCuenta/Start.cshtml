@@ -1,0 +1,976 @@
+﻿@{
+    // ________________________________ ESTADO DE CUENTA ________________________________
+
+    ViewBag.Title = "Start";
+}
+
+<div class="row">
+    <ol class="breadcrumb pull-right">
+        <li><a href="#">Pagos</a></li>
+        <li><a href="/EstadodeCuenta">Estado de cuenta</a></li>
+    </ol>
+</div>
+
+<!-- begin row Consulta Estado de cuenta -->
+<div class="row" id="divConsultaEC">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Consulta estado de cuenta</h4>
+            </div>
+            <div class="panel-body">
+                <form action="/" method="POST" onload="formPage.clean();">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="c_idSiuEC">Id <span id="c_origenEC"> </span></label>
+                                    <!--cambio edgar-->
+                                    <input type="hidden" class="form-control" id="c_idSiuECHidden">
+                                    <input type="text" class="form-control" id="c_idSiuEC" maxlength="10">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="c_nombreCompletoEC">Nombre completo</label>
+                                    <input type="text" class="form-control" id="c_nombreCompletoEC" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="c_cicloEC">A&ntilde;o</label>
+                                            <select id="c_cicloEC" class="form-control"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="c_periodoEC">Periodo</label>
+                                            <select id="c_periodoEC" class="form-control"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="c_partePeriodoEC">Parte del periodo</label>
+                                    <select id="c_partePeriodoEC" class="form-control"></select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="c_escuelaEC">Escuela</label>
+                                    <select id="c_escuelaEC" class="form-control"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend style="font-size:14px;"><a href="javascript:showFiltersEtdoCuenta()"> <span id="iconmorefilters"><i class="fa fa-plus-square" aria-hidden="true"></i></span>  Filtros </a></legend>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div id="filterssearch" style="display:none;">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="c_tipoDePagoEC">Tipo de pago</label>
+                                        <select id="c_tipoDePagoEC" class="form-control"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="c_centroCostosEC">Centro de costos</label>
+                                        <select id="c_centroCostosEC" class="form-control"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- FILTROS DE FECHA -->
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="c_pagoFechaIniEC">Fecha inicial de pago</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="c_pagoFechaIniEC" maxlength="10">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="c_pagoFechaFinEC">Fecha final de pago</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="c_pagoFechaFinEC" maxlength="10">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="c_reciboFechaIniEC">Fecha inicial de recibo</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="c_reciboFechaIniEC" maxlength="10">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="c_reciboFechaFinEC">Fecha final de recibo</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="c_reciboFechaFinEC" maxlength="10">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="c_dispersionFechaIniEC">Fecha inicial de disperci&oacute;n</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="c_dispersionFechaIniEC" maxlength="10">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="c_dispersionFechaFinEC">Fecha final de disperci&oacute;n</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="c_dispersionFechaFinEC" maxlength="10">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="c_depositoFechaIniEC">Fecha inicial de dep&oacute;sito</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="c_depositoFechaIniEC" maxlength="10">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="c_depositoFechaFinEC">Fecha final de dep&oacute;sito</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="c_depositoFechaFinEC" maxlength="10">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Fin / FILTROS DE FECHA -->
+                            </div>
+                            <!-- Hidden Fileds -->
+                        </div>
+                        <div>
+                            <input type="hidden" id="c_tipoFacturaEC" />
+                            <input type="hidden" id="hdfMaxPeriodo" />
+                        </div>
+                        <!-- Buttons Consultar, Imprimir*, Mover -->
+                        <div class="row right">
+                            <button type="button" id="formbtnconsultaWeb" class="btn btn-sm btn-warning" onclick="formPage.consultaECWeb();">Estado de Cuenta Web</button>
+                            <button type="button" id="formbtnconsultar" class="btn btn-sm btn-primary" onclick="formPage.consultar();">Consultar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row GRID ESTADO DE CUENTA -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Listado de Pagos<span class="loader-min-bar"></span></h4>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#default-tab-1" data-toggle="tab" aria-expanded="true">Estado de cuenta</a></li>
+                    <li>
+                        <div id="agregar_group" class="btn-group" style="color: #fff; background: #348fe2; border-color: #2a72b5;">
+
+                            <a class="btn" style="color:#fff; font-size: 12px;"><i class="icon-hand-left"></i> Agregar</a>
+                            <a href="#" style="color:#fff; border-left: .02em solid #fff; background:gray;" data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a id="formbtnagregar" onClick="javascript: formPage.agregarAbrir(); return false;"><i class="fa fa-pencil aria-hidden='true'"></i> Concepto</a></li>
+                                <li><a id="formbtnagregarPensionados" onClick="javascript:formPage.agregarAbrirPesionados();return false;"><i class="fa fa-usd"></i> Pension</a></li>
+                                <li><a id="formbtnagregarEdoCtaExt" onClick="javascript: formPage.agregarAbrirEdoCtaExterno(); return false;"><i class="fa fa-file-text"></i> Estado de cuenta</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>&nbsp;</li>
+                    <!--
+
+                                       <li><button type="button" id="formbtnagregar" class="btn btn-sm btn-primary" onclick="formPage.agregarAbrir();">Agregar ¬¬</button></li>
+                                       <li><button type="button" id="formbtnagregarPensionados" class="btn btn-sm btn-primary" onclick="formPage.agregarAbrirPesionados();">Agregar Pensión ¬¬</button></li>
+                    -->
+                    <li><button type="button" id="formbtnmover" class="btn btn-sm btn-warning" onclick="formPage.moverAbrir();">Mover</button></li>
+                    <li><button type="button" id="formbtneliminar" class="btn btn-sm btn-warning" onclick="formPage.eliminarAbrir();">Eliminar</button></li>
+                </ul>
+                <fieldset>
+                    <div class="tab-content" id="tabs">
+                        <div id="default-tab-1" class="tab-pane fade active in">
+                            @*<div class="row">
+                                    <div class="col-md-2">
+                                        <b>Pago Bloqueado</b> <span style="text-decoration: line-through; color: red;"> Concepto</span>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Pago Publicado </b> <span class="fa fa-eye"></span>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Contrato Entregado </b> <span class="fa fa-file-text-o"></span>
+                                    </div>
+                                </div>*@
+                            <div id="datatable_edo">
+                                @Html.Raw(ViewBag.DataTable)
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- #modal-dialog CONFIRM DELETE -->
+<div class="modal fade" id="modal-delete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Borrar men&uacute;</h4>
+            </div>
+            <div class="modal-body">
+                Se eliminar&aacute; el men&uacute; seleccionado. ¿Esta seguro?
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- #modal-dialog CONFIRM DELETE PENSIONADOS -->
+<div class="modal fade" id="modal-delete-pensionado">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Borrar Pensión</h4>
+            </div>
+            <div class="modal-body">
+                Se eliminar&aacute; la Pensión seleccionada. ¿Esta seguro?
+                <input type="hidden" id="hiddenIdPension" />
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.ConfirmarEliminar(true);" class="btn btn-sm btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #modal-dialog CONFIRM VALIDAR CONTRATO -->
+<div class="modal fade" id="modal-validarcontrato">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Re-generar contrato</h4>
+            </div>
+            <div class="modal-body">
+                ¿Deseas volver a generar el contrato?
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.contrato(true);" class="btn btn-sm btn-danger">Aceptar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #modal-dialog MOVIMIENTOS DE DETALLES DE ESTADO DE CUENTA x CONCEPTOS DE PAGO -->
+<div class="modal fade" id="modal-moverEstadosCuenta" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:850px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Mueve los detalles de estado de cuenta a otro concepto</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="l_anioEC">Año</label>
+                                    <select id="l_anioEC" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="l_periodoEC">Periodo</label>
+                                    <select id="l_periodoEC" class="form-control"></select>
+                                </div>
+                            </div>
+                            @*<div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="l_partePeriodoEC">Parte del periodo</label>
+                                        <select id="l_partePeriodoEC" class="form-control"></select>
+                                    </div>
+                                </div>*@
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="l_esquemaPagoEC">Esquema de pago</label>
+                                    <select id="l_esquemaPagoEC" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="l_conceptoDePagoEC">Concepto de pago</label>
+                                    <select id="l_conceptoDePagoEC" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="l_fechaPagoEC">Fecha de pago</label>
+                                    <div class="input-group">
+                                        <!--<input type="text" class="form-control" id="l_fechaPagoEC" />-->
+                                        <select id="l_fechaPagoEC" class="form-control"></select>
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.mover();" class="btn btn-sm btn-danger">Mover *</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #modal-dialog CONFIRM DELETE -->
+<div class="modal fade" id="modal-deleteEstadodecuenta" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Eliminar estados de cuenta.</h4>
+            </div>
+            <div class="modal-body">
+                Se eliminar&aacute; el registro seleccionado. ¿Est&aacute; seguro?<br /><br />
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="motivo">Motivo</label>
+                        <div class="input-group">
+                            <textarea id="motivo" name="motivo" style="margin: 0px; width: 372px; height: 106px;"></textarea>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.eliminar(true);" class="btn btn-sm btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #modal-dialog AGREGAR CONCEPTO DE PAGO ESTADO DE CUENTA  -->
+<div class="modal fade" id="modal-agregarEstadosCuenta" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:800px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Agregar Concepto de Pago a Estado de Cuenta</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="add_EC_anio">Año</label>
+                                    <select id="add_EC_anio" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="add_EC_periodo">Periodo</label>
+                                    <select id="add_EC_periodo" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="add_EC_partePeriodo">Parte del periodo</label>
+                                    <select id="add_EC_partePeriodo" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="add_EC_esquema">Esquema</label>
+                                    <select id="add_EC_esquema" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="add_EC_concepto">Concepto Pago</label>
+                                    <select id="add_EC_concepto" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group" id="add_EC_fechaPago_div">
+                                    <label for="add_EC_fechaPago">Fecha de pago</label>
+                                    <select id="add_EC_fechaPago" class="form-control"></select>
+                                </div>
+                            </div>
+                        </div><br />
+                        <div class="well" id="ConceptodePagos">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="cpago">Concepto de pago *</label>
+                                        <input type="hidden" class="form-control" id="idPagosF" value="">
+                                        <select id="cpago" class="form-control">
+                                            @Html.Raw(ViewBag.CONCEPTO_PAGO)
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="fpago">Fecha de pago *</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="fpago">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="frecibo">Fecha de recibo de pago</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="frecibo">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="row right">
+                                    <button type="button" id="agregarCPNuevoModal" class="btn btn-sm btn-primary" onclick="formPage.agregarCPNuevoModal();">Agregar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <button type="button" id="agregarCPModal" class="btn btn-sm btn-primary" onclick="formPage.agregarCPModal();">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #modal-dialog AGREGAR PENSIONADOS -->
+<div class="modal fade" id="modal-agregarPensionados" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:800px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Agregar Pensionados a Estado de Cuenta</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="add_ECP_pensionado">Pensionados</label>
+                                    <select id="add_ECP_pensionado" class="form-control"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="add_ECP_anio">Año</label>
+                                    <select id="add_ECP_anio" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="add_ECP_periodo">Periodo</label>
+                                    <select id="add_ECP_periodo" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="add_ECP_partePeriodo">Parte del periodo</label>
+                                    <select id="add_ECP_partePeriodo" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="add_ECP_esquema">Esquema</label>
+                                    <select id="add_ECP_esquema" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="add_ECP_concepto">Concepto Pago</label>
+                                    <select id="add_ECP_concepto" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group" id="add_EC_fechaPago_div">
+                                    <label for="add_ECP_fechaPago">Fecha de pago</label>
+                                    <select id="add_ECP_fechaPago" class="form-control"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </fieldset>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <button type="button" id="agregarCPModal" class="btn btn-sm btn-primary" onclick="formPage.agregarCPModalPensionado();">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #modal-dialog EDITAR PAGO ESTADO DE CUENTA  -->
+<div class="modal fade" id="modal-editarPagoEstadoCuenta" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:800px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Editar Pago Estado de Cuenta  <span class="loader-min-bar"></span></h4>
+            <br />
+                     <div id="xml_result">
+                      </div>
+                
+
+
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="edit_EC_periodo">Periodo</label><br />
+                                    <span id="edit_EC_periodos"></span>
+                                </div>
+                            </div>
+                            @*<div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="edit_EC_partePeriodo">Parte del periodo</label><br />
+                                        <span id="edit_EC_partePeriodo"></span>
+                                    </div>
+                                </div>*@
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="edit_EC_esquema">Esquema</label><br />
+                                    <span id="edit_EC_esquema"> </span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="edit_EC_concepto">Concepto </label><br />
+                                    <span id="edit_EC_concepto"> </span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="edit_EC_fechapago">Fecha Pago </label><br />
+                                    <span id="edit_EC_fechapago"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="edit_EC_fechapago">Estado </label><br />
+                                    <span id="edit_EC_statuspago"> <span class="label label-success">PAGADO</span> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <fieldset>
+                            <legend style="font-size:14px;"> <span id="iconmorefilters"><i class="fa fa-plus-square" aria-hidden="true"></i></span>  Montos</legend>
+                        </fieldset>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="edit_EC_monto">Monto</label><br />
+                                    <span id="edit_EC_monto"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="edit_EC_iva">IVA</label><br />
+                                    <span id="edit_EC_iva"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="edit_EC_ivaret">IVA Ret</label><br />
+                                    <span id="edit_EC_ivaret"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="edit_EC_isrret">ISR Ret</label><br />
+                                    <span id="edit_EC_isrret"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="edit_EC_banco">BANCO</label><br />
+                                    <span id="edit_EC_banco"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <fieldset>
+                            <legend style="font-size:14px;"> <span id="iconmorefilters"><i class="fa fa-plus-square" aria-hidden="true"></i></span>  Facturas</legend>
+                        </fieldset>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="file_xml">Archivo con extenci&oacute;n <span style="color:darkred;">XML</span></label>
+                                    <div class="input-group">
+                                        <input id="file_xml" type="file" accept=".xml" style="width:64pt;">
+                                        <input id="file_xml_name" class="form-control" style="color:red;" readonly>
+                                        <span id="file_xml_link" class="form-control"> </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="file_xml">Archivo con extenci&oacute;n <span style="color:darkred;">PDF</span></label>
+                                    <div class="input-group">
+                                        <input id="file_pdf" type="file" accept=".pdf" style="width:64pt;">
+                                        <input id="file_pdf_name" class="form-control" style="color:red;" readonly>
+                                        <span id="file_pdf_link" class="form-control"> </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <br />
+                                    <br />
+                                    <button type="button" id="formbtnSubirXML" class="btn btn-sm btn-primary" onclick="formPage.subirXML();">Subir XML</button>
+                                </div>
+                            </div>
+                        </div>
+                        <fieldset>
+                            <legend style="font-size:14px;"> <span id="iconmorefilters"><i class="fa fa-plus-square" aria-hidden="true"></i></span> Fechas</legend>
+                        </fieldset>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="edit_EC_fechasolicitado">Fecha Solicitado</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="edit_EC_fechasolicitado" />
+                                        <label class="input-group-addon" for="edit_EC_fechasolicitado"><i class="fa fa-calendar"></i></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="edit_EC_fecharecibo">Fecha Recibo</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="edit_EC_fecharecibo" />
+                                        <label class="input-group-addon" for="edit_EC_fecharecibo"><i class="fa fa-calendar"></i></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="edit_EC_fechadispersion">Fecha Dispersion</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="edit_EC_fechadispersion" />
+                                        <label class="input-group-addon" for="edit_EC_fechadispersion"><i class="fa fa-calendar"></i></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="edit_EC_fechadeposito">Fecha Deposito</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="edit_EC_fechadeposito" />
+                                        <label class="input-group-addon" for="edit_EC_fechadeposito"><i class="fa fa-calendar"></i></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="m_tipoDePagoEC">Tipo de pago</label>
+                                    <select id="m_tipoDePagoEC" class="form-control" disabled></select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="m_tipoDeTransferenciaEC">Tipo de transferencia</label>
+                                    <select id="m_tipoDeTransferenciaEC" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="mm_folioChequeEC">Folio de cheque</label>
+                                    <input type="text" class="form-control" id="m_folioChequeEC" maxlength="18" />
+                                </div>
+                            </div>
+                        </div>
+                        <fieldset>
+                            <legend style="font-size:14px;"> <span id="iconmorefilters"><i class="fa fa-plus-square" aria-hidden="true"></i></span>  Bloqueos</legend>
+                        </fieldset>
+                        <div class="row">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cerrar</a>
+                <a href="javascript:formPage.savePagoEdoCta();" class="btn btn-sm btn-danger">Guardar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- begin row Modifica - Estado de cuenta -->
+<div class="modal fade" id="modal-editarEstadosCuentaDetalle" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:850px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Modifica Pago Estado de Cuenta</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <form action="/" method="POST" onload="formPage.clean();">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="m_annyoEscolarEC">Año escolar</label>
+                                        <select id="m_annyoEscolarEC" class="form-control" disabled="disabled"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="m_periodoEC">Periodo</label>
+                                        <select id="m_periodoEC" class="form-control" disabled="disabled"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="m_partePeriodoEC">Parte del periodo</label>
+                                        <select id="m_partePeriodoEC" class="form-control" disabled="disabled"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="m_esquemaPagoEC">Esquema de pago</label>
+                                        <!--<select id="m_esquemaPagoEC" class="form-control" onchange="formPage.Ciclo_OnChange()">-->
+                                        <input type="hidden" id="isEsquemaPH" value="" />
+                                        <select id="m_esquemaPagoEC" class="form-control" disabled="disabled"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="m_conceptoDePagoEC">Concepto de pago</label>
+                                        <!--<input type="text" class="form-control" id="m_conceptoDePagoEC"/>-->
+                                        <input type="hidden" id="isConceptoPH" value="" />
+                                        <select id="m_conceptoDePagoEC" class="form-control"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="m_fechaPagoEC">Fecha de pago</label>
+                                        <select id="m_fechaPagoEC" class="form-control"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="m_cuentaContableEC">Cuenta contable</label>
+                                        <select id="m_cuentaContableEC" class="form-control"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="m_importeEC">Importe</label>
+                                        <input type="text" class="form-control" id="m_importeEC">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="m_ivaEC">IVA</label>
+                                        <input type="text" class="form-control" id="m_ivaEC">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="m_ivaRetencionEC">IVA Retención</label>
+                                        <input type="text" class="form-control" id="m_ivaRetencionEC">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="m_isrRetencionEC">ISR Retención</label>
+                                        <input type="text" class="form-control" id="m_isrRetencionEC">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="m_totalEC">Total</label>
+                                        <input type="text" class="form-control" id="m_totalEC">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Tipo de retención</label>
+                                    <div class="form-group">
+                                        @Html.Raw(ViewBag.TIPO_BLOQUEO)
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="l_fechaPagoEC">Motivo</label>
+                                        <div class="input-group">
+                                            <textarea id="motivoE" name="motivoE" style="margin: 0px; width: 700px; height: 70px;"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Fin / FILTROS DE FECHA -->
+                            </div>
+                            <div class="row">
+                                <input type="hidden" id="m_idPersona" />
+                                <input type="hidden" id="m_fechaPago" />
+                                <input type="hidden" id="m_concepto" />
+                                <input type="hidden" id="m_idEdoCta" />
+                                <input type="hidden" id="m_idEdoCtaD" />
+                                <input type="hidden" id="l_esquemaPago" />
+                            </div>
+                            @*<div class="row right">
+                                    <button type="button" id="formbtnagregar" class="btn btn-sm btn-success" onclick="formPage.agregar();">Clonar</button>
+                                    <button type="button" id="formbtngrabar" class="btn btn-sm btn-primary" onclick="formPage.grabar();">Guardar</button>
+                                    <button type="button" id="formbtnocultar" class="btn btn-sm btn-orange" onclick="formPage.ocultar('m');">Cerrar</button>
+                                </div>*@
+                        </fieldset>
+                    </form>
+
+                    <!-- end panel -->
+                    <!-- end col-12 -->
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <a href="javascript:formPage.agregar();" class="btn btn-sm btn-warning">Clonar</a>
+                <a href="javascript:formPage.grabar();" class="btn btn-sm btn-primary">Guardar</a>
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cerrar</a>
+                @*<a href="javascript:formPage.mover();" class="btn btn-sm btn-danger">Mover *</a>*@
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+<!-- #modal-dialog AGREGAR ESTADO DE CUENTA A EXTERNO -->
+<div class="modal fade" id="modal-agregarEstadosCuentaExterno" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:800px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Agregar Estado de Cuenta a externo</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="addExt_EC_anio">Año</label>
+                                    <select id="addExt_EC_anio" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="addExt_EC_periodo">Periodo</label>
+                                    <select id="addExt_EC_periodo" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="addExt_EC_partePeriodo">Parte del periodo</label>
+                                    <select id="addExt_EC_partePeriodo" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="addExt_EC_esquema">Esquema</label>
+                                    <select id="addExt_EC_esquema" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="addExt_EC_escuela">Escuela</label>
+                                    <select id="addExt_EC_escuela" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="addExt_EC_campusPA">Campus</label>
+                                    <select id="addExt_EC_campusPA" class="form-control">@Html.Raw(ViewBag.COMBO_CAMPUSPA)</select>
+                                </div>
+                            </div>
+                        </div><br />
+                    </fieldset>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <button type="button" id="agregarCPModalEdoCtaExterno" class="btn btn-sm btn-primary" onClick="javascript: formPage.agregarCPModalEdoCtaExterno(); return false;">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>

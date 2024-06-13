@@ -1,0 +1,102 @@
+﻿<div class="" id="content">
+    <!-- begin breadcrumb -->
+    <ol class="breadcrumb hidden-print pull-right">
+        <li><a href=""></a></li>
+
+    </ol>
+    <!-- end breadcrumb -->
+    <!-- begin page-header -->
+    
+    <!-- end page-header -->
+    <!-- begin invoice -->
+    <div class="invoice">
+
+        <div class="invoice-company">
+            Cambiar Password
+        </div>
+        <div class="invoice-header">
+
+            <div id="form-password">
+                <!--  <fieldset>
+                      <legend><small>La contraseña debe contener:</small></legend>
+                      1.- Ocho caracteres como mínimo
+                      2.- Una letra MAYUSCULA.
+                      3.- Contener numeros.
+                      4.- Un carácter especial.
+                  </fieldset>-->
+
+
+                <form class="form-horizontal form-bordered">
+
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Usuario:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control m-b-5" style="width:220px;" disabled id="usuario" name="usuario" value="@ViewBag.USUARIO">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Password Actual:</label>
+                        <div class="col-md-8">
+                            <input type="password" class="form-control m-b-5" style="width:220px;" id="password-actual" name="password-actual">
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Password Nuevo:</label>
+                        <div class="col-md-8">
+                            <input type="password"  class="form-control m-b-5" style="width:220px;" id="password-indicator-visible" name="password-visible">
+                            <div id="passwordStrengthDiv2" class="is0 m-t-5 is10"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Repetir Password:</label>
+                        <div class="col-md-8">
+                            <input type="password" class="form-control m-b-5" style="width:220px;" id="password-indicator-default" name="password">
+
+                        </div>
+                    </div>
+
+                    <div style="float:right;">
+                        <button class="btn btn-sm btn-primary m-r-5" onClick="formPage.ChangePassword();" type="button">Cambiar Contraseña</button>
+                        <a class="btn btn-sm btn-default" href="javascript:window.history.back();">Cancelar</a>
+                    </div>
+                </form>
+
+            </div><br /><br />
+
+            <div id="wizard" style="display:none;">
+                <div class="jumbotron m-b-0 text-center">
+                    <h1>Su contraseña ha sido cambiada exitosamente!!</h1>
+                    <p><img src="Content/images/load.gif" /> Terminando sesion espere...</p>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="invoice-note">
+            * Por seguridad considere cambiar su contraseña cada mes.<br />
+
+
+        </div>
+        <div class="invoice-footer text-muted">
+            <p class="text-center m-b-5">
+                Red de Universidades Anáhuac
+            </p>
+            <!--<p class="text-center">
+                <span class="m-r-10"><i class="fa fa-globe"></i> matiasgallipoli.com</span>
+                <span class="m-r-10"><i class="fa fa-phone"></i> T:016-18192302</span>
+                <span class="m-r-10"><i class="fa fa-envelope"></i> rtiemps@gmail.com</span>
+            </p>-->
+        </div>
+    </div>
+    <!-- end invoice -->
+
+</div>

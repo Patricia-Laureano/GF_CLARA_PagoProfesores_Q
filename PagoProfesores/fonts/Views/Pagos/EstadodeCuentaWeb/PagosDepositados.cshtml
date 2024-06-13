@@ -1,0 +1,129 @@
+﻿@{
+    // ________________________________ ESTADO DE CUENTA WEB ________________________________
+
+
+    Layout = "~/Views/Shared/_Layout_login_profesor.cshtml";
+    ViewBag.Title = "Start";
+
+}
+
+<!-- begin #sidebar MENU -->
+<div id="sidebar" class="sidebar">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%">
+
+        <ul class="nav">
+            <li class="nav-profile">
+
+                <div class="info">
+                    Pago Profesores
+                    <small>@Html.Raw(ViewBag.Profesor)</small>
+                </div>
+            </li>
+        </ul>
+
+        <!-- begin sidebar nav -->
+
+        <ul class="nav">
+            <li><a href="/EstadodeCuentaWeb/Home"><i class="fa fa-bank"></i><span>Estado de Cuenta</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/Perfil"><i class="fa fa-user"></i><span>Mi Perfil</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/PagosPendientes"><i class="fa fa-usd"></i><span>Pagos Pendientes</span></a></li>
+            <li class="active"><a href="/EstadodeCuentaWeb/PagosDepositados"><i class="fa fa-money"></i><span>Pagos Depositados</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/Contratos"><i class="fa fa-file-text"></i><span>Contratos</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/ConstanciasRetencion"><i class="fa fa-file-text-o"></i><span>Constancias de Retención</span></a></li>
+            <li><a href="~/Login/Close"><i class="fa fa-sign-out"></i><span>Salir</span></a></li>
+            <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+        </ul>
+
+
+        <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+<!-- begin #content -->
+<div id="content" class="content">
+
+
+    <!-- begin invoice -->
+    <div class="invoice">
+        
+        <div class="invoice-company">
+            <span class="pull-right hidden-print">
+                <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-default m-b-10"><i class="fa fa-print m-r-5"></i> Imprimir</a>
+            </span>
+            Pagos Depositados
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="ciclos">Año Escolar</label>
+                    <select id="ciclos" class="form-control"></select>
+                </div>
+            </div>
+
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="periodos">Periodo</label>
+                    <select id="periodos" class="form-control"></select>
+                </div>
+            </div>
+          
+
+
+            <div class="col-sm-6">
+                <div id="data-table_filter" class="dataTables_filter">
+                    
+                </div>
+            </div>
+
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-invoice">
+                <thead>
+                    <tr>
+                        <th style="color:#000">UNI</th>
+                        <th style="color:#000">PERIODO</th>
+                        <th style="color:#000">CONCEPTO</th>
+                        <th style="color:#000">MONTO</th>
+                        <th style="color:#000">IVA</th>
+                        <th style="color:#000">IVA RET</th>
+                        <th style="color:#000">ISR RET</th>
+                        <th style="color:#000">DEPOSITO</th>
+                        <th style="color:#000">FECHA DEPOSITO</th>
+                    </tr>
+                </thead>
+                <tbody id="pagosDepositados">
+
+
+                    @Html.Raw(ViewBag.Table_PagosDepositados)
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="invoice-note">
+            * Cualquier duda o aclaración por favor reportarlo via sana.<br>
+
+        </div>
+
+        <div class="invoice-footer text-muted">
+            <p class="text-center m-b-5">
+                Red de Universidades Anáhuac
+            </p>
+            <p class="text-center">
+                <span class="m-r-10"><i class="fa fa-globe"></i> redanahuac.mx</span>
+                <span class="m-r-10"><i class="fa fa-phone"></i> T:016-18192302</span>
+                <span class="m-r-10"><i class="fa fa-envelope"></i> sana@anahuac.mx</span>
+            </p>
+        </div>
+
+    </div>
+    <!-- end invoice -->
+    </div>

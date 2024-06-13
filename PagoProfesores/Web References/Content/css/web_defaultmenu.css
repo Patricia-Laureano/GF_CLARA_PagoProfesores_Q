@@ -1,0 +1,54 @@
+
+.xbtn-menu {
+    height: 25px;
+}
+.xbtn-bar {
+    width: 100%;
+    height: 4px;
+    margin-top:0px !important;
+    background-color: #DD881B !important;
+}
+.xbtn-item {
+    margin-top:2px;
+    position: relative;
+    float:left;
+}
+
+.xbtn-on {
+    color: #ffffff !important;
+    background-color: #DD881B !important;
+    font-weight: bolder;
+}
+.xbtn-off {
+    color: #7f4b02 !important;
+    background-color: #cccccc !important;
+    font-weight: normal;
+}
+.xbtn-left {
+    width: 8px;
+    padding: 0px;
+    background-image: url(/Content/images/SIU/web_tab_corner_left.gif) !important;
+    background-repeat: no-repeat;
+    background-attachment: initial;
+}
+.xbtn-center{
+    font-family: Verdana,Arial Narrow, helvetica, sans-serif;
+    padding: 1px 4px 1px 4px;
+    height: 25px;
+    vertical-align: middle;
+    cursor:pointer;
+}
+.xbtn-right {
+    width: 8px;
+    padding: 0px;
+    background-image: url(/Content/images/SIU/web_tab_corner_right.gif) !important;
+    background-repeat: no-repeat;
+    background-attachment: initial;
+}
+
+.xbtn-focus {
+    font-weight: bolder;
+}
+.xbtn-blur {
+    font-weight: normal;
+}

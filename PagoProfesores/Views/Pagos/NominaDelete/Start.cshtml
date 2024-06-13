@@ -1,0 +1,171 @@
+﻿<!-- begin row Consulta de Nomina PA -->
+<div class="row" id="frm-consulta">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Eliminar Pagos.</h4>
+            </div>
+
+
+            <div class="panel-body">
+                <div id="wizard" class="bwizard clearfix">
+                  
+                    <!-- begin wizard step-1 -->
+                    <!-- end wizard step-1 -->
+                    <div class="well">
+                        <div class="wizard-step-1 bwizard-activated" id="step1" role="tabpanel" aria-hidden="false">
+
+                            <div class="panel-body">
+                                <form action="/" method="POST">
+                                        <fieldset>
+                                            <legend class="pull-left width-full small">Utilice este procedimiento para eliminar la <b>PA, NOMINA y/o Estado de Cuenta </b>. Tome encuenta que solo se eliminaran registros que no esten publicados en el estado de cuenta WEB.<a href="javascript:void(0)" onclick="ayuda('nomina.html')">Más ayuda.</a></legend>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="Ciclo">Año Escolar</label>
+                                                        <select id="Ciclo" class="form-control"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="Periodo">Periodo</label>
+                                                        <select id="Periodo" class="form-control"></select>
+                                                    </div>
+                                                </div>
+
+                                               <!-- <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="PartePeriodo">Parte del periodo</label>
+                                                        <select id="PartePeriodo" class="form-control"></select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="Escuela">Escuela</label>
+                                                        <select id="Escuela" class="form-control"></select>
+                                                    </div>
+                                                </div>-->
+
+
+                                                <div class="col-md-2" style="display:none;">
+                                                    <div class="form-group">
+                                                        <label for="contrato">Contrato</label>
+                                                        <select id="contrato" class="form-control"></select>
+                                                    </div>
+                                                </div>
+                                                <!--<div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="TipoPago">Tipos de pago</label>
+                                                        <select id="TipoPago" class="form-control"></select>
+                                                    </div>
+                                                </div>-->
+
+
+                                            </div>
+                                            <div class="row right">
+                                                <button type="button" id="formbtnconsultar" class="btn btn-sm btn-primary" onclick="formPage.Consultar();">Consultar</button>
+                                                <button type="button" id="formbtngenerarEstadoC" class="btn btn-sm btn-primary" onclick="formPage.generarEdoCta();">Generar Estado de Cuenta</button>
+                                                <button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="formPage.clean();">Eliminar</button>
+                                            </div>
+                                        </fieldset>
+                                </form>
+                            </div>
+                          
+                        </div>
+                        <!-- end well -->
+                        </div>
+                      
+                    </div>
+                </div>
+
+                <!-- end wizard -->
+
+            </div>
+                        <!-- end panel -->
+                    </div>
+                    <!-- end col-12 -->
+                </div>
+                <!-- end row -->
+                <!-- begin row Datatable -->
+                <div class="row" id="frm-listadoNominaXCDC">
+                    <!-- begin col-12 -->
+                    <div class="col-md-12 ui-sortable">
+                        <!-- begin panel -->
+                        <div class="panel panel-inverse">
+                            <div class="panel-heading">
+                                <div class="panel-heading-btn">
+                                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                                </div>
+                                <h4 class="panel-title">Listado de Nomina por Centro de costos <span class="loader-min-bar"></span></h4>
+                            </div>
+                            <div class="panel-body">
+                                <div id="datatable">
+                                    @Html.Raw(ViewBag.DataTable)
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end panel -->
+                    </div>
+                    <!-- end col-12 -->
+                </div>
+                <!-- end row -->
+
+
+<!--MODAL ELIMINAR-->
+<div id="_MODAL_DELETE_NOMINA" class="modal fade" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+                <h4 class="modal-title">Eliminar NOMINA PA</h4>
+            </div>
+
+            <div class="modal-body">
+
+
+                <div class="panel-body">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label for="Eliminacion">Eliga que desea eliminar:</label>
+                                    <select id="select_eliminacion" class="form-control">
+                                        <option value="DEL_PA_NOMINA_EDOCUENTA">Eliminar PA, NOMINA y ESTADO DE CUENTA</option>
+                                       <!-- <option value="DEL_NOMINA_EDOCUENTA">Eliminar NOMINA y ESTADO DE CUENTA</option>-->
+
+                                    </select>
+                                </div>
+                            </div>
+                           
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <div class="row right">
+                                <button type="button" id="form_btn_delete_seleccionados" class="btn btn-sm btn-primary" onclick="formPage._delete_seleccionados();">Eliminar seleccionados</button>
+                                <button type="button" id="form_btn_delete_all" class="btn btn-sm btn-primary" onclick="formPage._delete_all();">Eliminar todos</button>
+                                <button type="button" id="formbtnocultar" class="btn btn-sm btn-warning" onclick="formPage.ocultar('genera');">Cancelar</button>
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+</div>
+
+
+<!-- FIN MODAL ESQUEMAS-->

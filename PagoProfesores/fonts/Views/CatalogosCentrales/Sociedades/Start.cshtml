@@ -1,0 +1,539 @@
+﻿
+@{
+    ViewBag.Title = "Sociedades";
+}
+<!-- begin row Formulario -->
+<div class="row" id="frm-bancos">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+                </div>
+                <h4 class="panel-title">Detalle Sociedad</h4>
+            </div>
+
+            <div class="panel-body">
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#default-tab-1" data-toggle="tab" aria-expanded="true">SOCIEDAD</a></li>
+                    <li class=""><a href="#default-tab-2" data-toggle="tab" aria-expanded="false">REPRESENTANTE LEGAL</a></li>
+                    <li class=""><a href="#default-tab-3" data-toggle="tab" aria-expanded="false">FIRMA Y SELLO</a></li>
+                    <li class=""><a href="#default-tab-4" data-toggle="tab" aria-expanded="false">INFORMACIÓN NOTARIAL</a></li>
+                    <li class="" style="visibility: hidden;"><a href="#default-tab-5" data-toggle="tab" aria-expanded="false">INFORMACIÓN MySuite</a></li>
+                </ul>
+
+                <div class="tab-content" id="tabs">
+                    <div class="tab-pane fade active in" id="default-tab-1">
+                        <fieldset>
+                            <legend>SOCIEDAD</legend>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <label for="Cve_Sociedad">Clave *</label>
+                                        <input type="text" class="form-control" id="Cve_Sociedad" maxlength="5">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="Sociedad">Sociedad *</label>
+                                        <input type="text" class="form-control" id="Sociedad" maxlength="150">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="RFC">RFC *</label>
+                                        <input type="text" class="form-control" id="RFC" maxlength="13">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="RFC">CURP *</label>
+                                        <input type="text" class="form-control" id="CURP" maxlength="18">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                       
+                                         <label for="direccion_cp">C.P.</label>
+
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="Direccion_CP" maxlength="6">
+                                            <span class="input-group-addon" style="padding:0px !important;"><a class="btn-search2" href="javascript:void(0)" onclick="onkeyup_cp(event,true);"><i class="fa fa-search"></i></a></span>
+                                        </div>
+                                    
+                                     </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="Direccion_Pais">País</label>
+                                        <select class="form-control" id="Direccion_Pais" onclick="formPage.buscarEstado('#')"></select>
+</div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="Direccion_Estado">Estado</label>
+                                        <select class="form-control" id="Direccion_Estado" onchange="formPage.buscarMunicipio('#')"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="Direccion_Ciudad">Ciudad</label>
+                                        <select class="form-control" id="Direccion_Ciudad" onclick="formPage.buscarColonia('#')"></select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="Direccion_Entidad">Entidad / Delegación</label>
+                                        <select class="form-control" id="Direccion_Entidad" onchange="formPage.buscarCiudad('#')"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                             
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="Direccion_Colonia">Colonia</label>
+                                        <select class="form-control" id="Direccion_Colonia" onclick="formPage.cambiarCP('#')"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="Direccion_Calle">Calle</label>
+                                        <input type="text" class="form-control" id="Direccion_Calle" maxlength="150">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <label for="Direccion_Numero">Número</label>
+                                        <input type="text" class="form-control" id="Direccion_Numero" maxlength="15">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="default-tab-2">
+                        <fieldset>
+                            <legend>REPRESENTANTE LEGAL</legend>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="RepresentanteLegal">Representante Legal</label>
+                                        <input type="text" class="form-control" id="RepresentanteLegal" maxlength="250">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="RL_RFC">RFC (Representante Legal)</label>
+                                        <input type="text" class="form-control" id="RL_RFC" maxlength="13">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="RL_CURP">CURP (Representante Legal)</label>
+                                        <input type="text" class="form-control" id="RL_CURP" maxlength="18">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                       
+                                        <label for="direccion_cp">C.P.</label>
+
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="RL_Direccion_CP" maxlength="6">
+                                            <span class="input-group-addon" style="padding:0px !important;"><a class="btn-search2" href="javascript:void(0)" onclick="onkeyup_cp(event,true);"><i class="fa fa-search"></i></a></span>
+                                        </div>
+                                    
+                                     </div>
+                                </div>
+
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="RL_Direccion_Pais">País</label>
+                                        <select class="form-control" id="RL_Direccion_Pais" onclick="formPage.buscarEstado('#RL_')"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="RL_Direccion_Estado">Estado</label>
+                                        <select class="form-control" id="RL_Direccion_Estado" onchange="formPage.buscarMunicipio('#RL_')"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="RL_Direccion_Ciudad">Ciudad</label>
+                                        <select class="form-control" id="RL_Direccion_Ciudad" onclick="formPage.buscarColonia('#RL_')"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="RL_Direccion_Entidad">Entidad / Delegación</label>
+                                        <select class="form-control" id="RL_Direccion_Entidad" onchange="formPage.buscarCiudad('#RL_')"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                              
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="RL_Direccion_Colonia">Colonia</label>
+                                        <select class="form-control" id="RL_Direccion_Colonia" onclick="formPage.cambiarCP('#RL_')"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="RL_Direccion_Calle">Calle</label>
+                                        <input type="text" class="form-control" id="RL_Direccion_Calle" maxlength="150">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="RL_Direccion_Numero">Número</label>
+                                        <input type="text" class="form-control" id="RL_Direccion_Numero" maxlength="15">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </fieldset>
+
+                    </div>
+
+
+                    <div class="tab-pane fade" id="default-tab-3">
+                        <fieldset>
+                            <legend>FIRMA Y SELLO</legend>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Firma">Firma (referencia de la persona que firma)</label>
+                                        <input type="text" class="form-control" id="Firma" maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Sello">Sello de la institución</label>
+                                        <input type="text" class="form-control" id="Sello" maxlength="50">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Firma_Img">Nombre del archivo (Firma en formato JPG)</label>
+                                        <input type="file" id="firma_img">
+                                        <figure class="figure" style="text-align:center">
+                                            <img id="img_firma" src="~/Content/images/image.png" class="figure-img img-fluid rounded" alt="Firma" style="max-width:80%">
+                                            <figcaption class="figure-caption"><a id="nfirmai"></a></figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Sello_Img">Nombre del archivo (Sello en formato JPG)</label>
+                                        <input type="file" id="sello_img">
+                                        <figure class="figure" style="text-align:center">
+                                            <img id="img_sello" src="~/Content/images/image.png" class="figure-img img-fluid rounded" alt="Sello" style="max-width:80%">
+                                            <figcaption class="figure-caption"><a id="nselloi"></a></figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="default-tab-3">
+                        <fieldset>
+                            <legend>FIRMA Y SELLO</legend>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Firma">Firma (referencia de la persona que firma)</label>
+                                        <input type="text" class="form-control" id="Firma" maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Sello">Sello de la institución</label>
+                                        <input type="text" class="form-control" id="Sello" maxlength="50">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Firma_Img">Nombre del archivo (Firma en formato JPG)</label>
+                                        <input type="file" id="firma_img">
+                                        <figure class="figure" style="text-align:center">
+                                            <img id="img_firma" src="~/Content/images/image.png" class="figure-img img-fluid rounded" alt="Firma" style="max-width:80%">
+                                            <figcaption class="figure-caption"><a id="nfirmai"></a></figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Sello_Img">Nombre del archivo (Sello en formato JPG)</label>
+                                        <input type="file" id="sello_img">
+                                        <figure class="figure" style="text-align:center">
+                                            <img id="img_sello" src="~/Content/images/image.png" class="figure-img img-fluid rounded" alt="Sello" style="max-width:80%">
+                                            <figcaption class="figure-caption"><a id="nselloi"></a></figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="default-tab-4">
+                        <fieldset>
+                            <legend>INFORMACIÓN NOTARIAL</legend>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="numinstnotarial">Numero de instrumento notarial</label>
+                                        <input type="text" class="form-control" id="numinstnotarial" maxlength="20">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="volumen">Volumen</label>
+                                        <input type="text" class="form-control" id="volumen" maxlength="20">
+                                    </div>
+                                </div>
+
+                              
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="ciudadnotarial">Ciudad</label>
+                                        <input type="text" class="form-control" id="ciudadnotarial" maxlength="20">
+                                    </div>
+                                </div>
+
+                               
+                            </div>
+
+
+                            <div class="row">
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="numeronotariopub">Número de notario publico</label>
+                                        <input type="text" class="form-control" id="numeronotariopub" maxlength="20">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="nombrenotariopublico">Nombre del notario publico</label>
+                                        <input type="text" class="form-control" id="nombrenotariopublico" maxlength="50">
+                                    </div>
+                                </div>
+
+                                </div>
+</fieldset>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="default-tab-5">
+                        <fieldset>
+                            <legend>INFORMACIÓN MySuite</legend>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="requestor">Requestor</label>
+                                        <input type="text" class="form-control" id="requestor" maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="transaction">Transaction</label>
+                                        <input type="text" class="form-control" id="transaction" maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="country">Country</label>
+                                        <input type="text" class="form-control" id="country" maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="entity">Entity</label>
+                                        <input type="text" class="form-control" id="entity" maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="user">User</label>
+                                        <input type="text" class="form-control" id="user" maxlength="50">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="username">User Name</label>
+                                        <input type="text" class="form-control" id="username" maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="data1">Data 1</label>
+                                        <input type="text" class="form-control" id="data1" maxlength="50">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="data2">Data 2</label>
+                                        <input type="text" class="form-control" id="data2" maxlength="50">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="data3">Data 3</label>
+                                        <input type="text" class="form-control" id="data3" maxlength="50">
+                                    </div>
+                                </div>
+                               
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="mensaje">Mensaje</label>
+                                        <input type="text" class="form-control" id="mensaje" maxlength="50">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="file1">File 1</label>
+                                        <input type="text" class="form-control" id="file1" maxlength="50">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="file2">File 2</label>
+                                        <input type="text" class="form-control" id="file2" maxlength="50">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+<div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="success">Success</label>
+                                        <input type="text" class="form-control" id="success" maxlength="50">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="archivo">Archivo</label>
+                                        <input type="text" class="form-control" id="archivo" maxlength="50">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="uuid">UUID</label>
+                                        <input type="text" class="form-control" id="uuid" maxlength="50">
+                                    </div>
+                                </div>
+
+                            </div>
+
+</fieldset>
+                    </div>
+
+
+                    <div class="row right">
+                        <button type="button" id="formbtnadd" class="btn btn-sm btn-primary" onclick="formPage.add();">Agregar</button>
+                        <button type="button" id="formbtnsave" class="btn btn-sm btn-primary" disabled onclick="formPage.save();">Guardar</button>
+                        <button type="button" id="formbtndelete" class="btn btn-sm btn-danger" disabled onclick="formPage.delete(false);">Borrar</button>
+                        <button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+
+<!-- begin row Datatable -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+                </div>
+                <h4 class="panel-title">Listado de Sociedades Disponibles</h4>
+            </div>
+            <div class="panel-body">
+
+                <div id="datatable">
+                    @Html.Raw(ViewBag.DataTable)
+                </div>
+
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- #modal-dialog CONFIRM DELETE BANCO -->
+<div class="modal fade" id="modal-delete-Sociedad">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Eliminar Sociedad</h4>
+            </div>
+            <div class="modal-body">
+                Se eliminara la sociedad seleccionado, ¿esta seguro de proceder?
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>

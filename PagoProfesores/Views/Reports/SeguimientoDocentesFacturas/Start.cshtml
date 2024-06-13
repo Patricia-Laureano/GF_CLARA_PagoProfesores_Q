@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "Start";
+}
+
+<!-- begin row Formulario -->
+<div class="row" id="frm-importar">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+                </div>
+                <h4 class="panel-title">Seguimiento de docentes con Facturas</h4>
+            </div>
+
+            <div class="panel-body">
+
+
+                <div class="tab-pane fade active in" id="default-tab-1">
+
+                    <form action="/" method="POST">
+                        <fieldset>
+
+                            <div class="row">
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="fechai">Fecha de Pago (Inicio) *</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="fechai">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="fechaf">Fecha de Pago (Fin) *</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="fechaf">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="cve_tipodepago">Tipo de pago *</label>
+                                        <select id="cve_tipodepago" class="form-control">
+                                            <option value="A">
+                                                Asimilados <!-- option -->
+                                            </option>
+                                            <option value="F">
+                                                Facturas <!-- option -->
+                                            </option>
+                                            <option value="H">
+                                                Honorarios  <!-- option -->
+                                            </option>
+                                            <option value="R">RESICO Directos</option>
+                                            <option value=" I">RESICO Indirectos</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <input type="hidden" class="form-control" id="publicar" value="">
+
+
+                            </div>
+                            <br />
+
+
+                            <div class="row right">
+
+                                <button type="button" id="formbtnconsultar" class="btn btn-sm btn-primary" onclick="formPage.Concultar();">Consultar</button>
+                                <button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>
+
+
+                            </div>
+
+
+
+
+                        </fieldset>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row Datatable -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+                </div>
+                <h4 class="panel-title">Listado de Pagos Disponible<span class="loader-min-bar"></span></h4>
+            </div>
+            <div class="panel-body">
+
+                <div id="datatable">
+                    @Html.Raw(ViewBag.DataTable)
+                </div>
+
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->

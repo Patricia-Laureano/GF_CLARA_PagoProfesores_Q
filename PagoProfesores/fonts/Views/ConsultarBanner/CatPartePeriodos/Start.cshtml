@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Start";
+}
+
+<div class="row">
+    <ol class="breadcrumb pull-right">
+        <li><a href="#">Periodos</a></li>
+        <li><a href="#">Importar parte periodos Banner</a></li>
+    </ol>
+</div>
+
+
+<!-- begin row -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Listado de parte periodos Banner <span class="loader-min-bar"></span></h4>
+            </div>
+            <div class="panel-body">
+                <div class="row" id="seccion1">
+                    <ul class="nav nav-tabs">
+                        <li class=""><a href="/CatCiclos" aria-expanded="true">AÑO ESCOLAR</a></li>
+                        <li ><a href="/CatPeriodos" aria-expanded="false">PERIODOS</a></li>
+                        <li class="active"><a href="/CatPartePeriodos" aria-expanded="false">PARTE PERIODOS</a></li>
+                        <li class=""><a href="/CatNiveles" aria-expanded="false">NIVELES</a></li>
+                        <li class=""><a href="/CatTiposContrato" aria-expanded="false">TIPOS DE CONTRATO</a></li>
+                        <li class=""><a href="/CatProgramas" aria-expanded="false">PROGRAMAS</a></li>
+                        <li class=""><a href="/CatEscuelas" aria-expanded="false">ESCUELAS</a></li>
+                        @*<li class=""><a href="/CatCalendarioRua" aria-expanded="true">CALENDARIO RUA</a></li>*@
+                    </ul>
+
+                    <form action="/" method="POST" onload="formPage.clean();">
+                        <fieldset>
+                            <div class="row">
+
+                                <!-- Tengo una garza muy bien garzafinadita, el que la sepa desengarzafinar será un muy buen desengarzafinador -->
+                                <div class="col-md-2">
+                                    <div class="form-group" style="margin-top:17px; margin-left:17px;">
+                                        
+                                        <label for=""></label>
+                                        <select  class="form-control" style="visibility:hidden">
+                                         
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row right">
+                                <div style="margin-right:10px;">
+                                    <button type="button" id="formbtnConsultar" class="btn btn-sm btn-primary" onclick="formPage.consultar();">Consultar</button>
+                                    <button type="button" id="formbtnImportar" class="btn btn-sm btn-warning" onclick="formPage.importar();">Importar</button>
+                                </div>
+                            </div>
+                            @Html.Raw(ViewBag.BlockingPanel_1)
+                        </fieldset>
+                    </form>
+                </div>
+                <br />
+                <div id="datatable">
+                    @Html.Raw(ViewBag.DataTable)
+                </div>
+
+                @Html.Raw(ViewBag.BlockingPanel_2)
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->

@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Start";
+}
+
+<!-- begin row Formulario -->
+<div class="row" id="frm-importar">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+                </div>
+                <h4 class="panel-title">Reporte de Pagos</h4>
+            </div>
+
+            <div class="panel-body">
+
+
+                <form action="/" method="POST">
+                    <fieldset>
+
+                        
+
+                        <div class="row">
+
+                           <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="fechai">Fecha de Pago (Inicio) *</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="fechai">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="fechaf">Fecha de Pago (Fin) *</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="fechaf">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="tipodocente">Tipo de Docente</label>
+                                    <select id="tipodocente" class="form-control">   
+                                        <option value="T">Todos</option>                                  
+                                        <option value="A">Asimilado</option>                                      
+                                        <option value="F">Factura</option>                                      
+                                        <option value="H">Honorarios</option>
+                                                                         
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="pagosdeposito">Pagos</label>
+                                    <select id="pagosdeposito" class="form-control">   
+                                        <option value="T">Todos</option>                                  
+                                        <option value="PD">Pagos depositados</option>
+                                        <option value="PP">Pagos pendientes</option>                                     
+                                    
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="filtro_">Filtro </label>
+                                    <select id="filtro_" class="form-control">
+                                        <option value="T">Todos</option>
+                                        <option value="PE">Pago con encabezado</option>
+                                        <option value="PD">Pago con detalle</option>
+                                      
+                                    </select>
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                   
+
+
+                        <div class="row right">
+                            <button type="button" id="formbtnconsultar" class="btn btn-sm btn-primary" onclick="formPage.exportExcel();">Exportar</button>
+                            <button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>
+
+
+                        </div>
+
+
+
+
+                    </fieldset>
+                </form>
+
+
+
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row Datatable -->
+
+<!-- end row -->
+<!-- #modal-dialog CONFIRM DELETE ESQUEMA -->
+<div class="modal fade" id="modal-delete-esquemas">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Eliminar Esquema</h4>
+            </div>
+            <div class="modal-body">
+                Se eliminara el Esquema seleccionado, ¿esta seguro de proceder?
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+

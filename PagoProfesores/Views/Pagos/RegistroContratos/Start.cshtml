@@ -1,0 +1,186 @@
+﻿@{
+    ViewBag.Title = "Start";
+}
+<!-- begin row Formulario -->
+<div class="row" id="frm-registrocontratos">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+                </div>
+                <h4 class="panel-title">Registro de contratos</h4>
+            </div>
+
+            <div class="panel-body">
+              <!--  <form action="/" method="POST">-->
+                    <fieldset>
+                        <legend class="pull-left width-full small"><span id="titulo-legend">Utilice esta pantalla para consultar y registrar la <b>entrega de contratos </b> de un profesor en base a los filtros disponibles. <a href="javascript:void(0)" onclick="ayuda('entregacontratos.html')">Más ayuda.</a></span></legend>
+                        <div class="row">
+							<!--
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label for="id_siuRC">ID SIU</label>
+                                    <input type="text" id="id_siuRC" class="form-control" disabled="disabled" />
+                                </div>
+                            </div>
+								-->
+						<!--<div class="col-md-2">
+								<div class="form-group">
+									<label for="Origen">Origen</label>
+									<select type="text" id="Origen" class="form-control">
+										<option value="">BANNER</option>
+										<option value="">Externo</option>
+									</select>
+								</div>
+							</div>-->	
+							<div class="col-md-2">
+								<div class="form-group">
+									<label for="Ciclo">Ciclo</label>
+									<select type="text" id="Ciclo" class="form-control"></select>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group">
+									<label for="Periodo">Periodo</label>
+									<select type="text" id="Periodo" class="form-control"></select>
+								</div>
+							</div>
+							<!--<div class="col-md-2">
+								<div class="form-group">
+									<label for="Nivel">Nivel</label>
+									<select type="text" id="Nivel" class="form-control"></select>
+								</div>
+							</div>-->
+							<div class="col-md-2">
+								<div class="form-group">
+									<label for="tpago">Tipos de Pago</label>
+									<select type="text" id="tipoPago" class="form-control"></select>
+								</div>
+							</div>
+
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="idsiu">ID </label>
+                                
+                                    <input type="text" class="form-control" id="idsiu" value=""  onkeyup="formPage.onkeyup_search_id(event)"  maxlength="10">
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="row right">
+                            <button type="button" id="formbtnConsultar" class="btn btn-sm btn-primary" onclick="formPage.consultar();">Consultar</button>
+                        </div>
+                    </fieldset>
+                <!--</form>-->
+
+
+
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row Datatable -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+                </div>
+                <h4 class="panel-title">Detalle<span class="loader-min-bar" style="display: none;"></span></h4>
+                
+            </div>
+            <div class="panel-body">
+
+                <div id="datatable">
+                    @Html.Raw(ViewBag.DataTable)
+                </div>
+
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- #modal-dialog CONFIRM DELETE BANCO -->
+<div class="modal fade" id="modal-delete-registrocontratos">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Eliminar fecha de entrega</h4>
+            </div>
+            <div class="modal-body">
+                Se borrará la fecha de entrega de este registro, ¿esta seguro de proceder?
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.delete(true);" class="btn btn-sm btn-danger">Borrar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #modal-dialog -->
+<div class="modal " id="modal-edit-fecha">
+	<div class="modal-dialog">
+		<div class="modal-content" >
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Entrega de contrato</h4>
+			</div>
+			<div class="modal-body">
+				<div class="col-md-2">
+					<div class="form-group">
+						<label for="id_siuRC">ID SIU</label>
+                        <input type="hidden" class="form-control" id="IdContrato" value="">
+                        <input type="hidden" class="form-control" id="idEsquema" value="">
+                        <input type="hidden" class="form-control" id="periodos" value="">
+						<input type="text" id="id_siuRC" class="form-control" disabled="disabled" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="nombreRC">Nombre</label>
+						<input type="text" id="nombreRC" class="form-control" disabled="disabled" />
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="fechaEntregaRC">Fecha de entrega</label>
+						<div class="row">
+							<table>
+								<tr>
+									<td><input id="fechaEntregaRC" type="text" class="form-control" maxlength="10" disabled></td>
+									<td><span class="input-group-addon" onclick="document.getElementById('fechaEntregaRC').focus()"><i class="fa fa-calendar"></i></span></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a   id="formbtnsave" class="btn btn-sm btn-primary" href="javascript:formPage.save();" >Grabar</a>
+				<a class="btn btn-sm btn-white"   href="javascript:;" data-dismiss="modal">Cancelar</a>
+			</div>
+		</div>
+	</div>
+</div>

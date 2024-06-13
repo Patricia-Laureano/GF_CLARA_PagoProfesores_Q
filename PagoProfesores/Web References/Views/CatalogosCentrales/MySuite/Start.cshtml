@@ -1,0 +1,179 @@
+﻿@{
+    ViewBag.Title = "Start";
+}
+<!-- begin row Formulario -->
+<div class="row" id="frm-mysuite">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+                </div>
+                <h4 class="panel-title">MySuite</h4>
+            </div>
+
+            <div class="panel-body">
+                <form action="/" method="POST">
+                    <fieldset>
+
+                    
+
+                        <legend>INFORMACIÓN MySuite</legend>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="requestor">Requestor</label>
+                                    <input type="text" class="form-control" id="requestor" maxlength="50">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="transaction">Transaction</label>
+                                    <input type="text" class="form-control" id="transaction" maxlength="50">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <input type="text" class="form-control" id="country" maxlength="50">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="entity">Entity</label>
+                                    <input type="text" class="form-control" id="entity" maxlength="50">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="user">User</label>
+                                    <input type="text" class="form-control" id="user" maxlength="50">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="username">User Name</label>
+                                    <input type="text" class="form-control" id="username" maxlength="50">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="data1">Data 1</label>
+                                    <input type="text" class="form-control" id="data1" maxlength="50">
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="data2">Data 2</label>
+                                    <input type="text" class="form-control" id="data2" maxlength="50">
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="data3">Data 3</label>
+                                    <input type="text" class="form-control" id="data3" maxlength="50">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="mensaje">Mensaje</label>
+                                    <input type="text" class="form-control" id="mensaje" maxlength="50">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="file1">File 1</label>
+                                    <input type="text" class="form-control" id="file1" maxlength="50">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="file2">File 2</label>
+                                    <input type="text" class="form-control" id="file2" maxlength="50">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="success">Success</label>
+                                    <input type="text" class="form-control" id="success" maxlength="50">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="archivo">Archivo</label>
+                                    <input type="text" class="form-control" id="archivo" maxlength="50">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="uuid">UUID</label>
+                                    <input type="text" class="form-control" id="uuid" maxlength="50">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row right">
+                           <!-- <button type="button" id="formbtnadd" class="btn btn-sm btn-primary" onclick="formPage.add();">Agregar</button>-->
+                            <button type="button" id="formbtnsave" class="btn btn-sm btn-primary"  onclick="formPage.save();">Guardar</button>
+                             <!-- <button type="button" id="formbtndelete" class="btn btn-sm btn-danger" disabled onclick="formPage.delete(false);">Borrar</button>-->
+                            <!--<button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>-->
+                        </div>
+
+
+
+                    </fieldset>
+                </form>
+
+
+
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+
+
+<!-- #modal-dialog CONFIRM DELETE BANCO -->
+<div class="modal fade" id="modal-delete-banco">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Eliminar Banco</h4>
+            </div>
+            <div class="modal-body">
+                Se eliminara el banco seleccionado, ¿esta seguro de proceder?
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                <a href="javascript:formPage.delete(true);" class="btn btn-sm btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>

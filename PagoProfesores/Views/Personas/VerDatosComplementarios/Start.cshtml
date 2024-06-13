@@ -1,0 +1,110 @@
+﻿@{
+    // ________________________________ NOMINA EXCEL ________________________________
+
+    ViewBag.Title = "Start";
+}
+
+<!-- begin row Formulario -->
+<div class="row" id="frm-importar">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+                </div>
+                <h4 class="panel-title">Proceso para Docentes Multicampus</h4>
+            </div>
+
+            <div class="panel-body">
+
+                <ul class="nav nav-tabs">
+                    <li class=""><a href="/ImportarDatosPBI" aria-expanded="false">Importación de PA multicampus</a></li>
+                    <li class=""><a href="/CargarDatosComplementarios" aria-expanded="false">Subir archivo Excel DI</a></li>
+                    <li class="active"><a href="/VerDatosComplementarios" aria-expanded="true">Sabana de datos</a></li>
+                    <li class=""><a href="/ImportarDatosExcel" aria-expanded="false">Importación de datos desde Excel</a></li>
+
+                </ul>
+
+                <div class="panel-body" id="seccion1">
+
+
+
+                    <form action="/" method="POST">
+                        <fieldset>
+                          @*  <legend class="pull-left width-full small">Utilice este procedimiento para importar y actualizar información de Profesores de Banner en el sistema. <a href="javascript:void(0)" onclick="ayuda('importprofesores.html')">Más ayuda.</a></legend>*@
+
+                            @*<div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="Ciclo">A&ntilde;o escolar</label>
+                                        <select id="Ciclo" class="form-control"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="Periodo">Periodo</label>
+                                        <select id="Periodo" class="form-control"></select>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="idBanner">ID Persona</label>
+                                        <input type="text" id="idBanner" name="idBanner" class="form-control" />
+                                        <input type="hidden" class="form-control" id="idSiuHidden">
+                                    </div>
+                                </div>
+                            </div>*@
+                            @*<div class="row right">
+                                <button type="button" id="formbtnConsultar" class="btn btn-sm btn-primary" onclick="formPage.consultar();">Consultar</button>
+                             </div>*@
+
+                            @Html.Raw(ViewBag.BlockingPanel_1)
+
+                        </fieldset>
+                    </form>
+
+
+                </div>
+
+
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-primary" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+                </div>
+                <h4 class="panel-title">Listado de Menus</h4>
+            </div>
+            <div class="panel-body">
+
+                <div id="datatable">
+                    @Html.Raw(ViewBag.DataTable)
+                </div>
+
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->

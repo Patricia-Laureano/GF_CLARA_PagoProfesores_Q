@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd" 
+	version="3.2" 
+	fecha="2017-01-21T17:41:27" 
+	formaDePago="Pago en una sola exhibición" 
+	noCertificado="00001000000301681328" 
+	condicionesDePago="Contado" 
+	subTotal="816.00" 
+	identificador="Rogelio Andres 123"
+	TipoCambio="1.00" 
+	Moneda="MXN" 
+	total="12164.42" 
+	metodoDePago="03" 
+	tipoDeComprobante="ingreso" 
+	LugarExpedicion="CUAJIMALPA DE MORELOS, DISTRITO FEDERAL" 
+	certificado="MIIEWTCCA0GgAwIBAgIUMDAwMDEwMDAwMDAzMDE2ODEzMjgwDQYJKoZIhvcNAQEFBQAwggGKMTgwNgYDVQQDDC9BLkMuIGRlbCBTZXJ2aWNpbyBkZSBBZG1pbmlzdHJhY2nDs24gVHJpYnV0YXJpYTEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMR8wHQYJKoZIhvcNAQkBFhBhY29kc0BzYXQuZ29iLm14MSYwJAYDVQQJDB1Bdi4gSGlkYWxnbyA3NywgQ29sLiBHdWVycmVybzEOMAwGA1UEEQwFMDYzMDAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBEaXN0cml0byBGZWRlcmFsMRQwEgYDVQQHDAtDdWF1aHTDqW1vYzEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTUwMwYJKoZIhvcNAQkCDCZSZXNwb25zYWJsZTogQ2xhdWRpYSBDb3ZhcnJ1YmlhcyBPY2hvYTAeFw0xMzEyMTEwMDEzMDRaFw0xNzEyMTEwMDEzMDRaMIGlMRwwGgYDVQQDFBNST0RSSUdPIEFZQUxBIFlB0UVaMRwwGgYDVQQpFBNST0RSSUdPIEFZQUxBIFlB0UVaMRwwGgYDVQQKFBNST0RSSUdPIEFZQUxBIFlB0UVaMRYwFAYDVQQtEw1BQVlSNzIwOTAzRVM2MRswGQYDVQQFExJBQVlSNzIwOTAzSERGWVhEMDMxFDASBgNVBAsTC0NPTlNVTFRPUklPMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJZsrDXsgipEPv5bC/MJObQyLl4HmW4pLXhzm+W3M/9IGBd1vbJq1nS9Jg667COtXjsvCCugZk6G6n1n8LVQxP848/z3n8zRBU7jjyrb2nYaTj19YPygI38UOPpLMA232nGBOGqEODMjgaZcjRsuvl+adUAHml2HlKOP6YohDIhwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEAJ0J6GB1zkir6IuwK5+uLFNOqarZF6qsFmb8XMSFN448uXz0lU2cPbZvgL1K5fkU6LzusTmFQkUA4o8tNQnxp6r44C4si5l502d6dkRdJfqEzkxE//0I/oofG1kVfLW47WJSAdccZHK3mAsWbrj831xUMMjMzAOY13CWb+pKbrArd9h4VMLkvH5kYxW+M+IPVuvBWlk1mIpNct67bJ2JQ6ihpuzXmUpp7qXTjzE1fXuoxAqILU9genI22hkghkM0DbIFjwxfbb8Ua6hPlowimA0djJNVNtUUXCgqk3o5Poa9LIjtUofkxMAS5b6BanvzZLyyNam24hMX3apknZ7E1/Q==" 
+	sello="BG7UymNA43hNOpU4l+P5z734/L58w1JnTSQITE+V5C960bZgluR1h49TRsVS91wOd3OXZAVj8Y0H6PSnxhRRVNGisWdyzil3EvjsivQi0M2Yay3ri/2W+0KHi+hGmhO4E3vb24ep4ApN/WLw2SJiluEcas60eBqgbFpAHMVaJxk=" 
+	folio="547">
+   <cfdi:Emisor rfc="SAAC8101062H3" nombre="RODRIGO AYALA YAÑEZ">
+      <cfdi:DomicilioFiscal calle="CARLOS GRAEF FERNANDEZ" noExterior="154" noInterior="PISO 3 339" localidad="TLAXALA" municipio="CUAJIMALPA DE MORELOS" estado="DISTRITO FEDERAL" pais="MEXICO" codigoPostal="05300" />
+      <cfdi:ExpedidoEn calle="CARLOS GRAEF FERNANDEZ" noExterior="154" noInterior="PISO 3 339" localidad="TLAXALA" municipio="CUAJIMALPA DE MORELOS" estado="DISTRITO FEDERAL" pais="MEXICO" codigoPostal="05300" />
+      <cfdi:RegimenFiscal Regimen="Régimen de Actividades Empresariales y Profesionales Personas Fisicas" />
+   </cfdi:Emisor>
+   <cfdi:Receptor rfc="RFC" nombre="INVESTIGACIONES Y ESTUDIOS SUPERIORES, S.C.">
+      <cfdi:Domicilio calle="AV. UNIVERSIDAD ANAHUAC" noExterior="46" colonia="LOMAS ANAHUAC" municipio="HUIXQUILUCAN EDO DE MÉXICO" estado="DE MEXICO" pais="MEXICO" codigoPostal="52786" />
+   </cfdi:Receptor> 
+   <cfdi:Conceptos>
+      <cfdi:Concepto cantidad="1.00" unidad="Servicio" descripcion="SERVICIOS PROFESIONALES MES DE SEPTIEMBRE" valorUnitario="12759.875" importe="2772.00" />
+   </cfdi:Conceptos>
+   <cfdi:Impuestos totalImpuestosRetenidos="2637.04" totalImpuestosTrasladados="2041.58">
+      <cfdi:Retenciones>
+         <cfdi:Retencion impuesto="IVA" importe="295.68" />
+         <cfdi:Retencion impuesto="ISR" importe="277.20" />
+      </cfdi:Retenciones>
+      <cfdi:Traslados>
+         <cfdi:Traslado impuesto="IVA" tasa="16.00" importe="2041.58" />
+      </cfdi:Traslados>
+   </cfdi:Impuestos>
+   <cfdi:Complemento>
+      <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/TimbreFiscalDigital/TimbreFiscalDigital.xsd" version="1.0" UUID="CAA36EC4-E5F7-4FF5-A9D5-086E2BD25340" FechaTimbrado="2016-09-21T17:41:47" selloCFD="BG7UymNA43hNOpU4l+P5z734/L58w1JnTSQITE+V5C960bZgluR1h49TRsVS91wOd3OXZAVj8Y0H6PSnxhRRVNGisWdyzil3EvjsivQi0M2Yay3ri/2W+0KHi+hGmhO4E3vb24ep4ApN/WLw2SJiluEcas60eBqgbFpAHMVaJxk=" noCertificadoSAT="00001000000203159220" selloSAT="QazMp9jKnYNmGdoTLT+3hY0r5g/h/PJfzX3l2OW0BNtKVnlIILQbII9z20fknETnhCGvxF1bBYE2HW0QaXy9PfYF+FZpJ1bVoIvodXNA5rQCTU5aLRolwLmp8KrOafyI7+PVBpimzFbFwnjbUtb+1OGrZf9wg3qZANprXKmtoSw=" />
+   </cfdi:Complemento>
+</cfdi:Comprobante>

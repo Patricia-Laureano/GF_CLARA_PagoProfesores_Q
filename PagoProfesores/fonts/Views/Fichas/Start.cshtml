@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "Start";
+}
+
+<div class="row">
+	<ol class="breadcrumb pull-right">
+		<li><a href="#">Administración</a></li>
+		<li><a href="/Fichas">Fichas</a></li>
+
+	</ol>
+</div>
+
+
+
+<!-- begin row -->
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12 ui-sortable">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+
+					<a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+					<a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+				</div>
+				<h4 class="panel-title">Ficha</h4>
+			</div>
+
+			<div class="panel-body">
+
+
+
+				<form action="/" method="POST">
+					<fieldset>
+
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="Nombre">Nombre</label>
+									<input type="text" class="form-control" id="Nombre">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="descripcion">Descripción</label>
+									<input type="text" class="form-control" id="Descripcion">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="Url">Url</label>
+									<input type="text" class="form-control" id="Url">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="Padre">Padre</label>
+									<!--
+									<input type="text" class="form-control" id="Padre">
+										-->
+									<select id="Padre" class="form-control">
+										@Html.Raw(ViewBag.PadreOptionsHTML)
+									</select>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="Orden">Orden</label>
+									<input type="text" class="form-control" id="Orden">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="PkPermiso">id permiso</label>
+									<!--
+									<input type="text" class="form-control" id="PkPermiso">
+										-->
+									<select id="PkPermiso" class="form-control">
+										@Html.Raw(ViewBag.PkPermisoOptionsHTML)
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="row right">
+							<button type="button" id="formbtnadd" class="btn btn-sm btn-primary" onclick="formPage.add();">Agregar</button>
+							<button type="button" id="formbtnsave" class="btn btn-sm btn-success" disabled onclick="formPage.save();">Guardar</button>
+							<button type="button" id="formbtndelete" class="btn btn-sm btn-danger" disabled onclick="formPage.delete();">Borrar</button>
+							<button type="button" id="formbtnclean" class="btn btn-sm btn-warning" onclick="formPage.clean();">Limpiar</button>
+						</div>
+					</fieldset>
+				</form>
+
+
+
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row -->
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12 ui-sortable">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+
+					<a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+					<a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+				</div>
+				<h4 class="panel-title">Listado de Fichas</h4>
+			</div>
+			<div class="panel-body">
+
+				<div id="datatable">
+					@Html.Raw(ViewBag.DataTable)
+				</div>
+
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-12 -->
+</div>
+<!-- end row -->
+

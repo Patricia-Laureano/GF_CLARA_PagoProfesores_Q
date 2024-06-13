@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>Pago a Profesores</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="/Scripts/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet"/>
+    <link href="/Scripts/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/Scripts/plugins/DataTables/css/data-table.css" rel="stylesheet"/>
+    <link href="/Scripts/plugins/smallipop/css/jquery.smallipop.css" rel="stylesheet"/>
+    <link href="/Scripts/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet"/>
+    <link href="/Scripts/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet"/>
+    <link href="/Scripts/plugins/gritter/css/jquery.gritter.css" rel="stylesheet"/>
+    <link href="/Scripts/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="/Scripts/plugins/autocomplete/css/easy-autocomplete.min.css" rel="stylesheet" />
+    
+    <link href="/Content/css/animate.min.css" rel="stylesheet"/>
+    <link href="/Content/css/style.min.css" rel="stylesheet"/>
+    <link href="/Content/css/style-responsive.min.css" rel="stylesheet"/>
+    <link href="/Content/css/theme/default.css" rel="stylesheet"/>
+    <link href="/Content/css/fixedheadertable.css" rel="stylesheet" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+    
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="/Scripts/plugins/pace/pace.min.js"></script>
+    <!-- ================== END BASE JS ================== -->
+</head>
+
+<body class="raphael">
+    
+    <!-- begin #page-loader 
+        <div id="page-loader" class="fade in">
+        <span class="spinner"></span>
+        </div>-->
+    <!-- end #page-loader -->
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+        <!-- begin #header -->
+        <div id="header" class="header navbar navbar-default navbar-fixed-top">
+            <!-- begin container-fluid -->
+            <div class="container-fluid">
+                <!-- begin mobile sidebar expand / collapse button -->
+                <div class="navbar-header">
+                    <a href="/Dashboard" class="navbar-brand">
+                        <span class="navbar-logo">
+                            <img src="~/Content/images/logo.png" width="90%" height="90%"   />
+                        </span> 
+                    </a>
+                    <!--<span class="title-system">Pago a Profesores</span>-->
+                    <button type="button" class="navbar-toggle"
+                            data-click="sidebar-toggled">
+                        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <!-- end mobile sidebar expand / collapse button -->
+                <!-- begin header navigation right -->
+                <ul class="nav navbar-nav navbar-right">
+                   <!-- <li>
+                        <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+                            <i class="fa fa-2x fa-slideshare"></i>
+                            <span class="hidden-xs" style="font-size:12px; top:-10px;">Ayuda</span>
+                        </a>
+
+                    </li>-->
+                    <li>
+                        @Html.Raw(ViewBag.sedes)
+                    </li>
+                </ul>
+                <!-- end header navigation right -->
+            </div>
+            <!-- end container-fluid -->
+        </div>
+        <!-- end #header -->
+        <!-- begin #sidebar MENU -->
+        <div id="sidebar" class="sidebar">
+            <!-- begin sidebar scrollbar -->
+            <div data-scrollbar="true" class="menu-scroll" data-height="100%">
+                <!-- begin sidebar nav -->
+                @Html.Raw(ViewBag.Main)
+                <!-- end sidebar nav -->
+            </div>
+            <!-- end sidebar scrollbar -->
+        </div>
+        <div class="sidebar-bg"></div>
+        <!-- end #sidebar -->
+        <!-- begin #content -->
+        <div id="content" class="content">
+            <div id="notification">
+                @Html.Raw(ViewBag.Notification)
+            </div>
+            @RenderBody()
+
+        </div>
+        <!-- end #content -->
+        <!-- begin scroll to top btn -->
+        <a href="javascript:;"
+           class="btn btn-icon btn-circle btn-warning btn-scroll-to-top fade"
+           data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+        <!-- end scroll to top btn -->
+    </div>
+    <!-- end page container -->
+    
+    <!-- Footer-->
+    <div class="footer_v">
+        <span>Copyright 2016, Red de Universidades Anáhuac, Todos los derechos reservados.</span>
+        <span>Aviso de Privacidad.</span>
+        <span>Dirección de Tecnologías de información.</span>
+    </div>
+    <!--End Footer --> 
+    
+    <!-- modal-dialog  SESION  -->
+    <div class="modal " id="modal-session">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">La sesi&oacute;n ha terminado</h4>
+                </div>
+                <div class="modal-body">
+                    ¿Desea mantener la sesi&oacute;n abieta?
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:void(0)" onclick="session_close();" class="btn btn-sm btn-white" data-dismiss="modal">No</a>
+                    <a href="javascript:void(0)" onclick="session_keep();" class="btn btn-sm btn-danger" data-dismiss="modal">Si</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END modal-dialog  SESION  -->
+    
+    <!-- ================== BEGIN BASE JS ================== -->
+    @Scripts.Render("~/Content/resources/jquery")
+    @Scripts.Render("~/Content/resources/js/plugins")
+    @RenderSection("scripts", required: false)
+    <!-- ================== END PAGE LEVEL JS ================== -->
+     
+    @Html.Raw(ViewBag.Scripts)
+    
+    <script src="/Scripts/jquery.fixedheadertable.js"></script>
+    <script>
+        $(document).ready(function () {
+			App.init();
+        });
+    </script>
+</body>
+</html>

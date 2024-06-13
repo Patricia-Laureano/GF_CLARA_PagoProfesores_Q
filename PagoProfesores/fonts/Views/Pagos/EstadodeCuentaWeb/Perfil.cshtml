@@ -1,0 +1,121 @@
+﻿@{
+    // ________________________________ ESTADO DE CUENTA WEB ________________________________
+    Layout = "~/Views/Shared/_Layout_login_profesor.cshtml";
+    ViewBag.Title = "Start";
+}
+
+<!-- begin #sidebar MENU -->
+<div id="sidebar" class="sidebar">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%">
+
+        <ul class="nav">
+            <li class="nav-profile">
+
+                <div class="info" >
+                    Pago Profesores
+                    <small id="Profesor">@Html.Raw(ViewBag.Profesor)</small>
+                </div>
+            </li>
+        </ul>
+
+        <!-- begin sidebar nav -->
+
+        <ul class="nav">
+            <li><a href="/EstadodeCuentaWeb/Home"><i class="fa fa-bank"></i><span>Estado de Cuenta</span></a></li>
+            <li class="active"><a href="/EstadodeCuentaWeb/Perfil"><i class="fa fa-user"></i><span>Mi Perfil</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/PagosPendientes"><i class="fa fa-usd"></i><span>Pagos Pendientes</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/PagosDepositados"><i class="fa fa-money"></i><span>Pagos Depositados</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/Contratos"><i class="fa fa-file-text"></i><span>Contratos</span></a></li>
+            <li><a href="/EstadodeCuentaWeb/ConstanciasRetencion"><i class="fa fa-file-text-o"></i><span>Constancias de Retención</span></a></li>
+            <li><a href="~/Login/Close"><i class="fa fa-sign-out"></i><span>Salir</span></a></li>
+            <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+        </ul>
+
+
+        <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+<!-- begin #content -->
+<div id="content" class="content">
+
+    <!-- begin invoice -->
+    <div class="invoice">
+        <div class="invoice-company">
+            <span class="pull-right hidden-print">
+                <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-default m-b-10"><i class="fa fa-print m-r-5"></i> Imprimir</a>
+            </span>
+            Mi Perfil
+        </div>
+        <div class="invoice-header">
+            <div class="invoice-from">
+
+                <address class="m-t-5 m-b-5">
+                    <strong>Datos Personales</strong><br />
+
+                    <span id="Profesor2"> @Html.Raw(ViewBag.Profesor)</span> <br />
+                    IDSIU: @Html.Raw(ViewBag.IDSIU)<br />
+
+                    Nacionalidad:<br />
+                    Telefono:<br />
+                    Correo:
+                </address>
+            </div>
+            <div class="invoice-to">
+
+                <address class="m-t-5 m-b-5">
+                    <strong>Dirección</strong><br />
+                    <span id="Direccion"> @Html.Raw(ViewBag.Direccion)</span><br />
+                </address>
+            </div>
+
+            <div class="invoice-to">
+
+                <address class="m-t-5 m-b-5">
+                    <strong>Datos Fiscales</strong><br />
+                    No. Cuenta: <span id="NoCuenta">@Html.Raw(ViewBag.NoCuenta)</span><br />
+                    Cuenta Interbancaria: <br />
+                    Banco: <span id="Banco">@Html.Raw(ViewBag.Banco)</span><br />
+                    RFC: <span id="RFC">@Html.Raw(ViewBag.RFC)</span>
+                </address>
+            </div>
+
+            <div class="invoice-date">
+
+                <div class="date m-t-5">Datos Fiscales Sede</div>
+                <div class="invoice-detail">
+                    <span id="Fis_Sede"> @Html.Raw(ViewBag.Fis_Sede)</span><br />
+                    <span id="Fis_RecibiDe">@Html.Raw(ViewBag.Fis_RecibiDe)</span><br />
+                    <span id="Fis_RFC">@Html.Raw(ViewBag.Fis_RFC)</span><br />
+                    <span id="Fis_Domicilio"> @Html.Raw(ViewBag.Fis_Domicilio)</span><br />
+                    <span id="Fis_Concepto">@Html.Raw(ViewBag.Fis_Concepto)</span><br />
+</div>
+            </div>
+        </div>
+        <div class="invoice-content">
+            <div class="table-responsive" id="pensiones">
+
+                @Html.Raw(ViewBag.PENSIONES)
+            </div>
+        </div>
+
+        <div class="invoice-note">
+            * Si sus datos son incorrectos por favor reportarlo via sana.<br />
+
+        </div>
+        <div class="invoice-footer text-muted">
+            <p class="text-center m-b-5">
+                Red de Universidades Anáhuac
+            </p>
+            <p class="text-center">
+                <span class="m-r-10"><i class="fa fa-globe"></i> redanahuac.mx</span>
+                <span class="m-r-10"><i class="fa fa-phone"></i> T:016-18192302</span>
+                <span class="m-r-10"><i class="fa fa-envelope"></i> sana@anahuac.mx</span>
+            </p>
+        </div>
+    </div>
+    <!-- end invoice -->
+    </div>

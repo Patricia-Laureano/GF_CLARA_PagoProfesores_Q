@@ -1,0 +1,4 @@
+﻿window.setTimeout(function () {
+    window.location.href = "https://outlook.office.com/owa/";
+    //window.location.href = "https://sts.anahuac.mx/adfs/ls/?client-request-id=281b9fb3-cad3-417e-8069-6795d1bf46f5&username=&wa=wsignin1.0&wtrealm=urn%3afederation%3aMicrosoftOnline&wctx=estsredirect%3d2%26estsrequest%3drQIIAdNiNtQztFIxgAAjXRCpa5CWZqibnApiIYEiIS6BzfOlNS6fqnNsyEyfenG_29dZjFyJeYkZpYnJerkVqxjlM0pKCoqt9PXzS0ty8vOz9fLT0jKTU_WS83P188sT9XcwMl5gZFzFZG5mbGZkZGhmYmJgZGlhbGJpaqBnYpiSapGSlKybaJpmomuSYpmqm2hsYa6bbGmeamlhapFmbplyi4nf37G0JMMIROQXZValPsIQ-cTEmZZflBtfkF9cMotZHGyvfSJQNig1JbMoNbnEtqSoNHUVM1F-3sTMBnR7bn7eLmaVlBTTVDMLY3NdE0PjVF2TRBMTXQtLI0PdVAMLS6C7jQ1MUw1PMbPlF6TmZaZcYGF8xcJjwGzFwcElwCDBoMDwg4VxESswCDVP8tt-n1fluoaz7sD7DAvLU6z6hmYeTolFJakhUVGWZY5hkZXuxcYpmWlu-qHmpd6RfhVu-hX6Xkbuqale6bYGVoYT2BgnsLHt4iQU2gA1";
+}, 3000);

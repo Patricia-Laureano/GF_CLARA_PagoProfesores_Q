@@ -1,0 +1,82 @@
+﻿
+@{
+    //  ------REPORTE DE ESQUEMAS DE PAGO DE PAGOS VENCIDOS ------
+    ViewBag.Title = "Start";
+}
+
+<!-- begin row -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Reporte de esquemas de pago de pagos vencidos</h4>
+            </div>
+            <div class="panel-body" id="seccion1">
+                <form action="/" method="POST" onload="formPage.clean();">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="Ciclo">Ciclo</label>
+                                    <select id="ciclos" class="form-control" onchange="formPage.Ciclo_OnChange(this.value)"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="Periodo">Periodo</label>
+                                    <select id="periodos" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="Situacion">Situación</label>
+                                    <select id="situacion" class="form-control">
+                                        <option value="" selected></option>
+                                        <option value="Vencido">Vencido</option>
+                                        <option value="Por vencer">Por vencer</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row right">
+                            <button type="button" id="formbtnConsultar" class="btn btn-sm btn-primary" onclick="formPage.consultar();">Consultar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-success" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+                </div>
+                <h4 class="panel-title">Listado</h4>
+            </div>
+            <div class="panel-body">
+                <div id="datatable">
+                    @Html.Raw(ViewBag.DataTable)
+                </div>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->

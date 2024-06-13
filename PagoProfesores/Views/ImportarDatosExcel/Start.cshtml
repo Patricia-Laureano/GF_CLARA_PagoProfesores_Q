@@ -1,0 +1,115 @@
+﻿@{
+    // ________________________________ CARGAR DATOS COMPLEMENTARIOS ________________________________
+
+    ViewBag.Title = "Start";
+}
+
+<div class="row">
+    <ol class="breadcrumb pull-right">
+        <li><a href="#">Proceso para Docentes Multicampus</a></li>
+
+    </ol>
+</div>
+
+<!-- begin row Formulario -->
+<div class="row" id="frm-importar">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+                </div>
+                <h4 class="panel-title">Proceso para Docentes Multicampus</h4>
+            </div>
+
+            <div class="panel-body">
+
+                <ul class="nav nav-tabs">
+                    <li class=""><a href="/ImportarDatosPBI" aria-expanded="false">Importación de PA multicampus</a></li>
+                    <li class=""><a href="/CargarDatosComplementarios" aria-expanded="true">Subir archivo Excel DI</a></li>
+                    <li class=""><a href="/VerDatosComplementarios" aria-expanded="false">Sabana de datos</a></li>
+                    <li class="active"><a href="/ImportarDatosExcel" aria-expanded="false">Importación de datos desde Excel</a></li>
+                </ul>
+                <div class="panel-body" id="seccion1">
+
+
+                    @*action="/CargarDatosComplementarios/SendFile"*@
+                    <form method="POST" enctype="multipart/form-data" action="/ImportarDatosExcel/SendFile">
+                        <fieldset>
+                            <legend class="pull-left width-full small">Utilice este procedimiento para importar y actualizar información de Profesores desde Excel en el sistema. <a href="javascript:void(0)" onclick="ayuda('importprofesores.html')">Más ayuda.</a></legend>
+                            <div class="row">
+                                <div id="ligaUpload" class="col-md-12">
+                                    <span class="right"> <a href="~/Upload/ImportarDatosExcel/ImportarDatosExcel.xlsx"><i class="fa fa-download"></i>&nbsp;&nbsp;Descargar <strong>ejemplo</strong> de formato Excel</a> </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div id="uploadFile" class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="file">Filename:</label>
+                                        <input type="file" name="file" id="file" class="form-control" onchange="formPage.fileChange()" accept=".xlsx, .xls, .csv" />
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group" id="div_progressbar">
+                                        <label>Progreso:&nbsp;</label><label for="file" id="div_percentage_id">0 %</label><br />
+                                        <progress id="progressbar_loading" class="form-control" value="0" max="100" />
+                                    </div>
+                                </div>
+                                <img id="img_generando" style="height:30px;" src="/Content/images/load.gif">
+                            </div>
+                            <div class="row right">
+                                <input type="submit" id="formbtnAuditar" class="btn btn-sm btn-primary" onclick="formPage.subirExcel();" value="Cargar">
+                                <button type="button" id="formbtnImportar" class="btn btn-sm btn-warning" onclick="formPage.importar();">Importar</button>
+
+                            </div>
+                            @Html.Raw(ViewBag.BlockingPanel_1)
+                        </fieldset>
+                    </form>
+
+
+                </div>
+                <ul class="pager bwizard-buttons">
+                    <li id="btn-ant" class="previous" role="button" aria-disabled="true" style="display:none"><a id="linkant" href="">← Anterior </a></li>
+                    <li id="btn-sgt" class="next" role="button" aria-disabled="false" style="display:none"><a id="linksgt" href="javascript:formPage.BotonSgtGenerarNomina()">Siguiente →</a></li>
+                </ul>
+
+                <input type="hidden" id="archivo" name="archivo" />
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end row -->
+<!-- begin row -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+                    <a data-click="panel-reload" class="btn btn-xs btn-icon btn-circle btn-primary" href="javascript:;"><i class="fa fa-repeat"></i></a>
+                    <a data-click="panel-collapse" class="btn btn-xs btn-icon btn-circle btn-warning" href="javascript:;"><i class="fa fa-minus"></i></a>
+
+                </div>
+                <h4 class="panel-title">Listado de Menus</h4>
+            </div>
+            <div class="panel-body">
+
+                <div id="datatable">
+                    @Html.Raw(ViewBag.DataTable)
+                    @*</div>
+                        @Html.Raw(ViewBag.BlockingPanel_2)*@
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+        <!-- end col-12 -->
+    </div>
+    <!-- end row -->
