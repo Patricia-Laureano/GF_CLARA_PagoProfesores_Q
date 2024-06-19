@@ -177,13 +177,13 @@ namespace PagoProfesores.Controllers.Pagos
             
             table.TABLE = "VESTADO_CUENTA";
             table.TABLED = "VESTADO_CUENTA_DETALLE";
-            string[] columnas = { "Campus", "Periodo", "Parte del periodo", "Esquema", "Concepto","Origen Pago", "Monto", "IVA", "IVA Ret", "ISR Ret", "Monto Deposito", "Fecha pago",
-                                  "Fecha Recibo", "Fecha Dispersión", "Fecha Depósito", "Fecha Solicitado", "Tipo de pago", "Centro de costos", "Usuario", "F. Modificación"};																																				 
+            string[] columnas = { "Campus", "Periodo", "Parte del periodo", "Esquema", "Concepto", "Monto", "IVA", "IVA Ret", "ISR Ret", "Monto Deposito", "Fecha pago",
+                                  "Fecha Recibo", "Fecha Dispersión", "Fecha Depósito", "Fecha Solicitado", "Tipo de pago", "Centro de costos", "Usuario", "F. Modificación"}; //MPLO Ticket 124111																																			 
 
-            string[] campos = { "ID_ESTADODECUENTA", "ID_EDOCTADETALLE", "CVE_SEDE", "PERIODO", "PARTEDELPERIODODESC", "ESQUEMA", "CONCEPTO","ORIGEN_PAGO", "MONTO",
+            string[] campos = { "ID_ESTADODECUENTA", "ID_EDOCTADETALLE", "CVE_SEDE", "PERIODO", "PARTEDELPERIODODESC", "ESQUEMA", "CONCEPTO", "MONTO",
                                 "MONTO_IVA", "MONTO_IVARET", "MONTO_ISRRET", "BANCOS", "FECHAPAGO", "FECHARECIBO", "FECHADISPERSION", "FECHADEPOSITO", "FECHA_SOLICITADO",
-                                "CVE_TIPODEPAGO", "CENTRODECOSTOS", "USUARIO", "FECHA_M", "PADRE", "ID_ESQUEMA", "BLOQUEOS", "CVE_ESCUELA", "PUBLICADO", "VISTA", "PARTEDELPERIODO","RECALCULO" };
-																										  
+                                "CVE_TIPODEPAGO", "CENTRODECOSTOS", "USUARIO", "FECHA_M", "PADRE", "ID_ESQUEMA", "BLOQUEOS", "CVE_ESCUELA", "PUBLICADO", "VISTA", "PARTEDELPERIODO","RECALCULO" }; //MPLO Ticket 124111
+
             string[] camposearch = { "ID_ESTADODECUENTA", "CVE_SEDE", "PERIODO", "PARTEDELPERIODODESC", "ESQUEMA", "CONCEPTO", "MONTO", "CVE_TIPODEPAGO",
                                      "MONTO_IVA", "MONTO_IVARET", "MONTO_ISRRET", "BANCOS", "FECHAPAGO", "CENTRODECOSTOS", "USUARIO", "FECHA_M"};
 
