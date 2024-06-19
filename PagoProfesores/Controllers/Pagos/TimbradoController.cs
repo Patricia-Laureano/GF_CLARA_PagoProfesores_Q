@@ -195,7 +195,7 @@ namespace PagoProfesores.Controllers.Pagos
             int fallidos = 0;
             if (sesion == null) { sesion = SessionDB.start(Request, Response, false, db); }
 
-            string[,] sXML = RegresafacturasaTimbrarXML(fechai, fechaf);
+            string[,] sXML = RegresafacturasaTimbrarXML(fechai, fechaf, cveSede); //MPLO Ticket 124086
 
             using (var client = new srv_mySuiteTest.FactWSFrontSoapClient("FactWSFrontSoap1"))
             {
@@ -284,7 +284,7 @@ namespace PagoProfesores.Controllers.Pagos
             int fallidos = 0;
             if (sesion == null) { sesion = SessionDB.start(Request, Response, false, db); }
 
-            string[,] sXML = RegresafacturasaTimbrarXML(fechai, fechaf, IDs);
+            string[,] sXML = RegresafacturasaTimbrarXML(fechai, fechaf, cveSede, IDs); //MPLO Ticket 124086
 
             using (var client = new srv_mySuiteTest.FactWSFrontSoapClient("FactWSFrontSoap1"))
             {
@@ -374,11 +374,21 @@ namespace PagoProfesores.Controllers.Pagos
             return msj;
         }
 
-        public string[,] RegresafacturasaTimbrarXML(string fechai, string fechaf, string IDs = "")
+        public string[,] RegresafacturasaTimbrarXML(string fechai, string fechaf, string sede, string IDs = "") //MPLO Ticket 124086
         {
             string paEnviarCorreo = ConfigurationManager.AppSettings["enviarCorreo"];
             string correoReceptor = ConfigurationManager.AppSettings["correoReceptor"];
             string server = ConfigurationManager.AppSettings["serverMySuite"];//TEST O PROD
+
+            //MPLO Ticket 124086
+            string sucursal = "ANAHUAC";
+            string sqlMS = "SELECT * FROM TIMBRADO_MYSUITE WHERE CAMP_CODE='" + sede + "' AND SERVER='" + server + "'";
+            ResultSet resMS = db.getTable(sqlMS);
+            resMS.ReStart();
+            while (resMS.Next())
+            {
+                sucursal = resMS.Get("SUCURSAL");
+            }
 
             //string sql = "SELECT * from  dbo.V_TIMBRADO_ASIMILADOS where FILTROFECHA >= '" + fechai + "' AND FILTROFECHA <= '" + fechaf + "' AND (FECHA_SOLICITADO IS NOT NULL AND FECHA_SOLICITADO != '') AND (FECHARECIBO IS NULL OR FECHARECIBO = '')";
             string sql = "SELECT * from  dbo.V_TIMBRADO_ASIMILADOS where FILTROFECHA >= '" + fechai + "' AND FILTROFECHA <= '" + fechaf + "' AND (FECHA_SOLICITADO IS NOT NULL AND FECHA_SOLICITADO != '') AND (UUID IS NULL OR UUID = '') ";
@@ -420,6 +430,7 @@ namespace PagoProfesores.Controllers.Pagos
                     , res.Get("ConceptosMetodoPago") // método de pago: transferencia o cheque
                     , res.Get("CVE_TIPOTRANSFERENCIA") // tipo de transferencia: transferencia, cheque o transferenica bancaria
                     , res.Get("DomicilioDeRecepcionCodigoPostal") // CÓDIGO POSTAL FISCAL
+                    , ((server == "PROD") ? sucursal : "ANAHUAC") //MPLO Ticket 124086
                     );
                 i++;
             }
@@ -466,6 +477,7 @@ namespace PagoProfesores.Controllers.Pagos
             , string xMetodoPago
             , string xTipoTransferencia
             , string xCP
+            , string xSucursal //MPLO Ticket 124086
             )
         {
             //aquí vamos a obtener la fecha de pago inicial y la fecha de pago final, así como la cantidad de días pagados
@@ -588,7 +600,7 @@ namespace PagoProfesores.Controllers.Pagos
 
                 .Append("<fx:ComprobanteEx>")
                 .Append("<fx:DatosDeNegocio>")
-                .Append("<fx:Sucursal>ANAHUAC</fx:Sucursal>")
+                .Append("<fx:Sucursal>" + xSucursal + "</fx:Sucursal>") //MPLO Ticket 124086
                 .Append("</fx:DatosDeNegocio>")
                 .Append("<fx:TerminosDePago>")
                 .Append("<fx:MetodoDePago>PUE</fx:MetodoDePago>")
