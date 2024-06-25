@@ -19,7 +19,7 @@ namespace PagoProfesores.Models.Helper
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
 
-            string sql = "SELECT CVE_ESCUELA,ESCUELA FROM ESCUELAS ORDER BY CVE_ESCUELA";
+            string sql = "SELECT CVE_ESCUELA,ESCUELA FROM ESCUELAS ORDER BY ESCUELA"; //MPLO Ticket 90742
             ResultSet res = db.getTable(sql);
             while (res.Next())
                 dict.Add(res.Get("CVE_ESCUELA"), res.Get("ESCUELA"));
